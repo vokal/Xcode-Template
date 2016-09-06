@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files in the '___PACKAGENAME___' project
+//
+#ifndef VOKPrefix_pch
+#define VOKPrefix_pch
+
+#ifdef DEBUG
+#    define DLog(...) NSLog(@"%s:%d %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:@""__VA_ARGS__])
+#else
+#    define DLog(...) do {} while (NO)
+#endif
+
+#endif

@@ -1,0 +1,4 @@
+build:
+  image: 374853505812.dkr.ecr.us-east-1.amazonaws.com/travis_client
+  commands:
+    - /client

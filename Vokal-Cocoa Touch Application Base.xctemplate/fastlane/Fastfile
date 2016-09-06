@@ -1,0 +1,386 @@
+require 'fileutils'
+
+default_platform :ios
+
+platform :ios do
+
+  ######################################
+  # Variables each project must update #
+  ######################################
+
+  # The path to the .xcworkspace file for the current project
+  workspace_file='___PACKAGENAME___.xcworkspace'
+
+  # The path to the .xcodeproj for the main app (for getting coverage info)
+  project_file='___PACKAGENAME___.xcodeproj'
+
+  # The name of the main scheme for building and testing the app. Must be a
+  # shared scheme!
+  main_scheme = '___PACKAGENAME___'
+
+  #########################
+  # Pre-defined variables #
+  #########################
+
+  # All schemes that will be run for testing. Add shared schemes as necessary
+  schemes_to_test = [
+    main_scheme,
+  ]
+
+  # The SDK to use build and run tests. Left as is, will use the highest
+  # available SDK.  If more specificity is required, should be of the format
+  # 'iphonesimulatorX.X'
+  test_sdk = 'iphonesimulator'
+
+  # The SDK to use to archive builds. Left as is, will use the highest
+  # available SDK.  If more specificity is required, should be of the format
+  # 'iphoneosX.X'
+  archive_sdk = 'iphoneos'
+
+  # The build configuration to use when creating an archive build
+  archive_build_configuration = 'Release'
+
+  # An argument to be added to the build command to indicate the prod server
+  # should be used
+  prod_server_arg = 'USE_PRODUCTION_SERVER=YES'
+
+  # The username (ie, email) of the iTunes Connect user to use to upload a
+  # build to iTunes Connect for either TestFlight or App Store distribution.
+  # The corresponding password goes in the ITC_PASSWORD environment variable
+  itc_username = ENV['ITC_USERNAME']
+
+  # The root fastlane folder (typically "fastlane")
+  fastlane_folder = ENV['FASTLANE_FOLDER']
+
+  # The output folder for building archives, relative to fastlane_folder
+  # (typically "Build")
+  build_folder = File.join(fastlane_folder, ENV['BUILD_FOLDER'])
+
+  # folder name for test output, relative to fastlane_folder (typically
+  # "test_output")
+  test_output_folder = ENV['TEST_OUTPUT_FOLDER']
+
+  # filename for test output (typically "cobertura.xml")
+  test_coverage_file = ENV['TEST_COVERAGE_FILE']
+
+  # Files to ignore in code coverage, as an array of strings. Wildcards may be
+  # used.
+  coverage_files_to_ignore = [
+    'R.generated.swift',
+    '___PACKAGENAME___/CoreDataAndModels/private/*',
+    '___PACKAGENAME___/*TestingAppDelegate.*',
+    '___PACKAGENAME___/Resources/TrueColors/*',
+    '___PACKAGENAME___/Utilities/DLog.swift',
+    'Pods/*',
+  ]
+
+  # TRAVIS NOTE: Any lane using an encrypted environment variable should only
+  # be used on Travis after the pull request has been merged - otherwise those
+  # variables will have empty data.
+
+  ###########
+  ## SETUP ##
+  ###########
+
+  before_all do
+    # Set up the shared environment keychain name. This is used by fastlane internals as
+    # the keychain for signing certificates.
+    ENV['KEYCHAIN_NAME'] = 'fastlane_keychain'
+  end
+
+  #############################
+  ## TESTING & CODE COVERAGE ##
+  #############################
+
+  desc "Runs tests with the given options"
+  desc "Expects values for the following keys:"
+  desc "scheme_options_key: The name of the scheme to use to run the tests"
+  desc "output_options_key: The path to output information from the tests"
+  private_lane :run_tests do |options|
+    if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
+      raise "Not all required options for this lane are present!"
+      return
+    end
+
+    scheme = options[:scheme_options_key]
+    output_folder = options[:output_options_key]
+
+    # Build and run the given tests
+    scan(
+      workspace: workspace_file,
+      scheme: scheme,
+      sdk: test_sdk,
+      derived_data_path: build_folder,
+      output_directory: File.join(fastlane_folder, output_folder),
+      skip_build: true, #the test action will already kick off a build, don't build twice
+    )
+  end
+
+  desc "Runs slather with cobertura output on a specified scheme"
+  desc "Expects values for the following keys:"
+  desc "output_options_key: The folder in which to put the cobertura.xml file"
+  desc "scheme_options_key: The scheme to collect coverage for"
+  private_lane :slather_cobertura do |options|
+    if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
+      raise "Not all required options for this lane are present!"
+      return
+    end
+
+    # What should we test and where should we put it?
+    output = options[:output_options_key]
+    scheme = options[:scheme_options_key]
+    slather(
+      cobertura_xml: true,
+      proj: project_file,
+      workspace: workspace_file,
+      build_directory: build_folder,
+      input_format: 'profdata',
+      scheme: scheme,
+      output_directory: File.join(fastlane_folder, output),
+      ignore: coverage_files_to_ignore,
+    )
+
+  end
+
+  desc "Runs all the tests of the iOS App and gathers code coverage"
+  lane :test do
+
+    # Make the test output folder, if it doesn't exist
+    FileUtils.mkdir_p(test_output_folder)
+
+    # For each scheme in the array,
+    schemes_to_test.each do |scheme|
+      scheme_output_folder = test_output_folder
+      if schemes_to_test.count > 1
+        # Put test output in a folder based on scheme name
+        scheme_output_folder = File.join(test_output_folder, scheme)
+      end
+
+      # Run the tests
+      run_tests(
+        scheme_options_key: scheme,
+        output_options_key: scheme_output_folder,
+      )
+
+      # Collect code coverage for the tests
+      slather_cobertura(
+        scheme_options_key: scheme,
+        output_options_key: scheme_output_folder,
+      )
+    end
+
+    if schemes_to_test.count > 1
+      combined_output_file = File.join(test_output_folder, test_coverage_file)
+      # Run Ye Python Script to combine all the cobertura.xml files into a
+      # single file for accurate reporting
+      sh("./xmlcombine.py \"#{test_output_folder}/\"*\"/#{test_coverage_file}\" --output-file \"#{combined_output_file}\"")
+    end
+  end
+
+  ########################
+  ## BUILDING & SIGNING ##
+  ########################
+
+  desc "Uses gym to output a build with the specified options."
+  desc "Expects values for the following keys:"
+  desc "method_options_key: Specify method for building: 'ad-hoc' or 'app-store'"
+  desc "xcargs_options_key: (Optional) Specify any xcargs to include"
+  private_lane :archive_build do |options|
+    if !options.key?(:method_options_key)
+      raise "Not all required options for this lane are present!"
+      return
+    end
+
+    xcargs = options[:xcargs_options_key]
+    method = options[:method_options_key]
+
+    # Archive away!
+    gym(
+      workspace: workspace_file,
+      scheme: main_scheme,
+      configuration: archive_build_configuration,
+      export_method: method,
+      output_directory: build_folder,
+      include_bitcode: false,
+      include_symbols: true,
+      sdk: archive_sdk,
+      xcargs: xcargs,
+      clean: true,
+    )
+  end
+
+
+  desc "Responsible for building and signing the app for ad-hoc distribution"
+  desc "Expects values for the following keys:"
+  desc "prod_options_key: (optional) set to true to make the build point at production. Omit or set to false to make the build point at staging."
+  private_lane :build_ad_hoc do |options|
+    # Handle signing/provisioning setup stuff. match is called twice here because weird problems
+    # arise when the development signing cert isn't installed.
+    match(type: "development")
+    match
+
+    # Figure out if the build should be pointed at prod or staging
+    xcargs = ""
+    if (options[:prod_options_key] == true)
+      puts "------ BUILDING AD-HOC FOR PRODUCTION SERVER ------"
+      xcargs = prod_server_arg
+    elsif
+      puts "------ BUILDING AD-HOC FOR STAGING SERVER ------"
+    end
+
+    # Build app for ad-hoc release
+    archive_build(
+      xcargs_options_key: xcargs,
+      method_options_key: 'ad-hoc',
+    )
+  end
+
+  desc "Responsible for building and signing the app for App Store or Test Flight distribution"
+  desc "Note: This will always create a build pointed at Production."
+  desc "Note: Setup/teardown of the keychain should be handled outside this method."
+  private_lane :build_itc do
+    # Handle signing/provisioning setup stuff. match is called twice here because weird problems
+    # arise when the development signing cert isn't installed.
+    match(type: "development")
+    match(type: "appstore")
+
+    puts "------ BUILDING TESTFLIGHT/ITC FOR PRODUCTION SERVER -------"
+
+    # Build Production-pointed app for App Store / Test Flight
+    archive_build(
+      xcargs_options_key: prod_server_arg,
+      method_options_key: 'app-store',
+    )
+  end
+
+  ##################
+  ## DISTRIBUTION ##
+  ##################
+
+  desc "Checks if the Hockey API token is set"
+  private_lane :check_hockey_token do
+    if ENV["HOCKEY_API_TOKEN"] == "FIXME"
+      raise "You need to set up your HOCKEY_API_TOKEN in your .travis.yml, local_config.sh, or both!"
+      return
+    end
+  end
+
+  desc "Uploads a build to HockeyApp with the given release notes"
+  desc "Expects values for the following keys:"
+  desc "release_notes_options_key: Release notes to post to hockey for the current build"
+  private_lane :hockey_upload do |options|
+    if !options.key?(:release_notes_options_key)
+      raise "Not all required options for this lane are present!"
+      return
+    end
+
+    release_notes = options[:release_notes_options_key]
+
+    # Upload to HockeyApp
+    hockey(
+      api_token: ENV["HOCKEY_API_TOKEN"],
+      notes: release_notes,
+      notify: '0', # Means do not notify
+      status: '1', # Means do not make available for download
+    )
+  end
+
+  desc "Uploads a build pointed at Staging to HockeyApp"
+  lane :hockey_staging do
+    # Before building, make sure we actually have a token
+    check_hockey_token
+
+    # Build the app for Ad-Hoc distribution
+    build_ad_hoc
+
+    # Upload to HockeyApp
+    hockey_upload(
+      release_notes_options_key: release_notes_from_commits('This STAGING build was automatically uploaded by Fastlane.'),
+    )
+  end
+
+
+  desc "Uploads a build pointed at Production to HockeyApp"
+  lane :hockey_prod do
+    # Before building, make sure we actually have a token
+    check_hockey_token
+
+    # Build the app for Ad-Hoc distribution, pointed at production
+    build_ad_hoc(
+      prod_options_key: true
+    )
+
+    # Upload to HockeyApp
+    hockey_upload(
+      release_notes_options_key: release_notes_from_commits('This PRODUCTION build was automatically uploaded by Fastlane.'),
+    )
+  end
+
+  desc "Uploads a build pointed at Production to iTunes Connect"
+  desc "Note: This build can be used for either Test Flight or App Store submission."
+  lane :itc do
+    # Before building, make sure we have an iTunes Connect username
+    if itc_username == "FIXME"
+      raise "You need to add an iTunes Connect username (ITC_USERNAME) to your .travis.yml and/or your local_config.sh!"
+      return
+    end
+
+    # ...and an ITC password
+    itc_password = ENV["ITC_PASSWORD"]
+    if itc_password == "FIXME"
+      raise "You need to add your ITC_PASSWORD to your .travis.yml and/or your local_config.sh!"
+      return
+    end
+
+    # Create an iTunes Connect build
+    build_itc
+
+    # Update the FASTLANE_PASSWORD because the fastlane creds manager thinks
+    # iTC and Apple dev portal should use the same account and we don't, and
+    # there's not really a better way to re-set this:
+    ENV["FASTLANE_PASSWORD"] = itc_password
+
+    # Upload build to TestFlight
+    pilot(
+      username: itc_username,
+      changelog: "This PRODUCTION build was automatically uploaded by Fastlane - DO NOT SUBMIT FOR TEST FLIGHT OR THE APP STORE UNTIL RELEASE NOTES ARE UPDATED!!!!",
+      distribute_external: false,
+      skip_submission: true,
+    )
+  end
+
+  # This will generate release notes from commit messages from the previous git
+  # tag to the current HEAD.  It uses a simple Markdown list format and does
+  # not include merge commits. This takes a header string and will append the
+  # release notes below it.
+  def release_notes_from_commits(header_string)
+    release_notes = changelog_from_git_commits(
+      pretty: '- %s', # Markdown list format with commit message.
+      merge_commit_filtering: 'exclude_merges', # Don't include merge commits.
+    )
+
+    if release_notes.nil?
+      return header_string
+    end
+
+    return header_string + "\n\n" + release_notes
+  end
+
+  ######################
+  ## SUCCESS HANDLING ##
+  ######################
+
+  # This gets called if the executed lanes were all successful
+  after_all do |lane|
+    puts "Success!"
+  end
+
+  ######################
+  ## FAILURE HANDLING ##
+  ######################
+
+  # This gets called if anything failed along the way
+  error do |lane, exception|
+    puts "FAIL!!!!: #{exception}"
+  end
+end

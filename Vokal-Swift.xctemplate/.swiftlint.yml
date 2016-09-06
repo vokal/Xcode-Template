@@ -1,0 +1,26 @@
+disabled_rules:
+  - trailing_whitespace
+  - variable_name
+  - todo
+  - type_name
+  - function_parameter_count
+  - type_body_length
+  - function_body_length
+  - file_length
+  - line_length
+  - nesting
+  - cyclomatic_complexity
+  - control_statement
+
+opt_in_rules:
+  - force_unwrapping
+
+force_unwrapping:
+  severity: error
+
+excluded:
+  - Pods
+  - ___PACKAGENAME___/CoreDataAndModels/private
+  - ___PACKAGENAME___/Scripts
+  - ___PACKAGENAME___/Resources
+  - R.generated.swift

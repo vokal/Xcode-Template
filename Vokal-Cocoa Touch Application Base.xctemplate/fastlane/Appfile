@@ -1,0 +1,8 @@
+# Apple Developer portal team ID. Be sure to specify the client's team ID here.
+team_id "FIXME"
+
+# Bundle identifier
+app_identifier "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___VARIABLE_productName:RFC1034Identifier___"
+
+# Email address for an account with access to Apple Developer portal
+apple_dev_portal_id "FIXME"

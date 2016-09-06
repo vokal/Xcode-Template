@@ -1,0 +1,12 @@
+# URL for the repo containing signing certs and profiles
+git_url "https://github.com/vokal/certificates-iOS.git"
+
+# Match uses one branch per team. As such, this should be the name of the
+# team (or client company), which might differ from the name of the app.
+git_branch "___PACKAGENAME___"
+
+# The default type, can be: appstore, adhoc or development
+type "adhoc" 
+
+# Make sure that all devices in the team are in the provisioning profile
+force_for_new_devices true

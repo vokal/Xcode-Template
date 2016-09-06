@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Ancestors</key>
+	<array>
+		<string>com.apple.dt.unit.aggregate</string>
+	</array>
+	<key>Identifier</key>
+	<string>io.vokal.dt.unit.aggregateScriptsTarget-swift</string>
+	<key>Concrete</key>
+	<true/>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>TargetOnly</key>
+	<true/>
+	<key>Targets</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>___PACKAGENAME___</string>
+			<key>TargetType</key>
+			<string>Aggregate</string>
+			<key>SharedSettings</key>
+			<dict>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+			</dict>
+			<key>BuildPhases</key>
+			<array>
+				<dict>
+					<key>Class</key>
+					<string>ShellScript</string>
+					<key>Name</key>
+					<string>Mogenerator Script</string>
+					<key>ShellPath</key>
+					<string>/bin/bash</string>
+					<key>ShellScript</key>
+					<string>&quot;${SRCROOT}/${PROJECT_NAME}/Scripts/MOGenerator.sh&quot;</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,63 @@
+language: objective-c
+osx_image: xcode7.3
+before_install:
+  - echo -e "machine github.com\n login ${CI_USER_TOKEN}" >> ~/.netrc
+before_script:
+  - chmod +x travis/*.sh # Ensure that scripts are executable
+script: bundle exec fastlane test  # Primary (simulator) build & test. Add --verbose for more detailed logging.
+after_success:
+  - ./travis/cvr.sh # Upload code coverage to CVR
+  - ./travis/distribute.sh  # On main-repo builds after merge, distribute to HockeyApp and/or iTunes Connect.
+env:
+  global:
+  - APPNAME="___PACKAGENAME___"  # Put your app name here.
+  # The username (ie, email) of the iTunes Connect user to use to upload a build to iTunes 
+  # Connect for either TestFlight or App Store distribution.
+  # The corresponding password goes in the ITC_PASSWORD environment variable  
+  - ITC_USERNAME="FIXME"
+  ################## Secure environment variables ##################
+  # Hockey app API token (HOCKEY_API_TOKEN):
+  # Remove this line if merge builds should not be uploaded to HockeyApp for distribution.
+  - HOCKEY_API_TOKEN="FIXME"
+  # Apple Developer password for user specified as apple_dev_portal_id in the Appfile (FASTLANE_PASSWORD):
+  - FASTLANE_PASSWORD="FIXME"
+  # iTunes Connect password for the user specified as ITC_USERNAME above (ITC_PASSWORD):
+  # Remove this line if merge builds should not be uploaded to iTunes Connect, for App Store and/or TestFlight release.
+  - ITC_PASSWORD="FIXME"
+  # Passphrase for match certificate repo (MATCH_PASSWORD):
+  - MATCH_PASSWORD="FIXME"
+  # GitHub personal access token for match to use to access the certificate repo (CI_USER_TOKEN)
+  - CI_USER_TOKEN="FIXME"
+  ################## Predefined environment variables for Fastlane ##################
+  # folder containing all fastlane files
+  - FASTLANE_FOLDER="fastlane"
+  # folder name for builds, relative to FASTLANE_FOLDER
+  - BUILD_FOLDER="Build"
+  # folder name for test output, relative to FASTLANE_FOLDER
+  - TEST_OUTPUT_FOLDER="test_output"
+  # filename for test output, relative to TEST_OUTPUT_FOLDER
+  - TEST_COVERAGE_FILE="cobertura.xml"
+  # Whether or not the build should be tagged on succesful distribution. Set to true if you'd like to enable this feature.
+  - TAG_ON_DISTRIBUTION=false
+branches:
+  except:
+    - /^[^\/]+\/\d+(?:\.\d+)+\/\d+$/ # This makes travis ignore triggers from pushes from tagging builds of format builds/x.y.z/vvvv
+git:
+  depth: 10000  # For the auto-incrementing build number script to work, we need to clone with a basically-infinite depth.
+cache:
+  - bundler  # After main-repo builds, save the "bundler" (local Ruby gems) stuff to cache for future builds.
+addons:
+  artifacts:  # Artifacts are only uploaded on main-repo builds, not pull requests.
+    paths:
+    - $TRAVIS_BUILD_DIR/$FASTLANE_FOLDER/$BUILD_FOLDER/$APPNAME.ipa # The signed .ipa file
+    - $TRAVIS_BUILD_DIR/$FASTLANE_FOLDER/$BUILD_FOLDER/$APPNAME.app.dSYM.zip # The symbolication file from the build output.
+    - $TRAVIS_BUILD_DIR/$FASTLANE_FOLDER/$TEST_OUTPUT_FOLDER/$TEST_COVERAGE_FILE # The combined cobertura coverage info
+    key:
+      secure: #This must be generated securely by a Senior developer using s3same at https://github.com/vokal/s3same.
+    secret:
+      secure: #This must be generated securely by a Senior developer using s3same at https://github.com/vokal/s3same.
+    bucket: vokaltravis #Talk to a Senior developer if you need to access the uploaded artifacts.
+notifications:
+  webhooks:
+    urls:
+      - https://travis.vokal.io/webhook
