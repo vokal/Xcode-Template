@@ -35,9 +35,6 @@ export ITC_USERNAME='FIXME'
 # Remove this line if merge builds should not be uploaded to iTunes Connect, for App Store and/or TestFlight release.
 export ITC_PASSWORD='FIXME'
 
-# Password for the .p12 file
-export KEY_PASSWORD='FIXME'
-
 # API Token for hockey uploading.
 # Create one at https://rink.hockeyapp.net/manage/auth_tokens
 # Remove this line if merge builds should not be uploaded to HockeyApp for distribution.
