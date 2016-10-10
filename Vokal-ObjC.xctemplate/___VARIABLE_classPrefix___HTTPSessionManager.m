@@ -94,9 +94,13 @@ static ___VARIABLE_classPrefix___HTTPSessionManager *_sharedManager;
 
 // Override the data task completion handler to add debug logging
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request
-                            completionHandler:(void (^)(NSURLResponse *, id, NSError *))completionHandler
+                               uploadProgress:(void (^)(NSProgress * _Nonnull))uploadProgressBlock
+                             downloadProgress:(void (^)(NSProgress * _Nonnull))downloadProgressBlock
+                            completionHandler:(void (^)(NSURLResponse * _Nonnull, id _Nullable, NSError * _Nullable))completionHandler
 {
     return [super dataTaskWithRequest:request
+                       uploadProgress:uploadProgressBlock
+                     downloadProgress:downloadProgressBlock
                     completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
 #ifdef USE_NETWORKING_DEBUG_LOGGING
                         // Debug logging

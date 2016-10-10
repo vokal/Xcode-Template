@@ -72,9 +72,9 @@ You can then delete the `MoveToNonUITestTarget` from the filesystem as the test 
 
 - Close the project window in Xcode.
 
-- On the command line, run `bundle install`. This will ensure that the necessary gems are installed for the build and test scripts that run on Travis, so that you can run them locally later on if needed. It will also generate `Gemfile.lock`, which should be committed so that the same versions of those gems will be installed on Travis. If this command fails, check that you have [RubyGems](https://rubygems.org/pages/download) and [Bundler](http://bundler.io/) installed.
+- On the command line, run `bundle install`. This will ensure that the correct version of CocoaPods is installed, along with the necessary gems for the build and test scripts that run on Travis, so that you can run them locally later on if needed. It will also generate `Gemfile.lock`, which should be committed so that the same versions of those gems will be installed on Travis. If this command fails, check that you have [RubyGems](https://rubygems.org/pages/download) and [Bundler](http://bundler.io/) installed.
 
-- On the command line, run `pod install`. Be sure to launch the project from the newly-created `.xcworkspace` file.  NOTE: cocoapods ~> 1.0 is required.
+- On the command line, run `bundle exec pod install`. Be sure to launch the project from the newly-created `.xcworkspace` file.
 
 ### 4. For Swift Only
 
