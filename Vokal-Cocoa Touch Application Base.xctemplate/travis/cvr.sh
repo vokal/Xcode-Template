@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# SRCROOT isn't being found on Travis, so cd to it manually.
-MAIN_REPO_FOLDER=$(cd "$( dirname "${BASH_SOURCE[0]}" )"; cd ..; pwd)
-
 # Get the output folder for where the output is going to live
-COBERTURA_FILE="${MAIN_REPO_FOLDER}/${TRAVIS_BUILD_DIR}/${FASTLANE_FOLDER}/${TEST_OUTPUT_FOLDER}/${TEST_COVERAGE_FILE}"
+COBERTURA_FILE="${TRAVIS_BUILD_DIR}/${FASTLANE_FOLDER}/${TEST_OUTPUT_FOLDER}/${TEST_COVERAGE_FILE}"
 
 echo "COBERTURA_FILE = ${COBERTURA_FILE}"
 
