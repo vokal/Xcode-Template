@@ -121,7 +121,7 @@
 		<key>../Podfile:swiftbasics</key>
 		<string>    use_frameworks!
 
-    pod &apos;R.swift&apos;
+    pod &apos;R.swift&apos;, &apos;~> 3.1&apos;
 		</string>
 		<key>Extensions/.gitkeep</key>
 		<dict>
@@ -283,7 +283,7 @@
 					<key>Definitions</key>
 					<dict>
 						<key>../Podfile:afpod</key>
-						<string>    pod &apos;Alamofire&apos;</string>
+						<string>    pod &apos;Alamofire&apos;, &apos;~> 4.0&apos;</string>
 						<key>../Podfile:ilghttp</key>
 						<string>    pod &apos;ILGHttpConstants&apos;</string>
 					</dict>
@@ -315,7 +315,7 @@
 					<key>Definitions</key>
 					<dict>
 						<key>../Podfile:swiftkeychainwrapper</key>
-						<string>    pod &apos;SwiftKeychainWrapper&apos;</string>
+						<string>    pod &apos;SwiftKeychainWrapper&apos;, &apos;~> 3.0&apos;</string>
 					</dict>
 					<key>Nodes</key>
 					<array>
@@ -519,7 +519,7 @@
 							</array>
 						</dict>
 						<key>../Podfile:vokoderpod</key>
-						<string>    pod &apos;Vokoder/Swift&apos;</string>
+						<string>    pod &apos;Vokoder/Swift&apos;, &apos;~> 4.0&apos;</string>
 						<key>Scripts/MOGenerator.sh</key>
 						<dict>
 							<key>TargetIndices</key>
