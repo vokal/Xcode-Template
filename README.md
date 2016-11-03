@@ -17,8 +17,6 @@ Note that you may need to grab updated versions of these templates from the bell
 You'll also note that we have separate templates for Swift and Objective-C - there were several features for the Swift template which simply did not work at all without ripping it out into a separate template. Common code is within the `Vokal-Cocoa Touch Application Base.xctemplate` folder.
 
 ## Xcode 8
-**If you're using Xcode 8**, tread with caution. The templates have been updated to use Swift 2.3 so that existing Swift 2.2 code will compile, but most of the pods we use have not been updated for Swift 2.3 or 3. We'll bump to Swift 3 once 8.0 is released and pods are updated. You should also update `PROVISIONING_PROFILE_SPECIFIER` in the `post_install` section of the Podfile to the team ID with a trailing slash.
-
 Currently, mogenerator does not include output for Swift 3. There is a custom Swift 3 mogenerator template in the Scripts folder as a workaround for this. Add a `--template-path PROJECTNAME/Scripts/MOGSwift3Templates` option to the `MOGenerator.sh` file to use the template.
 
 ## Installation
@@ -106,3 +104,8 @@ Scripts tied to code generation are added to Run Script Build Phases in the Code
 For Objective-C projects, this target runs the scripts for Cat2Cat and Mogenerator. For Swift, it only runs Mogenerator, since R.swift serves the same purpose as Cat2Cat in Swift projects.
 
 Adjust the run scripts in this target as necessary. For example, if your project isn't using Core Data, you can remove the Mogenerator script build phase. You can also add additional build phases if you need to run other scripts.
+
+## Version history
+
+* 1.x: works with Swift 2.2 and 2.3 in Xcode 7 or 8
+* 2.x: works with Swift 3 in Xcode 8
