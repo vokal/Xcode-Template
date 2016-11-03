@@ -236,10 +236,7 @@ post_install do | installer |
     FileUtils.cp_r(&apos;Pods/Target Support Files/Pods-___PACKAGENAME___/Pods-___PACKAGENAME___-acknowledgements.plist&apos;, &apos;___PACKAGENAME___/Settings.bundle/Acknowledgements.plist&apos;, :remove_destination => true)
 
     installer.pods_project.build_configurations.each do |config|
-        # Configure Pod targets for Xcode 8 compatibility
-        config.build_settings['SWIFT_VERSION'] = '2.3'
         config.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = 'FIX ME TO TEAM ID - LEAVE THE TRAILING SLASH/'
-        config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'NO'
     end
 end
 </string>
@@ -545,8 +542,6 @@ end
 				<string>AppIcon</string>
 				<key>LD_RUNPATH_SEARCH_PATHS</key>
 				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>SWIFT_VERSION</key>
-				<string>2.3</string>
 			</dict>
 			<key>TargetIdentifier</key>
 			<string>com.apple.dt.cocoaTouchApplicationTarget</string>
