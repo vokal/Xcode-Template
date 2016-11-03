@@ -24,7 +24,7 @@ extension HTTPSessionManager {
     Sets up the networking stack to use VOKMockURLProtocol.
     */
     static func useMockData() {
-        let mockConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let mockConfig = URLSessionConfiguration.default
         let mockURLProtocolClass = VOKMockUrlProtocol.self
 
         var urlProtocolsToUse: [AnyClass]
@@ -37,7 +37,7 @@ extension HTTPSessionManager {
         urlProtocolsToUse.insert(mockURLProtocolClass, atIndex: 0)
         mockConfig.protocolClasses = urlProtocolsToUse
         
-        let testBundle = NSBundle(forClass: INeedABundle.self)
+        let testBundle = Bundle(for: INeedABundle.self)
         
         VOKMockUrlProtocol.setTestBundle(testBundle)
 
@@ -48,7 +48,7 @@ extension HTTPSessionManager {
     Sets up the networking stack to use the default NSURLSessionConfiguration.
     */
     static func useLiveData() {
-        let defaultConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let defaultConfig = URLSessionConfiguration.default
         self.updateManagerWithConfiguration(defaultConfig)
     }
 }

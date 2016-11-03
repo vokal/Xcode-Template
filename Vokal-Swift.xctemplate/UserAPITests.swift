@@ -90,7 +90,7 @@ class UserAPITests: XCTestCase {
                 error in
                 //THEN: The call should fail with a 401 Unauthorized error
                 switch error {
-                case NetworkError.Unauthorized:
+                case NetworkError.unauthorized:
                     //Do nothing, this is bueno.
                     break
                 default:
@@ -119,7 +119,7 @@ class UserAPITests: XCTestCase {
                 error in
                 //THEN: The call should fail with a 400 bad request error
                 switch error {
-                case NetworkError.BadRequest:
+                case NetworkError.badRequest:
                     //Do nothing, this is bueno.
                     break
                 default:

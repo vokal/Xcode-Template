@@ -14,7 +14,7 @@ let isRunningTests: Bool = NSClassFromString("XCTestCase") != nil
 let isRunningUITests: Bool = NSClassFromString("KIFTestCase") != nil
 
 if (isRunningTests && !isRunningUITests) {
-    UIApplicationMain(Process.argc, Process.unsafeArgv, nil, NSStringFromClass(TestingAppDelegate))
+    UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(TestingAppDelegate))
 } else {
-    UIApplicationMain(Process.argc, Process.unsafeArgv, nil, NSStringFromClass(AppDelegate))
+    UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(AppDelegate))
 }

@@ -23,7 +23,7 @@ enum HTTPHeaderKey: String {
 
 enum HTTPHeaderValue {
     case
-    Token(token: String)
+    token(token: String)
 }
 
 //MARK: Version Handling
@@ -39,7 +39,7 @@ enum APIVersion: String {
     - parameter path: The path to prepend the version to.
     - returns: The versioned path
     */
-    func versionedPath(path: String) -> String {
+    func versionedPath(_ path: String) -> String {
         return self.rawValue + "/" + path
     }
 }
@@ -56,7 +56,7 @@ protocol APIVersionable {
     - parameter version: The version to use to get the versioned path.
     - returns: The fully versioned path for this object.
     */
-    func versionedPath(version: APIVersion) -> String
+    func versionedPath(_ version: APIVersion) -> String
 }
 
 ///Default protocol extension implementation.
@@ -102,12 +102,12 @@ class MainAPIUtility {
     
     - returns: Generic headers which should work for every request.
     */
-    func requestHeadersRequiringToken(requireToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
+    func requestHeadersRequiringToken(_ requireToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         var headerDict = [HTTPHeaderKey: HTTPHeaderValue]()
         
         if requireToken {
             if let authToken = TokenStorageHelper.getAuthorizationToken() {
-                headerDict[HTTPHeaderKey.Authorization] = HTTPHeaderValue.Token(token: authToken)
+                headerDict[HTTPHeaderKey.Authorization] = HTTPHeaderValue.token(token: authToken)
             } else {
                 assertionFailure("This call needs a token but doesn't have one!")
             }
@@ -122,12 +122,12 @@ class MainAPIUtility {
     - returns: A dictionary mapping the passed in header keys and values into a dictionary of
                string keys and string values.
     */
-    private func stringDictFromHeaders(headers: [HTTPHeaderKey: HTTPHeaderValue]) -> [String: String] {
+    private func stringDictFromHeaders(_ headers: [HTTPHeaderKey: HTTPHeaderValue]) -> [String: String] {
         
         var headerStrings = [String: String]()
         for (key, value) in headers {
             switch value {
-            case .Token(let token):
+            case .token(let token):
                 headerStrings[key.rawValue] = "Bearer " + token
             }
         }
@@ -137,12 +137,12 @@ class MainAPIUtility {
     
     //MARK: - Methods expecting a dictionary on success
     
-    func postUserJSON(path: String,
+    func postUserJSON(_ path: String,
         headers: [HTTPHeaderKey: HTTPHeaderValue],
         params: [String: AnyObject],
         userEmail: String,
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             
             let fullURLString = ServerEnvironment.fullURLStringForPath(path)
             let headerStrings = stringDictFromHeaders(headers)
@@ -160,7 +160,7 @@ class MainAPIUtility {
                     
                     if response.result.isSuccess {
                         if let dict = response.result.value as? [String: AnyObject],
-                            token = dict["token"] as? String {
+                            let token = dict["token"] as? String {
                                 TokenStorageHelper.storeAuthorizationTokenForUserEmail(userEmail, authToken: token)
                         }
                     }
@@ -171,11 +171,11 @@ class MainAPIUtility {
             }
     }
     
-    func getJSON(path: String,
+    func getJSON(_ path: String,
         headers: [HTTPHeaderKey: HTTPHeaderValue],
         params: [String: AnyObject]? = nil, //Defaults to nil
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             
             let fullURLString = ServerEnvironment.fullURLStringForPath(path)
             let headerStrings = stringDictFromHeaders(headers)
@@ -197,11 +197,11 @@ class MainAPIUtility {
             }
     }
     
-    func postJSON(path: String,
+    func postJSON(_ path: String,
         headers: [HTTPHeaderKey: HTTPHeaderValue],
         params: [String: AnyObject],
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             
             let fullURLString = ServerEnvironment.fullURLStringForPath(path)
             let headerStrings = stringDictFromHeaders(headers)
@@ -225,8 +225,8 @@ class MainAPIUtility {
     //MARK: Handler for methods expecting a dictionary on success
     
     private func handleResponse(response: Response<AnyObject, NSError>,
-        _ success: APISuccessCompletion,
-        _ failure: APIFailureCompletion) {
+        _ success: @escaping APISuccessCompletion,
+        _ failure: @escaping APIFailureCompletion) {
             
             if shouldDebugPrintInfo {
                 debugPrint(response)
@@ -247,7 +247,7 @@ class MainAPIUtility {
                 if let dict = response.result.value as? [String: AnyObject] {
                     success(dict)
                 } else {
-                    let error = NetworkError.UnexpectedReturnType
+                    let error = NetworkError.unexpectedReturnType
                     failure(error)
                 }
             } else {
@@ -255,7 +255,7 @@ class MainAPIUtility {
                 if let error = response.result.error {
                     errorToFire = NetworkError.fromStatusCode(error.code)
                 } else {
-                    errorToFire = NetworkError.UnknownError
+                    errorToFire = NetworkError.unknownError
                 }
                 
                 failure(errorToFire)

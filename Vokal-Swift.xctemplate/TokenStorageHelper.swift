@@ -29,10 +29,10 @@ struct TokenStorageHelper {
     - parameter email:     The user's email address.
     - parameter authToken: The current auth token.
     */
-    static func storeAuthorizationTokenForUserEmail(email: String, authToken: String) {
+    static func storeAuthorizationTokenForUserEmail(_ email: String, authToken: String) {
         //See if the token matches existing
         if let username = getUserName() //There is a stored username
-            where username != email { //It is not the email you are using right now
+            , username != email { //It is not the email you are using right now
                 //This is a differnt user, nuke the auth token.
                 nukeAuthorizationToken()
         }
@@ -75,7 +75,7 @@ struct TokenStorageHelper {
     */
     static func getAuthorizationToken() -> String? {
         guard let username = getUserName(),
-            authToken = KeychainWrapper.stringForKey(username) else {
+            let authToken = KeychainWrapper.stringForKey(username) else {
                 return nil
         }
         

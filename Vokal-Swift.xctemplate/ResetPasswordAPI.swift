@@ -40,7 +40,7 @@ struct ResetPasswordAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func requestPasswordResetForEmail(email: String,
+    static func requestPasswordResetForEmail(_ email: String,
         success: APISuccessCompletion,
         failure: APIFailureCompletion) {
             let parameters = [
@@ -67,7 +67,7 @@ struct ResetPasswordAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func resetPasswordWithCode(code: String,
+    static func resetPasswordWithCode(_ code: String,
         updatedPassword: String,
         success: APISuccessCompletion,
         failure: APIFailureCompletion) {

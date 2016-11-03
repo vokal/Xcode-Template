@@ -13,7 +13,7 @@ class HTTPSessionManager {
     
     static var AlamofireManager = Alamofire.Manager.sharedInstance
     
-    static func updateManagerWithConfiguration(configuration: NSURLSessionConfiguration) {
+    static func updateManagerWithConfiguration(_ configuration: URLSessionConfiguration) {
         HTTPSessionManager.AlamofireManager = Alamofire.Manager(configuration: configuration)
     }
 }
