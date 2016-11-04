@@ -6,6 +6,8 @@
 //___COPYRIGHT___
 //
 
+TODO review this file
+
 import Foundation
 @testable import ___PACKAGENAME___
 import Alamofire

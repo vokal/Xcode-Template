@@ -33,12 +33,12 @@ enum APIVersion: String {
     v1 //Automatically uses "v1"
     
     /**
-    Takes the passed in path and prepends a version to it. For example:
-    A path of "foo" on the v1 case would return "v1/foo"
-    
-    - parameter path: The path to prepend the version to.
-    - returns: The versioned path
-    */
+     Takes the passed in path and prepends a version to it. For example:
+     A path of "foo" on the v1 case would return "v1/foo"
+     
+     - parameter path: The path to prepend the version to.
+     - returns: The versioned path
+     */
     func versionedPath(_ path: String) -> String {
         return self.rawValue + "/" + path
     }
@@ -51,11 +51,11 @@ protocol APIVersionable {
     init?(rawValue: Path)
     
     /**
-    Takes an object conforming to APIVersionable and adds version information.
-    
-    - parameter version: The version to use to get the versioned path.
-    - returns: The fully versioned path for this object.
-    */
+     Takes an object conforming to APIVersionable and adds version information.
+     
+     - parameter version: The version to use to get the versioned path.
+     - returns: The fully versioned path for this object.
+     */
     func versionedPath(_ version: APIVersion) -> String
 }
 
@@ -65,7 +65,7 @@ extension APIVersionable {
         self.init(rawValue: value)
     }
     
-    func versionedPath(version: APIVersion) -> String {
+    func versionedPath(_ version: APIVersion) -> String {
         guard let rawString = self.rawValue as? String else {
             assertionFailure("This method should only be used with string enums!")
             return ""
@@ -78,14 +78,14 @@ extension APIVersionable {
 //MARK: - Actual API Utility
 
 /*
-The main API utility is a chokepoint for all outgoing API calls.
-Send calls with similar success closure signatures (ex, expecting a 
-Dictionary or expecting an Array) through generic methods in this class.
-
-Structs should be created which separate more granular calls by what
-they're doing - for example the UserAPI or the ResetPasswordAPI. Those
-structs can then call the more generic methods in this class.
-*/
+ The main API utility is a chokepoint for all outgoing API calls.
+ Send calls with similar success closure signatures (ex, expecting a
+ Dictionary or expecting an Array) through generic methods in this class.
+ 
+ Structs should be created which separate more granular calls by what
+ they're doing - for example the UserAPI or the ResetPasswordAPI. Those
+ structs can then call the more generic methods in this class.
+ */
 class MainAPIUtility {
     
     //MARK: - Variables
@@ -98,10 +98,10 @@ class MainAPIUtility {
     //MARK: - Header helper functions
     
     /**
-    - parameter requireToken: true if a token is required for this request, false if not.
-    
-    - returns: Generic headers which should work for every request.
-    */
+     - parameter requireToken: true if a token is required for this request, false if not.
+     
+     - returns: Generic headers which should work for every request.
+     */
     func requestHeadersRequiringToken(_ requireToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         var headerDict = [HTTPHeaderKey: HTTPHeaderValue]()
         
@@ -117,11 +117,11 @@ class MainAPIUtility {
     }
     
     /**
-    - parameter headers: Dictionary of header keys and values.
-    
-    - returns: A dictionary mapping the passed in header keys and values into a dictionary of
-               string keys and string values.
-    */
+     - parameter headers: Dictionary of header keys and values.
+     
+     - returns: A dictionary mapping the passed in header keys and values into a dictionary of
+     string keys and string values.
+     */
     private func stringDictFromHeaders(_ headers: [HTTPHeaderKey: HTTPHeaderValue]) -> [String: String] {
         
         var headerStrings = [String: String]()
@@ -138,127 +138,129 @@ class MainAPIUtility {
     //MARK: - Methods expecting a dictionary on success
     
     func postUserJSON(_ path: String,
-        headers: [HTTPHeaderKey: HTTPHeaderValue],
-        params: [String: AnyObject],
-        userEmail: String,
-        success: @escaping APISuccessCompletion,
-        failure: @escaping APIFailureCompletion) {
-            
-            let fullURLString = ServerEnvironment.fullURLStringForPath(path)
-            let headerStrings = stringDictFromHeaders(headers)
-
-            HTTPSessionManager
-                .AlamofireManager
-                .request(.POST,
-                    fullURLString,
-                    encoding: .JSON,
-                    parameters: params,
-                    headers: headerStrings)
-                .responseJSON {
-                    [weak self]
-                    response in
-                    
-                    if response.result.isSuccess {
-                        if let dict = response.result.value as? [String: AnyObject],
-                            let token = dict["token"] as? String {
-                                TokenStorageHelper.storeAuthorizationTokenForUserEmail(userEmail, authToken: token)
-                        }
+                      headers: [HTTPHeaderKey: HTTPHeaderValue],
+                      params: [String: AnyObject],
+                      userEmail: String,
+                      success: @escaping APISuccessCompletion,
+                      failure: @escaping APIFailureCompletion) {
+        
+        let fullURLString = ServerEnvironment.fullURLStringForPath(path)
+        let headerStrings = stringDictFromHeaders(headers)
+        
+        HTTPSessionManager
+            .AlamofireManager
+            .request(fullURLString,
+                     method: .post,
+                     parameters: params,
+                     encoding: JSONEncoding.default,
+                     headers: headerStrings)
+            .responseJSON {
+                [weak self]
+                response in
+                
+                if response.result.isSuccess {
+                    if let dict = response.result.value as? [String: AnyObject],
+                        let token = dict["token"] as? String {
+                        TokenStorageHelper.storeAuthorizationTokenForUserEmail(userEmail, authToken: token)
                     }
-                    
-                    self?.handleResponse(response,
-                        success,
-                        failure)
-            }
+                }
+                
+                self?.handle(response: response,
+                             success: success,
+                             failure: failure)
+        }
     }
     
     func getJSON(_ path: String,
-        headers: [HTTPHeaderKey: HTTPHeaderValue],
-        params: [String: AnyObject]? = nil, //Defaults to nil
+                 headers: [HTTPHeaderKey: HTTPHeaderValue],
+                 params: [String: AnyObject]? = nil, //Defaults to nil
         success: @escaping APISuccessCompletion,
         failure: @escaping APIFailureCompletion) {
-            
-            let fullURLString = ServerEnvironment.fullURLStringForPath(path)
-            let headerStrings = stringDictFromHeaders(headers)
-
-            HTTPSessionManager
-                .AlamofireManager
-                .request(.GET,
-                    fullURLString,
-                    encoding: .URL,
-                    parameters: params,
-                    headers: headerStrings)
-                .responseJSON {
-                    [weak self]
-                    response in
-                    
-                    self?.handleResponse(response,
-                        success,
-                        failure)
-            }
+        
+        let fullURLString = ServerEnvironment.fullURLStringForPath(path)
+        let headerStrings = stringDictFromHeaders(headers)
+        
+        HTTPSessionManager
+            .AlamofireManager
+            .request(fullURLString,
+                     method: .get,
+                     parameters: params,
+                     encoding: URLEncoding.default,
+                     headers: headerStrings)
+            .responseJSON {
+                [weak self]
+                response in
+                
+                self?.handle(response: response,
+                             success: success,
+                             failure: failure)
+        }
     }
     
     func postJSON(_ path: String,
-        headers: [HTTPHeaderKey: HTTPHeaderValue],
-        params: [String: AnyObject],
-        success: @escaping APISuccessCompletion,
-        failure: @escaping APIFailureCompletion) {
-            
-            let fullURLString = ServerEnvironment.fullURLStringForPath(path)
-            let headerStrings = stringDictFromHeaders(headers)
-
-            HTTPSessionManager
-                .AlamofireManager
-                .request(.POST,
-                    fullURLString,
-                    encoding: .JSON,
-                    parameters: params,
-                    headers: headerStrings)
-                .responseJSON {
-                    [weak self]
-                    response in
-                    self?.handleResponse(response,
-                        success,
-                        failure)
-            }
+                  headers: [HTTPHeaderKey: HTTPHeaderValue],
+                  params: [String: AnyObject],
+                  success: @escaping APISuccessCompletion,
+                  failure: @escaping APIFailureCompletion) {
+        
+        let fullURLString = ServerEnvironment.fullURLStringForPath(path)
+        let headerStrings = stringDictFromHeaders(headers)
+        
+        
+        HTTPSessionManager
+            .AlamofireManager
+            .request(fullURLString,
+                     method: .post,
+                     parameters: params,
+                     encoding: JSONEncoding.default,
+                     headers: headerStrings)
+            .responseJSON {
+                [weak self]
+                response in
+                self?.handle(response: response,
+                             success: success,
+                             failure: failure)
+        }
     }
     
     //MARK: Handler for methods expecting a dictionary on success
     
-    private func handleResponse(response: Response<AnyObject, NSError>,
-        _ success: @escaping APISuccessCompletion,
-        _ failure: @escaping APIFailureCompletion) {
+    private func handle(response: DataResponse<Any>,
+                        success: @escaping APISuccessCompletion,
+                        failure: @escaping APIFailureCompletion) {
+        
+        if shouldDebugPrintInfo {
+            debugPrint(response)
+        }
+        
+        if let httpResponse = response.response {
+            let statusCode = httpResponse.statusCode
             
-            if shouldDebugPrintInfo {
-                debugPrint(response)
+            if (statusCode < 200 || statusCode >= 300) {
+                //This is actually an error.
+                let error = NetworkError.fromStatusCode(statusCode: statusCode)
+                failure(error)
+                return
             }
-            
-            if let httpResponse = response.response {
-                let statusCode = httpResponse.statusCode
-                
-                if (statusCode < 200 || statusCode >= 300) {
-                    //This is actually an error.
-                    let error = NetworkError.fromStatusCode(statusCode)
-                    failure(error)
-                    return
-                }
-            }
-            
-            if response.result.isSuccess {
-                if let dict = response.result.value as? [String: AnyObject] {
-                    success(dict)
-                } else {
-                    let error = NetworkError.unexpectedReturnType
-                    failure(error)
-                }
+        }
+        
+        if response.result.isSuccess {
+            if let dict = response.result.value as? [String: AnyObject] {
+                success(dict)
             } else {
-                var errorToFire: NetworkError
-                if let error = response.result.error {
-                    errorToFire = NetworkError.fromStatusCode(error.code)
-                } else {
-                    errorToFire = NetworkError.unknownError
-                }
-                
-                failure(errorToFire)
+                let error = NetworkError.unexpectedReturnType
+                failure(error)
             }
+        } else {
+            var errorToFire: NetworkError
+            if let error = response.result.error {
+                TODO fix this error handling
+                errorToFire = NetworkError.fromStatusCode(statusCode: error.code)
+            } else {
+                errorToFire = NetworkError.unknownError
+            }
+            
+            failure(errorToFire)
+        }
     }
 }

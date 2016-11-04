@@ -21,7 +21,7 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         let testViewController = UIViewController()
         testViewController.view.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         

@@ -23,7 +23,7 @@ enum NetworkError: Error {
     conflict,
     
     //TODO: Add other cases and handling for other network errors you expect.
-    UndefinedError(statusCode: Int)
+    undefinedError(statusCode: Int)
     
     static func fromStatusCode(statusCode: Int) -> NetworkError {
         switch statusCode {
