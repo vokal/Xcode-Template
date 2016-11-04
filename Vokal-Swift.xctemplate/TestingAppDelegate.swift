@@ -31,7 +31,7 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
         
         //Note: This string doesn't need to be localized since users never see it.
         testLabel.text = "TESTING ___PACKAGENAME___ WITHOUT UI!"
-        testLabel.textColor = .white()
+        testLabel.textColor = .white
         testViewController.view.addSubview(testLabel)
         
         //Pin it to the middle of the view.
