@@ -17,7 +17,7 @@ let argv = UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(to: Unsafe
                                                                       capacity: Int(CommandLine.argc))
 
 if (isRunningTests && !isRunningUITests) {
-    UIApplicationMain(CommandLine.argc, argv, nil, String(describing: TestingAppDelegate.self))
+    UIApplicationMain(CommandLine.argc, argv, nil, NSStringFromClass(TestingAppDelegate.self))
 } else {
-    UIApplicationMain(CommandLine.argc, argv, nil, String(describing: AppDelegate.self))
+    UIApplicationMain(CommandLine.argc, argv, nil, NSStringFromClass(AppDelegate.self))
 }
