@@ -519,7 +519,7 @@
 							</array>
 						</dict>
 						<key>../Podfile:vokoderpod</key>
-						<string>    pod &apos;Vokoder/Swift&apos;, &apos;~> 4.0&apos;</string>
+						<string>    pod &apos;Vokoder/Swift&apos;, &apos;~> 4.0.1&apos;</string>
 						<key>Scripts/MOGenerator.sh</key>
 						<dict>
 							<key>TargetIndices</key>
