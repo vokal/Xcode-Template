@@ -213,7 +213,7 @@ struct UserAPI {
     
     //MARK: - Private Helper Methods
     
-    private static func requestHeadersRequiringToken(_ requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue]  {
+    private static func requestHeadersRequiringToken(_ requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         return MainAPIUtility
             .sharedUtility
             .requestHeadersRequiringToken(requiresToken)

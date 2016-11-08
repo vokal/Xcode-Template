@@ -37,13 +37,13 @@ struct TokenStorageHelper {
                 nukeAuthorizationToken()
         }
         
-        if !KeychainWrapper.setString(email, forKey: KeychainKey.Username.rawValue) {
+        if !KeychainWrapper.standard.set(email, forKey: KeychainKey.Username.rawValue) {
             DLog("Username could not be stored. Bailing out!")
             //Bail out since you'll never be able to get the token back.
             return
         }
         
-        if !KeychainWrapper.setString(authToken, forKey: email) {
+        if !KeychainWrapper.standard.set(authToken, forKey: email) {
             DLog("Auth token could not be stored!")
         }
     }
@@ -58,12 +58,12 @@ struct TokenStorageHelper {
         }
         
         //Remove the auth token
-        if !KeychainWrapper.removeObjectForKey(username) {
+        if !KeychainWrapper.standard.removeObject(forKey: username) {
             DLog("Auth token not removed!")
         }
         
         //Remove the username.
-        if !KeychainWrapper.removeObjectForKey(KeychainKey.Username.rawValue) {
+        if !KeychainWrapper.standard.removeObject(forKey: KeychainKey.Username.rawValue) {
             DLog("Username not removed!")
         }
     }
@@ -75,7 +75,7 @@ struct TokenStorageHelper {
     */
     static func getAuthorizationToken() -> String? {
         guard let username = getUserName(),
-            let authToken = KeychainWrapper.stringForKey(username) else {
+            let authToken = KeychainWrapper.standard.string(forKey: username) else {
                 return nil
         }
         
@@ -83,7 +83,7 @@ struct TokenStorageHelper {
     }
     
     static func getUserName() -> String? {
-        guard let username = KeychainWrapper.stringForKey(KeychainKey.Username.rawValue) else {
+        guard let username = KeychainWrapper.standard.string(forKey: KeychainKey.Username.rawValue) else {
             return nil
         }
         

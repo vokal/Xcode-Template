@@ -11,7 +11,7 @@ import Alamofire
 
 //MARK: - Completion Closures
 
-typealias APISuccessCompletion = ([String: AnyObject]) -> Void
+typealias APISuccessCompletion = ([String: Any]) -> Void
 typealias APIFailureCompletion = (NetworkError) -> Void
 
 //MARK: - Header enums
@@ -139,7 +139,7 @@ class MainAPIUtility {
     
     func postUserJSON(_ path: String,
                       headers: [HTTPHeaderKey: HTTPHeaderValue],
-                      params: [String: AnyObject],
+                      params: [String: Any],
                       userEmail: String,
                       success: @escaping APISuccessCompletion,
                       failure: @escaping APIFailureCompletion) {
@@ -173,7 +173,7 @@ class MainAPIUtility {
     
     func getJSON(_ path: String,
                  headers: [HTTPHeaderKey: HTTPHeaderValue],
-                 params: [String: AnyObject]? = nil, //Defaults to nil
+                 params: [String: Any]? = nil, //Defaults to nil
         success: @escaping APISuccessCompletion,
         failure: @escaping APIFailureCompletion) {
         
@@ -199,7 +199,7 @@ class MainAPIUtility {
     
     func postJSON(_ path: String,
                   headers: [HTTPHeaderKey: HTTPHeaderValue],
-                  params: [String: AnyObject],
+                  params: [String: Any],
                   success: @escaping APISuccessCompletion,
                   failure: @escaping APIFailureCompletion) {
         
@@ -244,23 +244,17 @@ class MainAPIUtility {
             }
         }
         
-        if response.result.isSuccess {
-            if let dict = response.result.value as? [String: AnyObject] {
+        switch response.result {
+        case .success(let value):
+            // Make sure the returned value is a dictionary as expected
+            if let dict = value as? [String: Any] {
                 success(dict)
             } else {
-                let error = NetworkError.unexpectedReturnType
-                failure(error)
+                failure(NetworkError.unexpectedReturnType)
             }
-        } else {
-            var errorToFire: NetworkError
-            if let error = response.result.error {
-                TODO fix this error handling
-                errorToFire = NetworkError.fromStatusCode(statusCode: error.code)
-            } else {
-                errorToFire = NetworkError.unknownError
-            }
-            
-            failure(errorToFire)
+        case .failure(let error):
+            failure(NetworkError.otherError(error: error))
         }
+        
     }
 }

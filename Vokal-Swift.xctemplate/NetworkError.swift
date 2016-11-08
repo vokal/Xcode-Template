@@ -22,8 +22,13 @@ enum NetworkError: Error {
     notFound,
     conflict,
     
+    // Undefined error, with a status code
+    undefinedError(statusCode: Int),
+    
+    // Some other kind of error, with an associated Error to go with it
+    otherError(error: Error)
+
     //TODO: Add other cases and handling for other network errors you expect.
-    undefinedError(statusCode: Int)
     
     static func fromStatusCode(statusCode: Int) -> NetworkError {
         switch statusCode {
