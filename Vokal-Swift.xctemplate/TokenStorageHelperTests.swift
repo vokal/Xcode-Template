@@ -51,7 +51,7 @@ class TokenStorageHelperTests: XCTestCase {
         XCTAssertEqual(retrieved, token)
 
         //THEN: If I access the keychain directly, there is no value for the test user.
-        if let _ = KeychainWrapper.stringForKey(testEmail) {
+        if let _ = KeychainWrapper.standard.string(forKey: testEmail) {
             XCTFail("There should not be a token for the test email after setting a new one!")
         }
     }

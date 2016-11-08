@@ -6,8 +6,6 @@
 //___COPYRIGHT___
 //
 
-TODO review this file
-
 import Foundation
 @testable import ___PACKAGENAME___
 import Alamofire
@@ -36,12 +34,12 @@ extension HTTPSessionManager {
             urlProtocolsToUse = [AnyClass]()
         }
         
-        urlProtocolsToUse.insert(mockURLProtocolClass, atIndex: 0)
+        urlProtocolsToUse.insert(mockURLProtocolClass, at: 0)
         mockConfig.protocolClasses = urlProtocolsToUse
         
         let testBundle = Bundle(for: INeedABundle.self)
         
-        VOKMockUrlProtocol.setTestBundle(testBundle)
+        VOKMockUrlProtocol.setTest(testBundle)
 
         self.updateManagerWithConfiguration(mockConfig)
     }
