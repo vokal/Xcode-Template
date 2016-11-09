@@ -18,36 +18,36 @@ import Vokoder
  run `setupCoreDataForTesting` in that file as well.
  */
 struct CoreDataUtility {
-
+    
     //MARK: - Setup consolidation methods
     
     /**
-    Performs initial setup of the core data stack to use an in-memory store 
-    for testing.
-    */
+     Performs initial setup of the core data stack to use an in-memory store
+     for testing.
+     */
     static func setupCoreDataForTesting() {
-        self.setupCoreData(with: nil)
+        self.setupInMemoryDatabase()
     }
     
     /**
-    Performs initial setup of the core data stack to use a sqlite file with 
-    the given file name.
-    */
+     Performs initial setup of the core data stack to use a sqlite file with
+     the given file name.
+     */
     static func setupCoreData() {
-        self.setupCoreDataWithDatabaseName("___PACKAGENAMEASIDENTIFIER___.sqlite")
+        self.setupDatabase(named: "___PACKAGENAMEASIDENTIFIER___.sqlite")
     }
     
     /**
-    Wipes the current core data stack out and sets it back up for production use.
-    */
+     Wipes the current core data stack out and sets it back up for production use.
+     */
     static func nukeAndResetCoreData() {
         self.nukeCoreData()
         self.setupCoreData()
     }
     
     /**
-    Wipes the current core data stack out and sets it back up for testing.
-    */
+     Wipes the current core data stack out and sets it back up for testing.
+     */
     static func nukeAndResetCoreDataForTesting() {
         self.nukeCoreData()
         self.setupCoreDataForTesting()
@@ -59,13 +59,17 @@ struct CoreDataUtility {
         VOKCoreDataManager.sharedInstance().resetCoreData()
     }
     
-    private static func setupCoreData(with databaseName: String?) {
+    private static func setupInMemoryDatabase() {
+        self.setupDatabase(named: nil)
+    }
+    
+    private static func setupDatabase(named databaseName: String?) {
         //Setup the actual stack
         let manager = VOKCoreDataManager.sharedInstance()
         //TODO: make sure it's OK to wipe the data base on migration failure
         manager.migrationFailureOptions = .wipeRecovery
         manager.setResource("___PACKAGENAMEASIDENTIFIER___", database: databaseName)
-
+        
         //Fire off the object mappers
         self.setupObjectMappers()
     }

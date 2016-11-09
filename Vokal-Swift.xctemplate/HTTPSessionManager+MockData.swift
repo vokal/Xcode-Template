@@ -41,14 +41,13 @@ extension HTTPSessionManager {
         
         VOKMockUrlProtocol.setTest(testBundle)
         
-        self.update(with: mockConfig)
+        self.switchManagerConfiguration(to: mockConfig)
     }
     
     /**
      Sets up the networking stack to use the default NSURLSessionConfiguration.
      */
     static func useLiveData() {
-        let defaultConfig = URLSessionConfiguration.default
-        self.update(with: defaultConfig)
+        self.switchManagerConfiguration(to: URLSessionConfiguration.default)
     }
 }

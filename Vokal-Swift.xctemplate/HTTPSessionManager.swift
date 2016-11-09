@@ -13,7 +13,7 @@ class HTTPSessionManager {
     
     static var AlamofireManager = Alamofire.SessionManager.default
     
-    static func update(with configuration: URLSessionConfiguration) {
+    static func switchManagerConfiguration(to configuration: URLSessionConfiguration) {
         HTTPSessionManager.AlamofireManager = Alamofire.SessionManager(configuration: configuration)
     }
 }
