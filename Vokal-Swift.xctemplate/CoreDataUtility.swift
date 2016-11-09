@@ -26,7 +26,7 @@ struct CoreDataUtility {
     for testing.
     */
     static func setupCoreDataForTesting() {
-        self.setupCoreDataWithDatabaseName(nil)
+        self.setupCoreData(with: nil)
     }
     
     /**
@@ -59,7 +59,7 @@ struct CoreDataUtility {
         VOKCoreDataManager.sharedInstance().resetCoreData()
     }
     
-    private static func setupCoreDataWithDatabaseName(_ databaseName: String?) {
+    private static func setupCoreData(with databaseName: String?) {
         //Setup the actual stack
         let manager = VOKCoreDataManager.sharedInstance()
         //TODO: make sure it's OK to wipe the data base on migration failure

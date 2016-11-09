@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 @testable import ___PACKAGENAME___
 
 class TokenStorageHelperTests: XCTestCase {
-
+    
     let testEmail = "iamatest@example.com"
     let testToken = "SomeSuperLongGibberishFromTheServer"
     
@@ -26,7 +26,7 @@ class TokenStorageHelperTests: XCTestCase {
     private func storeAuthorizationTokenForTestUser() {
         //GIVEN: There is nothing in the keychain
         //WHEN: I store the test token for the test email
-        TokenStorageHelper.storeAuthorizationTokenForUserEmail(testEmail, authToken: testToken)
+        TokenStorageHelper.storeAuthorizationToken(for: testEmail, authToken: testToken)
         
         //THEN: The test token is returned when I get the authorization token.
         let retrieved = TokenStorageHelper.getAuthorizationToken()
@@ -44,12 +44,12 @@ class TokenStorageHelperTests: XCTestCase {
         //WHEN: I add a new user's auth token
         let user = "someoneelse@example.com"
         let token = "MoarToken"
-        TokenStorageHelper.storeAuthorizationTokenForUserEmail(user, authToken: token)
+        TokenStorageHelper.storeAuthorizationToken(for: user, authToken: token)
         
         //THEN: The new user's token is returned when I get the auth token
         let retrieved = TokenStorageHelper.getAuthorizationToken()
         XCTAssertEqual(retrieved, token)
-
+        
         //THEN: If I access the keychain directly, there is no value for the test user.
         if let _ = KeychainWrapper.standard.string(forKey: testEmail) {
             XCTFail("There should not be a token for the test email after setting a new one!")

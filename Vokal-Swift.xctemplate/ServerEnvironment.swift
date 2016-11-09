@@ -26,7 +26,7 @@ enum ServerEnvironment {
     
     //MARK: Main Application API
     
-    static func fullURLStringForPath(_ path: String) -> String {
+    static func fullURLString(for path: String) -> String {
         return CurrentEnvironment.apiBaseURLString + "/" + path
     }
     
@@ -35,7 +35,7 @@ enum ServerEnvironment {
         case .staging:
             return "https://falcon.vokal.io" //TODO: Change to actual staging server.
         case .production:
-            return "https://api.example.com" //TODO: Change to actual prod server.       
+            return "https://api.example.com" //TODO: Change to actual prod server.
         }
     }
     

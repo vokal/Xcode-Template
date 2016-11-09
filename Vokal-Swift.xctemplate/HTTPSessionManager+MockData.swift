@@ -13,20 +13,20 @@ import VOKMockUrlProtocol
 
 private class INeedABundle {
     /**
-    Super-janky workaround to grabbing the test bundle since the bundle
-    for HTTPSessionManager is the main bundle.
-    */
+     Super-janky workaround to grabbing the test bundle since the bundle
+     for HTTPSessionManager is the main bundle.
+     */
 }
 
 extension HTTPSessionManager {
     
     /**
-    Sets up the networking stack to use VOKMockURLProtocol.
-    */
+     Sets up the networking stack to use VOKMockURLProtocol.
+     */
     static func useMockData() {
         let mockConfig = URLSessionConfiguration.default
         let mockURLProtocolClass = VOKMockUrlProtocol.self
-
+        
         var urlProtocolsToUse: [AnyClass]
         if let currentURLProtocols = mockConfig.protocolClasses {
             urlProtocolsToUse = currentURLProtocols
@@ -40,15 +40,15 @@ extension HTTPSessionManager {
         let testBundle = Bundle(for: INeedABundle.self)
         
         VOKMockUrlProtocol.setTest(testBundle)
-
-        self.updateManagerWithConfiguration(mockConfig)
+        
+        self.update(with: mockConfig)
     }
     
     /**
-    Sets up the networking stack to use the default NSURLSessionConfiguration.
-    */
+     Sets up the networking stack to use the default NSURLSessionConfiguration.
+     */
     static func useLiveData() {
         let defaultConfig = URLSessionConfiguration.default
-        self.updateManagerWithConfiguration(defaultConfig)
+        self.update(with: defaultConfig)
     }
 }

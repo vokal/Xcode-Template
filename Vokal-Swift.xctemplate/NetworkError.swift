@@ -27,10 +27,10 @@ enum NetworkError: Error {
     
     // Some other kind of error, with an associated Error to go with it
     otherError(error: Error)
-
+    
     //TODO: Add other cases and handling for other network errors you expect.
     
-    static func fromStatusCode(statusCode: Int) -> NetworkError {
+    static func from(statusCode: Int) -> NetworkError {
         switch statusCode {
         case kHTTPStatusCodeBadRequest.asInt():
             return .badRequest
@@ -52,8 +52,8 @@ enum NetworkError: Error {
 private extension HTTPStatusCodes {
     
     /**
-    - returns: The status code as an integer instead of a UInt32.
-    */
+     - returns: The status code as an integer instead of a UInt32.
+     */
     func asInt() -> Int {
         return Int(self.rawValue)
     }
