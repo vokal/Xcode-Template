@@ -47,7 +47,7 @@ struct ResetPasswordAPI {
             JSONKey.RequestEmail.rawValue: email
         ]
         
-        let resetPasswordRequestPath = PasswordResetPath.Request.path(for: .v1)
+        let resetPasswordRequestPath = PasswordResetPath.Request.path(forVersion: .v1)
         let headers = headerDict()
         
         MainAPIUtility
@@ -76,7 +76,7 @@ struct ResetPasswordAPI {
             JSONKey.ResetCode.rawValue: code,
             JSONKey.UpdatedPassword.rawValue: updatedPassword
         ]
-        let resetPasswordPath = PasswordResetPath.Confirm.path(for: .v1)
+        let resetPasswordPath = PasswordResetPath.Confirm.path(forVersion: .v1)
         let headers = headerDict()
         
         MainAPIUtility
@@ -91,6 +91,6 @@ struct ResetPasswordAPI {
     private static func headerDict() -> [HTTPHeaderKey: HTTPHeaderValue] {
         return MainAPIUtility
             .sharedUtility
-            .requestHeaders(requireToken: false)
+            .requestHeaders(withAuthToken: false)
     }
 }

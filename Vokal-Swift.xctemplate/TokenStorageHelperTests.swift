@@ -26,7 +26,7 @@ class TokenStorageHelperTests: XCTestCase {
     private func storeAuthorizationTokenForTestUser() {
         //GIVEN: There is nothing in the keychain
         //WHEN: I store the test token for the test email
-        TokenStorageHelper.storeAuthorizationToken(for: testEmail, authToken: testToken)
+        TokenStorageHelper.store(authorizationToken: testToken, for: testEmail)
         
         //THEN: The test token is returned when I get the authorization token.
         let retrieved = TokenStorageHelper.getAuthorizationToken()
@@ -44,7 +44,7 @@ class TokenStorageHelperTests: XCTestCase {
         //WHEN: I add a new user's auth token
         let user = "someoneelse@example.com"
         let token = "MoarToken"
-        TokenStorageHelper.storeAuthorizationToken(for: user, authToken: token)
+        TokenStorageHelper.store(authorizationToken: token, for: user)
         
         //THEN: The new user's token is returned when I get the auth token
         let retrieved = TokenStorageHelper.getAuthorizationToken()

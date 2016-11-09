@@ -56,7 +56,7 @@ protocol APIVersionable {
      - parameter version: The version to use to get the versioned path.
      - returns: The fully versioned path for this object.
      */
-    func path(for version: APIVersion) -> String
+    func path(forVersion version: APIVersion) -> String
 }
 
 ///Default protocol extension implementation.
@@ -65,7 +65,7 @@ extension APIVersionable {
         self.init(rawValue: value)
     }
     
-    func path(for version: APIVersion) -> String {
+    func path(forVersion version: APIVersion) -> String {
         guard let rawString = self.rawValue as? String else {
             assertionFailure("This method should only be used with string enums!")
             return ""
@@ -102,7 +102,7 @@ class MainAPIUtility {
      
      - returns: Generic headers which should work for every request.
      */
-    func requestHeaders(requireToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
+    func requestHeaders(withAuthToken requireToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         var headerDict = [HTTPHeaderKey: HTTPHeaderValue]()
         
         if requireToken {
@@ -122,7 +122,7 @@ class MainAPIUtility {
      - returns: A dictionary mapping the passed in header keys and values into a dictionary of
      string keys and string values.
      */
-    private func stringDict(from headers: [HTTPHeaderKey: HTTPHeaderValue]) -> [String: String] {
+    private func headerStringDictionary(fromHeaderDictionary headers: [HTTPHeaderKey: HTTPHeaderValue]) -> [String: String] {
         
         var headerStrings = [String: String]()
         for (key, value) in headers {
@@ -145,7 +145,7 @@ class MainAPIUtility {
                       failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
-        let headerStrings = self.stringDict(from: headers)
+        let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
         
         HTTPSessionManager
             .AlamofireManager
@@ -161,7 +161,7 @@ class MainAPIUtility {
                 if response.result.isSuccess {
                     if let dict = response.result.value as? [String: AnyObject],
                         let token = dict["token"] as? String {
-                        TokenStorageHelper.storeAuthorizationToken(for: userEmail, authToken: token)
+                        TokenStorageHelper.store(authorizationToken: token, for: userEmail)
                     }
                 }
                 
@@ -178,7 +178,7 @@ class MainAPIUtility {
                  failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
-        let headerStrings = self.stringDict(from: headers)
+        let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
         
         HTTPSessionManager
             .AlamofireManager
@@ -204,7 +204,7 @@ class MainAPIUtility {
                   failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
-        let headerStrings = self.stringDict(from: headers)
+        let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
         
         HTTPSessionManager
             .AlamofireManager

@@ -57,7 +57,7 @@ struct UserAPI {
      - parameter success:     The closure to execute if the request succeeds.
      - parameter failure:     The closure to execute if the request fails.
      */
-    static func register(with email: String,
+    static func register(withEmail email: String,
                          password: String,
                          success: @escaping APISuccessCompletion,
                          failure: @escaping APIFailureCompletion) {
@@ -66,8 +66,8 @@ struct UserAPI {
             JSONKey.Password.rawValue: password
         ]
         
-        let registerPath = POSTPath.Register.path(for: .v1)
-        let headers = self.requestHeaders(requiresToken: false)
+        let registerPath = POSTPath.Register.path(forVersion: .v1)
+        let headers = self.requestHeaders(withAuthToken: false)
         
         MainAPIUtility
             .sharedUtility
@@ -87,7 +87,7 @@ struct UserAPI {
      - parameter success:     The closure to execute if the request succeeds.
      - parameter failure:     The closure to execute if the request fails.
      */
-    static func login(with email: String,
+    static func login(withEmail email: String,
                       password: String,
                       success: @escaping APISuccessCompletion,
                       failure: @escaping APIFailureCompletion) {
@@ -96,8 +96,8 @@ struct UserAPI {
             JSONKey.Password.rawValue: password
         ]
         
-        let loginPath = POSTPath.Login.path(for: .v1)
-        let headers = self.requestHeaders(requiresToken: false)
+        let loginPath = POSTPath.Login.path(forVersion: .v1)
+        let headers = self.requestHeaders(withAuthToken: false)
         
         MainAPIUtility
             .sharedUtility
@@ -117,7 +117,7 @@ struct UserAPI {
      - parameter success:     The closure to execute if the request succeeds.
      - parameter failure:     The closure to execute if the request fails.
      */
-    static func facebookLoginOrRegister(with facebookID: String,
+    static func facebookLoginOrRegister(withFacebookID facebookID: String,
                                         facebookToken: String,
                                         success: @escaping APISuccessCompletion,
                                         failure: @escaping APIFailureCompletion) {
@@ -127,8 +127,8 @@ struct UserAPI {
             JSONKey.FacebookToken.rawValue: facebookToken
         ]
         
-        let fbLoginRegisterPath = POSTPath.FacebookLoginRegister.path(for: .v1)
-        let headers = self.requestHeaders(requiresToken: false)
+        let fbLoginRegisterPath = POSTPath.FacebookLoginRegister.path(forVersion: .v1)
+        let headers = self.requestHeaders(withAuthToken: false)
         
         MainAPIUtility
             .sharedUtility
@@ -150,8 +150,8 @@ struct UserAPI {
      */
     static func fetchCurrentUserInfo(success: @escaping APISuccessCompletion,
                                      failure: @escaping APIFailureCompletion) {
-        let currentUserFetchPath = GETPath.CurrentUser.path(for: .v1)
-        let headers = self.requestHeaders(requiresToken: true)
+        let currentUserFetchPath = GETPath.CurrentUser.path(forVersion: .v1)
+        let headers = self.requestHeaders(withAuthToken: true)
         
         MainAPIUtility
             .sharedUtility
@@ -169,7 +169,7 @@ struct UserAPI {
      - parameter success:     The closure to execute if the request succeeds.
      - parameter failure:     The closure to execute if the request fails.
      */
-    static func registerCurrentUserForNotifications(with deviceToken: String,
+    static func registerCurrentUserForNotifications(withToken deviceToken: String,
                                                     success: @escaping APISuccessCompletion,
                                                     failure: @escaping APIFailureCompletion) {
         
@@ -177,8 +177,8 @@ struct UserAPI {
             JSONKey.PushNotificationToken.rawValue: deviceToken
         ]
         
-        let registerDeviceTokenPath = POSTPath.NotificationRegister.path(for: .v1)
-        let headers = self.requestHeaders(requiresToken: true)
+        let registerDeviceTokenPath = POSTPath.NotificationRegister.path(forVersion: .v1)
+        let headers = self.requestHeaders(withAuthToken: true)
         
         MainAPIUtility
             .sharedUtility
@@ -198,11 +198,11 @@ struct UserAPI {
      - parameter success:     The closure to execute if the request succeeds.
      - parameter failure:     The closure to execute if the request fails.
      */
-    static func fetchUserInfo(for userID: String,
+    static func fetchUserInfo(forUserID userID: String,
                               success: @escaping APISuccessCompletion,
                               failure: @escaping APIFailureCompletion) {
         let userFetchPath = APIVersion.v1.versioned(path: GETPath.specificUser(userID: userID))
-        let headers = self.requestHeaders(requiresToken: true)
+        let headers = self.requestHeaders(withAuthToken: true)
         
         MainAPIUtility
             .sharedUtility
@@ -214,9 +214,9 @@ struct UserAPI {
     
     //MARK: - Private Helper Methods
     
-    private static func requestHeaders(requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
+    private static func requestHeaders(withAuthToken requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         return MainAPIUtility
             .sharedUtility
-            .requestHeaders(requireToken: requiresToken)
+            .requestHeaders(withAuthToken: requiresToken)
     }
 }

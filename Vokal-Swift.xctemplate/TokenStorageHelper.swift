@@ -29,7 +29,7 @@ struct TokenStorageHelper {
      - parameter email:     The user's email address.
      - parameter authToken: The current auth token.
      */
-    static func storeAuthorizationToken(for email: String, authToken: String) {
+    static func store(authorizationToken: String, for email: String) {
         // See if the token matches existing:
         // There is a stored username, and it is not the email you are using right now
         if let username = getUserName(), username != email {
@@ -43,7 +43,7 @@ struct TokenStorageHelper {
             return
         }
         
-        if !KeychainWrapper.standard.set(authToken, forKey: email) {
+        if !KeychainWrapper.standard.set(authorizationToken, forKey: email) {
             DLog("Auth token could not be stored!")
         }
     }
