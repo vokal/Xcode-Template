@@ -29,7 +29,7 @@ struct TokenStorageHelper {
      - parameter email:     The user's email address.
      - parameter authToken: The current auth token.
      */
-    static func store(authorizationToken: String, for email: String) {
+    static func store(authorizationToken: String, forEmail email: String) {
         // See if the token matches existing:
         // There is a stored username, and it is not the email you are using right now
         if let username = getUserName(), username != email {

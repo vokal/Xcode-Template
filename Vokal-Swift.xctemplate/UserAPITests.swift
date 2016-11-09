@@ -42,7 +42,7 @@ class UserAPITests: XCTestCase {
         let expectation = self.expectation(description: "Successful login")
         
         //WHEN: User logs in with valid credentials
-        UserAPI.login(with: ValidLoginEmail,
+        UserAPI.login(withEmail: ValidLoginEmail,
                       password: ValidLoginPassword,
                       success: {
                         resultDict in
@@ -79,7 +79,7 @@ class UserAPITests: XCTestCase {
         
         
         //WHEN: User logs in with the wrong password
-        UserAPI.login(with: ValidLoginEmail,
+        UserAPI.login(withEmail: ValidLoginEmail,
                       password: InvalidLoginPassword,
                       success: {
                         _ in
@@ -108,7 +108,7 @@ class UserAPITests: XCTestCase {
         let expectation = self.expectation(description: "Nonexistent email login")
         
         //WHEN: User logs in with nonexistent account
-        UserAPI.login(with: NoAccountLoginEmail,
+        UserAPI.login(withEmail: NoAccountLoginEmail,
                       password: ValidLoginPassword,
                       success: {
                         _ in

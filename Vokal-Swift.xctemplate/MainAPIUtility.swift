@@ -161,7 +161,7 @@ class MainAPIUtility {
                 if response.result.isSuccess {
                     if let dict = response.result.value as? [String: AnyObject],
                         let token = dict["token"] as? String {
-                        TokenStorageHelper.store(authorizationToken: token, for: userEmail)
+                        TokenStorageHelper.store(authorizationToken: token, forEmail: userEmail)
                     }
                 }
                 
