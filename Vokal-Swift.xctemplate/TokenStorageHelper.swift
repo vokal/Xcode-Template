@@ -10,8 +10,8 @@ import Foundation
 import SwiftKeychainWrapper
 
 /**
-Facilitates the storage of a single user's credentials in the keychain. 
-*/
+ Facilitates the storage of a single user's credentials in the keychain.
+ */
 struct TokenStorageHelper {
     
     //MARK: - Keychain enums
@@ -24,12 +24,12 @@ struct TokenStorageHelper {
     //MARK: - Authorization methods
     
     /**
-    Stores the authorization token for a given user's email in the keychain.
-    
-    - parameter email:     The user's email address.
-    - parameter authToken: The current auth token.
-    */
-    static func storeAuthorizationTokenForUserEmail(_ email: String, authToken: String) {
+     Stores the authorization token for a given user's email in the keychain.
+     
+     - parameter email:     The user's email address.
+     - parameter authToken: The current auth token.
+     */
+    static func store(authorizationToken: String, forEmail email: String) {
         // See if the token matches existing:
         // There is a stored username, and it is not the email you are using right now
         if let username = getUserName(), username != email {
@@ -43,14 +43,14 @@ struct TokenStorageHelper {
             return
         }
         
-        if !KeychainWrapper.standard.set(authToken, forKey: email) {
+        if !KeychainWrapper.standard.set(authorizationToken, forKey: email) {
             DLog("Auth token could not be stored!")
         }
     }
     
     /**
-    Removes both the authorization token and the current stored username, if they exist.
-    */
+     Removes both the authorization token and the current stored username, if they exist.
+     */
     static func nukeAuthorizationToken() {
         guard let username = getUserName() else {
             //Nothin' to do, nowhere to go.
@@ -69,10 +69,10 @@ struct TokenStorageHelper {
     }
     
     /**
-    Retrieves the authorization token for the current user.
-    
-    - returns: The token, or nil if either the username or token isn't properly stored.
-    */
+     Retrieves the authorization token for the current user.
+     
+     - returns: The token, or nil if either the username or token isn't properly stored.
+     */
     static func getAuthorizationToken() -> String? {
         guard let username = getUserName(),
             let authToken = KeychainWrapper.standard.string(forKey: username) else {

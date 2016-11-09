@@ -113,8 +113,6 @@
 		<string>../swiftlint/portable_swiftlint.zip</string>
 		<string>Scripts/Swift_Warning_Run_Script.sh</string>
 		<string>Scripts/R.swift.sh</string>
-		<string>Scripts/MOGSwift3Templates/human.swift.motemplate</string>
-		<string>Scripts/MOGSwift3Templates/machine.swift.motemplate</string>
 	</array>
 	<key>Definitions</key>
 	<dict>
@@ -220,24 +218,6 @@
 		<dict>
 			<key>Path</key>
 			<string>Scripts/Swift_Warning_Run_Script.sh</string>
-			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
-		</dict>
-		<key>Scripts/MOGSwift3Templates/human.swift.motemplate</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts/MOGSwift3Templates/human.swift.motemplate</string>
-			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
-		</dict>
-		<key>Scripts/MOGSwift3Templates/machine.swift.motemplate</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts/MOGSwift3Templates/machine.swift.motemplate</string>
 			<key>Group</key>
 			<array>
 				<string>Scripts</string>

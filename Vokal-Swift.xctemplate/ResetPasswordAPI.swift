@@ -9,8 +9,8 @@
 import Foundation
 
 /**
-API for requesting password resets then actually resetting the password.
-*/
+ API for requesting password resets then actually resetting the password.
+ */
 struct ResetPasswordAPI {
     
     //MARK: - Reset Password Enums
@@ -31,66 +31,66 @@ struct ResetPasswordAPI {
     //MARK: - Reset Password Methods
     
     /**
-    Requests a password reset for a given email address. If the email exists, this will trigger
-    an email to the user with a reset request code which they can then use to reset their
-    password. If the email doesn't exist, the server just smiles and nods to avoid disclosing
-    what emails are actually related to accounts.
-    
-    - parameter email:      The email the user is requesting a password reset for.
-    - parameter success:     The closure to execute if the request succeeds.
-    - parameter failure:     The closure to execute if the request fails.
-    */
-    static func requestPasswordResetForEmail(_ email: String,
-        success: @escaping APISuccessCompletion,
-        failure: @escaping APIFailureCompletion) {
-            let parameters = [
-                JSONKey.RequestEmail.rawValue: email
-            ]
-            
-            let resetPasswordRequestPath = PasswordResetPath.Request.versionedPath(.v1)
-            let headers = headerDict()
-            
-            MainAPIUtility
-                .sharedUtility
-                .postJSON(resetPasswordRequestPath,
-                    headers: headers,
-                    params: parameters,
-                    success: success,
-                    failure: failure)
+     Requests a password reset for a given email address. If the email exists, this will trigger
+     an email to the user with a reset request code which they can then use to reset their
+     password. If the email doesn't exist, the server just smiles and nods to avoid disclosing
+     what emails are actually related to accounts.
+     
+     - parameter email:      The email the user is requesting a password reset for.
+     - parameter success:     The closure to execute if the request succeeds.
+     - parameter failure:     The closure to execute if the request fails.
+     */
+    static func requestPasswordReset(forEmail email: String,
+                                     success: @escaping APISuccessCompletion,
+                                     failure: @escaping APIFailureCompletion) {
+        let parameters = [
+            JSONKey.RequestEmail.rawValue: email
+        ]
+        
+        let resetPasswordRequestPath = PasswordResetPath.Request.path(forVersion: .v1)
+        let headers = headerDict()
+        
+        MainAPIUtility
+            .sharedUtility
+            .postJSON(to: resetPasswordRequestPath,
+                      headers: headers,
+                      params: parameters,
+                      success: success,
+                      failure: failure)
     }
     
     /**
-    Resets the password for a user who has received a password reset code via email.
-    
-    - parameter code:            The reset password code provided by the user.
-    - parameter updatedPassword: The password the user now wants to use.
-    - parameter success:     The closure to execute if the request succeeds.
-    - parameter failure:     The closure to execute if the request fails.
-    */
-    static func resetPasswordWithCode(_ code: String,
-        updatedPassword: String,
-        success: @escaping APISuccessCompletion,
-        failure: @escaping APIFailureCompletion) {
-            
-            let parameters = [
-                JSONKey.ResetCode.rawValue: code,
-                JSONKey.UpdatedPassword.rawValue: updatedPassword
-            ]
-            let resetPasswordPath = PasswordResetPath.Confirm.versionedPath(.v1)
-            let headers = headerDict()
-            
-            MainAPIUtility
-                .sharedUtility
-                .postJSON(resetPasswordPath,
-                    headers: headers,
-                    params: parameters,
-                    success: success,
-                    failure:failure)
+     Resets the password for a user who has received a password reset code via email.
+     
+     - parameter code:            The reset password code provided by the user.
+     - parameter updatedPassword: The password the user now wants to use.
+     - parameter success:     The closure to execute if the request succeeds.
+     - parameter failure:     The closure to execute if the request fails.
+     */
+    static func resetPassword(withCode code: String,
+                              updatedPassword: String,
+                              success: @escaping APISuccessCompletion,
+                              failure: @escaping APIFailureCompletion) {
+        
+        let parameters = [
+            JSONKey.ResetCode.rawValue: code,
+            JSONKey.UpdatedPassword.rawValue: updatedPassword
+        ]
+        let resetPasswordPath = PasswordResetPath.Confirm.path(forVersion: .v1)
+        let headers = headerDict()
+        
+        MainAPIUtility
+            .sharedUtility
+            .postJSON(to: resetPasswordPath,
+                      headers: headers,
+                      params: parameters,
+                      success: success,
+                      failure:failure)
     }
     
     private static func headerDict() -> [HTTPHeaderKey: HTTPHeaderValue] {
         return MainAPIUtility
             .sharedUtility
-            .requestHeadersRequiringToken(false)
+            .requestHeaders(withAuthToken: false)
     }
 }

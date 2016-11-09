@@ -1,11 +1,11 @@
 #!/bin/bash
 
 REQUIRED_MAJOR_VERSION=1
-REQUIRED_MINOR_VERSION=30
+REQUIRED_MINOR_VERSION=31
 # Determine the version of mogenerator that's installed. This script requires 
-# 1.30 or higher, since it assumes the presence of the Swift 2 templates that 
+# 1.31 or higher, since it assumes the presence of the Swift 3 templates that 
 # were added in that version.
-# See https://github.com/rentzsch/mogenerator/releases/tag/1.30
+# See https://github.com/rentzsch/mogenerator/releases/tag/1.31
 MOGEN_VERSION=$(mogenerator --version | sed -nEe 's/.* ([[:digit:]]+(\.[[:digit:]]+)+).*/\1/p')
 SPLIT_MOGEN_VERSION=(${MOGEN_VERSION//./ })
 MAJOR_MOGEN_VERSION=${SPLIT_MOGEN_VERSION[0]}

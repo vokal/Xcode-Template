@@ -16,9 +16,6 @@ Note that you may need to grab updated versions of these templates from the bell
 
 You'll also note that we have separate templates for Swift and Objective-C - there were several features for the Swift template which simply did not work at all without ripping it out into a separate template. Common code is within the `Vokal-Cocoa Touch Application Base.xctemplate` folder.
 
-## Xcode 8
-Currently, mogenerator does not include output for Swift 3. There is a custom Swift 3 mogenerator template in the Scripts folder as a workaround for this. Add a `--template-path PROJECTNAME/Scripts/MOGSwift3Templates` option to the `MOGenerator.sh` file to use the template.
-
 ## Installation
 To install or update the templates in Xcode:
 
