@@ -13,8 +13,11 @@ import UIKit
 let isRunningTests: Bool = NSClassFromString("XCTestCase") != nil
 let isRunningUITests: Bool = NSClassFromString("KIFTestCase") != nil
 
+let argv = UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(to: UnsafeMutablePointer<Int8>.self,
+                                                                      capacity: Int(CommandLine.argc))
+
 if (isRunningTests && !isRunningUITests) {
-    UIApplicationMain(Process.argc, Process.unsafeArgv, nil, NSStringFromClass(TestingAppDelegate))
+    UIApplicationMain(CommandLine.argc, argv, nil, NSStringFromClass(TestingAppDelegate.self))
 } else {
-    UIApplicationMain(Process.argc, Process.unsafeArgv, nil, NSStringFromClass(AppDelegate))
+    UIApplicationMain(CommandLine.argc, argv, nil, NSStringFromClass(AppDelegate.self))
 }

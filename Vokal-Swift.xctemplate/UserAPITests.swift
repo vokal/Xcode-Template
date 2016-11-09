@@ -39,7 +39,7 @@ class UserAPITests: XCTestCase {
     
     func testSuccessfulEmailLogin() {
         //GIVEN: Using mock data and an async method
-        let expectation = self.expectationWithDescription("Successful login")
+        let expectation = self.expectation(description: "Successful login")
         
         //WHEN: User logs in with valid credentials
         UserAPI.loginWithEmail(ValidLoginEmail,
@@ -70,12 +70,12 @@ class UserAPITests: XCTestCase {
         })
         
         
-        self.waitForExpectationsWithTimeout(StandardTestTimeout, handler: nil)
+        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
     func testWrongPasswordEmailLogin() {
         //GIVEN: Using mock data and an async method
-        let expectation = self.expectationWithDescription("Wrong password login")
+        let expectation = self.expectation(description: "Wrong password login")
         
         
         //WHEN: User logs in with the wrong password
@@ -90,7 +90,7 @@ class UserAPITests: XCTestCase {
                 error in
                 //THEN: The call should fail with a 401 Unauthorized error
                 switch error {
-                case NetworkError.Unauthorized:
+                case NetworkError.unauthorized:
                     //Do nothing, this is bueno.
                     break
                 default:
@@ -100,12 +100,12 @@ class UserAPITests: XCTestCase {
                 expectation.fulfill()
         })
         
-        self.waitForExpectationsWithTimeout(StandardTestTimeout, handler: nil)
+        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
     func testNonexistentEmailLogin() {
         //GIVEN: Using mock data and an async method
-        let expectation = self.expectationWithDescription("Nonexistent email login")
+        let expectation = self.expectation(description: "Nonexistent email login")
         
         //WHEN: User logs in with nonexistent account
         UserAPI.loginWithEmail(NoAccountLoginEmail,
@@ -119,7 +119,7 @@ class UserAPITests: XCTestCase {
                 error in
                 //THEN: The call should fail with a 400 bad request error
                 switch error {
-                case NetworkError.BadRequest:
+                case NetworkError.badRequest:
                     //Do nothing, this is bueno.
                     break
                 default:
@@ -129,6 +129,6 @@ class UserAPITests: XCTestCase {
                 expectation.fulfill()
         })
         
-        self.waitForExpectationsWithTimeout(StandardTestTimeout, handler: nil)
+        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
 }

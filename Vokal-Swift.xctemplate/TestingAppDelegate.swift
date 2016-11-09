@@ -21,10 +21,9 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         let testViewController = UIViewController()
-        testViewController.view.backgroundColor = UIColor.redColor()
-            .colorWithAlphaComponent(0.5)
+        testViewController.view.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         
         //Add a label to it so it's obvious what you're doing.
         let testLabel = UILabel()
@@ -32,13 +31,13 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
         
         //Note: This string doesn't need to be localized since users never see it.
         testLabel.text = "TESTING ___PACKAGENAME___ WITHOUT UI!"
-        testLabel.textColor = .whiteColor()
+        testLabel.textColor = .white
         testViewController.view.addSubview(testLabel)
         
         //Pin it to the middle of the view.
-        NSLayoutConstraint.activateConstraints([
-            testLabel.centerXAnchor.constraintEqualToAnchor(testViewController.view.centerXAnchor),
-            testLabel.centerYAnchor.constraintEqualToAnchor(testViewController.view.centerYAnchor),
+        NSLayoutConstraint.activate([
+            testLabel.centerXAnchor.constraint(equalTo: testViewController.view.centerXAnchor),
+            testLabel.centerYAnchor.constraint(equalTo: testViewController.view.centerYAnchor),
             ])
         
         //Fire up the window.

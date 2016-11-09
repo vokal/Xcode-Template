@@ -9,36 +9,41 @@
 import Foundation
 import ILGHttpConstants
 
-enum NetworkError: ErrorType {
+enum NetworkError: Error {
     case
     //Custom types
-    UnexpectedReturnType,
-    UnknownError,
+    unexpectedReturnType,
+    unknownError,
     
     //HTTP stuff
-    BadRequest,
-    Unauthorized,
-    Forbidden,
-    NotFound,
-    Conflict,
+    badRequest,
+    unauthorized,
+    forbidden,
+    notFound,
+    conflict,
     
+    // Undefined error, with a status code
+    undefinedError(statusCode: Int),
+    
+    // Some other kind of error, with an associated Error to go with it
+    otherError(error: Error)
+
     //TODO: Add other cases and handling for other network errors you expect.
-    UndefinedError(statusCode: Int)
     
     static func fromStatusCode(statusCode: Int) -> NetworkError {
         switch statusCode {
         case kHTTPStatusCodeBadRequest.asInt():
-            return .BadRequest
+            return .badRequest
         case kHTTPStatusCodeUnauthorized.asInt():
-            return .Unauthorized
+            return .unauthorized
         case kHTTPStatusCodeForbidden.asInt():
-            return .Forbidden
+            return .forbidden
         case kHTTPStatusCodeNotFound.asInt():
-            return .NotFound
+            return .notFound
         case kHTTPStatusCodeConflict.asInt():
-            return .Conflict
+            return .conflict
         default:
-            return .UndefinedError(statusCode: statusCode)
+            return .undefinedError(statusCode: statusCode)
         }
     }
 }

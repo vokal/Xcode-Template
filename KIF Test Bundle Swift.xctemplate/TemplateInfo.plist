@@ -40,8 +40,6 @@
 				<string>$(inherited)</string>
 				<key>LD_RUNPATH_SEARCH_PATHS</key>
 				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>SWIFT_VERSION</key>
-				<string>2.3</string>
 			</dict>
 			<key>TargetIdentifierToBeTested</key>
 			<string>com.apple.dt.cocoaTouchApplicationTarget</string>

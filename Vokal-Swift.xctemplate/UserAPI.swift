@@ -29,7 +29,7 @@ struct UserAPI {
         case
         CurrentUser = "user"
         
-        static func specificUser(userID: String) -> String {
+        static func specificUser(_ userID: String) -> String {
             return  "user/" + userID
         }
     }
@@ -57,10 +57,10 @@ struct UserAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func registerWithEmail(email: String,
+    static func registerWithEmail(_ email: String,
         password: String,
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             let parameters = [
                 JSONKey.Email.rawValue: email,
                 JSONKey.Password.rawValue: password
@@ -87,10 +87,10 @@ struct UserAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func loginWithEmail(email: String,
+    static func loginWithEmail(_ email: String,
         password: String,
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             let parameters = [
                 JSONKey.Email.rawValue: email,
                 JSONKey.Password.rawValue: password
@@ -117,10 +117,10 @@ struct UserAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func loginOrRegisterWithFacebookUserID(facebookID: String,
+    static func loginOrRegisterWithFacebookUserID(_ facebookID: String,
         facebookToken: String,
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             
             let parameters = [
                 JSONKey.FacebookID.rawValue: facebookID,
@@ -148,7 +148,7 @@ struct UserAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func fetchCurrentUserInfo(success: APISuccessCompletion, failure: APIFailureCompletion) {
+    static func fetchCurrentUserInfo(_ success: @escaping APISuccessCompletion, failure: @escaping APIFailureCompletion) {
         let currentUserFetchPath = GETPath.CurrentUser.versionedPath(.v1)
         let headers = requestHeadersRequiringToken(true)
         
@@ -168,9 +168,9 @@ struct UserAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func registerCurrentUserForNotificationsWithDeviceToken(deviceToken: String,
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+    static func registerCurrentUserForNotificationsWithDeviceToken(_ deviceToken: String,
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             
             let parameters = [
                 JSONKey.PushNotificationToken.rawValue: deviceToken
@@ -197,9 +197,9 @@ struct UserAPI {
     - parameter success:     The closure to execute if the request succeeds.
     - parameter failure:     The closure to execute if the request fails.
     */
-    static func fetchInfoForUser(userID: String,
-        success: APISuccessCompletion,
-        failure: APIFailureCompletion) {
+    static func fetchInfoForUser(_ userID: String,
+        success: @escaping APISuccessCompletion,
+        failure: @escaping APIFailureCompletion) {
             let userFetchPath = APIVersion.v1.versionedPath(GETPath.specificUser(userID))
             let headers = requestHeadersRequiringToken(true)
             
@@ -213,7 +213,7 @@ struct UserAPI {
     
     //MARK: - Private Helper Methods
     
-    private static func requestHeadersRequiringToken(requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue]  {
+    private static func requestHeadersRequiringToken(_ requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         return MainAPIUtility
             .sharedUtility
             .requestHeadersRequiringToken(requiresToken)
