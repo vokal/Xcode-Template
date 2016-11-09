@@ -174,8 +174,8 @@ class MainAPIUtility {
     func getJSON(_ path: String,
                  headers: [HTTPHeaderKey: HTTPHeaderValue],
                  params: [String: Any]? = nil, //Defaults to nil
-        success: @escaping APISuccessCompletion,
-        failure: @escaping APIFailureCompletion) {
+                 success: @escaping APISuccessCompletion,
+                 failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLStringForPath(path)
         let headerStrings = stringDictFromHeaders(headers)
@@ -205,8 +205,7 @@ class MainAPIUtility {
         
         let fullURLString = ServerEnvironment.fullURLStringForPath(path)
         let headerStrings = stringDictFromHeaders(headers)
-        
-        
+
         HTTPSessionManager
             .AlamofireManager
             .request(fullURLString,
