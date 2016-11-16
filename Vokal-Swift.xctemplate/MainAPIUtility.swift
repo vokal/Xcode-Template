@@ -9,10 +9,15 @@
 import Foundation
 import Alamofire
 
-//MARK: - Completion Closures
+//MARK: - Completion Closures and type aliases
 
-typealias APISuccessCompletion = ([String: Any]) -> Void
+typealias APIDictionary = [String: Any]
+typealias APIArray = [Any]
+
+typealias APISuccessCompletion<T> = (T) -> Void
 typealias APIFailureCompletion = (NetworkError) -> Void
+typealias APIDictionaryCompletion = (APIDictionary) -> Void
+typealias APIArrayCompletion = (APIArray) -> Void
 
 //MARK: - Header enums
 
@@ -139,9 +144,9 @@ class MainAPIUtility {
     
     func postUserJSON(to path: String,
                       headers: [HTTPHeaderKey: HTTPHeaderValue],
-                      params: [String: Any],
+                      params: APIDictionary,
                       userEmail: String,
-                      success: @escaping APISuccessCompletion,
+                      success: @escaping APIDictionaryCompletion,
                       failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
@@ -154,12 +159,13 @@ class MainAPIUtility {
                      parameters: params,
                      encoding: JSONEncoding.default,
                      headers: headerStrings)
+            .validate()
             .responseJSON {
                 [weak self]
                 response in
                 
                 if response.result.isSuccess {
-                    if let dict = response.result.value as? [String: AnyObject],
+                    if let dict = response.result.value as? APIDictionary,
                         let token = dict["token"] as? String {
                         TokenStorageHelper.store(authorizationToken: token, forEmail: userEmail)
                     }
@@ -171,10 +177,10 @@ class MainAPIUtility {
         }
     }
     
-    func getJSON(from path: String,
+    func getJSON<T>(from path: String,
                  headers: [HTTPHeaderKey: HTTPHeaderValue],
-                 params: [String: Any]? = nil,
-                 success: @escaping APISuccessCompletion,
+                 params: APIDictionary? = nil,
+                 success: @escaping APISuccessCompletion<T>,
                  failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
@@ -187,6 +193,7 @@ class MainAPIUtility {
                      parameters: params,
                      encoding: URLEncoding.default,
                      headers: headerStrings)
+            .validate()
             .responseJSON {
                 [weak self]
                 response in
@@ -197,10 +204,10 @@ class MainAPIUtility {
         }
     }
     
-    func postJSON(to path: String,
+    func postJSON<T>(to path: String,
                   headers: [HTTPHeaderKey: HTTPHeaderValue],
-                  params: [String: Any],
-                  success: @escaping APISuccessCompletion,
+                  params: APIDictionary,
+                  success: @escaping APISuccessCompletion<T>,
                   failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
@@ -213,6 +220,7 @@ class MainAPIUtility {
                      parameters: params,
                      encoding: JSONEncoding.default,
                      headers: headerStrings)
+            .validate()
             .responseJSON {
                 [weak self]
                 response in
@@ -224,35 +232,28 @@ class MainAPIUtility {
     
     //MARK: Handler for methods expecting a dictionary on success
     
-    private func handle(response: DataResponse<Any>,
-                        success: @escaping APISuccessCompletion,
+    private func handle<T>(response: DataResponse<Any>,
+                        success: @escaping APISuccessCompletion<T>,
                         failure: @escaping APIFailureCompletion) {
         
         if shouldDebugPrintInfo {
             debugPrint(response)
         }
         
-        if let httpResponse = response.response {
-            let statusCode = httpResponse.statusCode
-            
-            if (statusCode < 200 || statusCode >= 300) {
-                //This is actually an error.
-                let error = NetworkError.from(statusCode: statusCode)
-                failure(error)
-                return
-            }
-        }
-        
         switch response.result {
         case .success(let value):
-            // Make sure the returned value is a dictionary as expected
-            if let dict = value as? [String: Any] {
-                success(dict)
+            // Make sure the returned value is the type expected for the success block
+            if let responseValue = value as? T {
+                success(responseValue)
             } else {
                 failure(NetworkError.unexpectedReturnType)
             }
         case .failure(let error):
-            failure(NetworkError.otherError(error: error))
+            if let httpResponse = response.response {
+                failure(NetworkError.from(statusCode: httpResponse.statusCode))
+            } else {
+                failure(NetworkError.otherError(error: error))
+            }
         }
         
     }

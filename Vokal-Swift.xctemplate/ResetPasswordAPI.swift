@@ -28,6 +28,12 @@ struct ResetPasswordAPI {
         Confirm = "password-reset/confirm"
     }
     
+    private static var headerDict: [HTTPHeaderKey: HTTPHeaderValue] {
+        return MainAPIUtility
+            .sharedUtility
+            .requestHeaders(withAuthToken: false)
+    }
+
     //MARK: - Reset Password Methods
     
     /**
@@ -41,19 +47,18 @@ struct ResetPasswordAPI {
      - parameter failure:     The closure to execute if the request fails.
      */
     static func requestPasswordReset(forEmail email: String,
-                                     success: @escaping APISuccessCompletion,
+                                     success: @escaping APIDictionaryCompletion,
                                      failure: @escaping APIFailureCompletion) {
         let parameters = [
             JSONKey.RequestEmail.rawValue: email
         ]
         
         let resetPasswordRequestPath = PasswordResetPath.Request.path(forVersion: .v1)
-        let headers = headerDict()
         
         MainAPIUtility
             .sharedUtility
             .postJSON(to: resetPasswordRequestPath,
-                      headers: headers,
+                      headers: self.headerDict,
                       params: parameters,
                       success: success,
                       failure: failure)
@@ -69,7 +74,7 @@ struct ResetPasswordAPI {
      */
     static func resetPassword(withCode code: String,
                               updatedPassword: String,
-                              success: @escaping APISuccessCompletion,
+                              success: @escaping APIDictionaryCompletion,
                               failure: @escaping APIFailureCompletion) {
         
         let parameters = [
@@ -77,20 +82,14 @@ struct ResetPasswordAPI {
             JSONKey.UpdatedPassword.rawValue: updatedPassword
         ]
         let resetPasswordPath = PasswordResetPath.Confirm.path(forVersion: .v1)
-        let headers = headerDict()
         
         MainAPIUtility
             .sharedUtility
             .postJSON(to: resetPasswordPath,
-                      headers: headers,
+                      headers: self.headerDict,
                       params: parameters,
                       success: success,
                       failure:failure)
     }
-    
-    private static func headerDict() -> [HTTPHeaderKey: HTTPHeaderValue] {
-        return MainAPIUtility
-            .sharedUtility
-            .requestHeaders(withAuthToken: false)
-    }
+
 }
