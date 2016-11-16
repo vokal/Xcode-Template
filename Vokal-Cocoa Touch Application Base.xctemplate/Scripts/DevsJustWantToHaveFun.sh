@@ -12,15 +12,18 @@ if [ -z "${PROJECT_NAME}" ]; then
     PROJECT_NAME="___PACKAGENAME___"
 fi
 
-# Path relative to this script where the TrueColors file you want to use to generate
+# Resources path
+RESOURCES_DIR="${PROJECT_DIR}/___PACKAGENAME___/Resources"
+
+# Path where the TrueColors file you want to use to generate
 # classes is located. Must include the .truecolors extension. 
-TRUECOLORS_PATH="../Resources/___PACKAGENAME___.truecolors"
+TRUECOLORS_PATH="${RESOURCES_DIR}/___PACKAGENAME___.truecolors"
 
-# Path relative to this script where files should be output.
-OUTPUT_DIR="../Resources/TrueColors"
+# Path where files should be output.
+OUTPUT_DIR="${RESOURCES_DIR}/TrueColors"
 
-# Path relative to this script where fonts should be placed 
-FONT_DIR="../Resources/Fonts"
+# Path where fonts should be placed
+FONT_DIR="${RESOURCES_DIR}/Fonts"
 
 # Prefix to use for extensions/categories, ex: VOK. 
 PREFIX="FIXME"
@@ -40,4 +43,3 @@ fi
     --font-dir "${FONT_DIR}" \
     --prefix "${PREFIX}" \
     --"${LANGUAGE}"
-
