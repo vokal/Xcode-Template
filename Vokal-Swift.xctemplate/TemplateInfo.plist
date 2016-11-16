@@ -414,6 +414,15 @@
 								<string>MoveToNonUITestTarget</string>
 							</array>
 						</dict>
+						<key>MoveToNonUITestTarget/APICompletionTests.swift</key>
+						<dict>
+							<key>Path</key>
+							<string>APICompletionTests.swift</string>
+							<key>Group</key>
+							<array>
+								<string>MoveToNonUITestTarget</string>
+							</array>
+						</dict>
 						<key>MoveToNonUITestTarget/UserAPITests.swift</key>
 						<dict>
 							<key>Path</key>
@@ -446,6 +455,7 @@
 						<string>MoveToNonUITestTarget/HTTPSessionManager+MockData.swift</string>
 						<string>MoveToNonUITestTarget/TokenStorageHelperTests.swift</string>
 						<string>MoveToNonUITestTarget/UserAPITests.swift</string>
+						<string>MoveToNonUITestTarget/APICompletionTests.swift</string>
 						<string>MoveToNonUITestTarget/VOKMockData</string>
 					</array>
 					<key>Targets</key>
