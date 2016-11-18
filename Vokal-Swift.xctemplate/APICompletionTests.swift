@@ -79,6 +79,14 @@ class APICompletionTests: XCTestCase {
                                                 expectation.fulfill()
         }, failure: { error in
             //THEN: the result data type is NOT array as requested, becuase mock data contains a dictionary
+            switch error {
+            case .unexpectedReturnType:
+                // This is the expected error for this test
+                break
+            default:
+                XCTFail("Should get unexpected return type here")
+            }
+
             expectation.fulfill()
         })
         
@@ -96,7 +104,14 @@ class APICompletionTests: XCTestCase {
                                                 XCTFail("This should fail: mock data does not contain a dictionary")
                                                 expectation.fulfill()
         }, failure: { error in
-            //THEN: the result data  type is NOT dictionary as requested, becuase mock data contains an array
+            //THEN: the result data type is NOT dictionary as requested, becuase mock data contains an array
+            switch error {
+            case .unexpectedReturnType:
+            // This is the expected error for this test
+                break
+            default:
+                XCTFail("Should get unexpected return type here")
+            }
             expectation.fulfill()
         })
         
