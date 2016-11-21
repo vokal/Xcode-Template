@@ -131,8 +131,8 @@ class APICompletionTests: XCTestCase {
                                                 //THEN: the result data type is null as expected
                                                 expectation.fulfill()
         }, failure: { error in
-                XCTFail("API request failed. Error: \(error)")
-                expectation.fulfill()
+            XCTFail("API request failed. Error: \(error)")
+            expectation.fulfill()
         })
         
         self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
