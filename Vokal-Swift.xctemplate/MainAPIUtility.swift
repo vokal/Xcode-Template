@@ -14,10 +14,20 @@ import Alamofire
 typealias APIDictionary = [String: Any]
 typealias APIArray = [Any]
 
+// Generic completion closure for API requests
 typealias APISuccessCompletion<T> = (T) -> Void
+
+// Failure completion closure for API requests
 typealias APIFailureCompletion = (NetworkError) -> Void
+
+// Completion closure for API requests that return a dictionary
 typealias APIDictionaryCompletion = (APIDictionary) -> Void
+
+// Completion closure for API requests that return an array
 typealias APIArrayCompletion = (APIArray) -> Void
+
+// Completion closure for API requests that return 204 No Content
+typealias APIEmptyResponseCompletion = (NSNull) -> Void
 
 //MARK: - Header enums
 
@@ -230,8 +240,8 @@ class MainAPIUtility {
         }
     }
     
-    //MARK: Handler for methods expecting a dictionary on success
-    
+    //MARK: Common handler for API responses
+
     private func handle<T>(response: DataResponse<Any>,
                         success: @escaping APISuccessCompletion<T>,
                         failure: @escaping APIFailureCompletion) {

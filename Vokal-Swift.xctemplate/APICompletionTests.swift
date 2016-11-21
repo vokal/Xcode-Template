@@ -118,4 +118,23 @@ class APICompletionTests: XCTestCase {
         self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
+    func testEmptyResponse() {
+        //GIVEN: Using mock data and an async method
+        let expectation = self.expectation(description: "Finish making POST request")
+        
+        //WHEN: Requesting a URL that should return a 204 No Content
+        let fakeParams: APIDictionary = ["id": 123]
+        MainAPIUtility.sharedUtility.postJSON(to: "emptyResponse",
+                                              headers: [:],
+                                              params: fakeParams,
+                                              success: { (result: NSNull) in
+                                                //THEN: the result data type is null as expected
+                                                expectation.fulfill()
+        }, failure: { error in
+                XCTFail("API request failed. Error: \(error)")
+                expectation.fulfill()
+        })
+        
+        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+    }
 }
