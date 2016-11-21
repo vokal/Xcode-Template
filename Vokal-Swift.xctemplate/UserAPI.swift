@@ -59,7 +59,7 @@ struct UserAPI {
      */
     static func register(withEmail email: String,
                          password: String,
-                         success: @escaping APISuccessCompletion,
+                         success: @escaping APIDictionaryCompletion,
                          failure: @escaping APIFailureCompletion) {
         let parameters = [
             JSONKey.Email.rawValue: email,
@@ -89,7 +89,7 @@ struct UserAPI {
      */
     static func login(withEmail email: String,
                       password: String,
-                      success: @escaping APISuccessCompletion,
+                      success: @escaping APIDictionaryCompletion,
                       failure: @escaping APIFailureCompletion) {
         let parameters = [
             JSONKey.Email.rawValue: email,
@@ -119,7 +119,7 @@ struct UserAPI {
      */
     static func facebookLoginOrRegister(withFacebookID facebookID: String,
                                         facebookToken: String,
-                                        success: @escaping APISuccessCompletion,
+                                        success: @escaping APIDictionaryCompletion,
                                         failure: @escaping APIFailureCompletion) {
         
         let parameters = [
@@ -148,7 +148,7 @@ struct UserAPI {
      - parameter success:     The closure to execute if the request succeeds.
      - parameter failure:     The closure to execute if the request fails.
      */
-    static func fetchCurrentUserInfo(success: @escaping APISuccessCompletion,
+    static func fetchCurrentUserInfo(success: @escaping APIDictionaryCompletion,
                                      failure: @escaping APIFailureCompletion) {
         let currentUserFetchPath = GETPath.CurrentUser.path(forVersion: .v1)
         let headers = self.requestHeaders(withAuthToken: true)
@@ -169,10 +169,11 @@ struct UserAPI {
      - parameter success:     The closure to execute if the request succeeds.
      - parameter failure:     The closure to execute if the request fails.
      */
+    // TODO: maybe expect an empty response here
     static func registerCurrentUserForNotifications(withToken deviceToken: String,
-                                                    success: @escaping APISuccessCompletion,
+                                                    success: @escaping APIDictionaryCompletion,
                                                     failure: @escaping APIFailureCompletion) {
-        
+
         let parameters = [
             JSONKey.PushNotificationToken.rawValue: deviceToken
         ]
@@ -199,7 +200,7 @@ struct UserAPI {
      - parameter failure:     The closure to execute if the request fails.
      */
     static func fetchUserInfo(forUserID userID: String,
-                              success: @escaping APISuccessCompletion,
+                              success: @escaping APIDictionaryCompletion,
                               failure: @escaping APIFailureCompletion) {
         let userFetchPath = APIVersion.v1.versioned(path: GETPath.specificUser(userID: userID))
         let headers = self.requestHeaders(withAuthToken: true)
