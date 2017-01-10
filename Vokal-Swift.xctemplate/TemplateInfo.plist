@@ -265,7 +265,7 @@
 						<key>../Podfile:afpod</key>
 						<string>    pod &apos;Alamofire&apos;, &apos;~> 4.0&apos;</string>
 						<key>../Podfile:ilghttp</key>
-						<string>    pod &apos;ILGHttpConstants&apos;</string>
+						<string>    pod &apos;ILGHttpConstants&apos;, &apos;~> 2.0&apos;</string>
 					</dict>
 					<key>Nodes</key>
 					<array>

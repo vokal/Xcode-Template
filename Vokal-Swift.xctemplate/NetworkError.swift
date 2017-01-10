@@ -32,15 +32,15 @@ enum NetworkError: Error {
     
     static func from(statusCode: Int) -> NetworkError {
         switch statusCode {
-        case kHTTPStatusCodeBadRequest.asInt():
+        case HTTPStatusCode.badRequest.asInt():
             return .badRequest
-        case kHTTPStatusCodeUnauthorized.asInt():
+        case HTTPStatusCode.unauthorized.asInt():
             return .unauthorized
-        case kHTTPStatusCodeForbidden.asInt():
+        case HTTPStatusCode.forbidden.asInt():
             return .forbidden
-        case kHTTPStatusCodeNotFound.asInt():
+        case HTTPStatusCode.notFound.asInt():
             return .notFound
-        case kHTTPStatusCodeConflict.asInt():
+        case HTTPStatusCode.conflict.asInt():
             return .conflict
         default:
             return .undefinedError(statusCode: statusCode)
@@ -49,7 +49,7 @@ enum NetworkError: Error {
 }
 
 ///Extension to make HTTP status codes less hideous to work with in Swift.
-private extension HTTPStatusCodes {
+private extension HTTPStatusCode {
     
     /**
      - returns: The status code as an integer instead of a UInt32.

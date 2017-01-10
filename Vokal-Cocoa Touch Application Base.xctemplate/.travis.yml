@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode7.3
+osx_image: xcode8.2
 before_install:
   - echo -e "machine github.com\n login ${CI_USER_TOKEN}" >> ~/.netrc
 before_script:
