@@ -13,13 +13,13 @@ import UIKit
  * of defaultReuseIdentifier() returns the class name. Add this protocol to a class to use that
  * default functionality.
  */
-protocol ReuseIdentifierHaver: class {
+protocol ReuseIdentifiable: class {
 
     static func defaultReuseIdentifier() -> String
 
 }
 
-extension ReuseIdentifierHaver where Self: UIView {
+extension ReuseIdentifiable where Self: UIView {
 
     static func defaultReuseIdentifier() -> String {
         return String(describing: self)
@@ -28,22 +28,22 @@ extension ReuseIdentifierHaver where Self: UIView {
 }
 
 /// Provide a default reuse identifier for table view cells
-extension UITableViewCell: ReuseIdentifierHaver {
+extension UITableViewCell: ReuseIdentifiable {
     // Mix-in
 }
 
 /// Provide a default reuse identifier for table view headers and footers
-extension UITableViewHeaderFooterView: ReuseIdentifierHaver {
+extension UITableViewHeaderFooterView: ReuseIdentifiable {
     // Mix-in
 }
 
 /// Provide a default reuse identifier for collection view cells
-extension UICollectionReusableView: ReuseIdentifierHaver {
+extension UICollectionReusableView: ReuseIdentifiable {
     // Mix-in
 }
 
 // Include this if using MapKit
 /// Provide a default reuse identifier for map annotation views
-//extension MKAnnotationView: ReuseIdentifierHaver {
+//extension MKAnnotationView: ReuseIdentifiable {
 //    // Mix-in
 //}
