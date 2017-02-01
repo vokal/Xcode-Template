@@ -116,6 +116,7 @@
 		<string>Views/Base/BaseTableViewCell.swift</string>
 		<string>Views/Base/BaseTableViewHeaderFooterView.swift</string>
 		<string>Views/Base/BaseLabel.swift</string>
+		<string>Views/Base/BaseCollectionViewCell.swift</string>
 		<string>../Podfile:swiftbasics</string>
 		<string>Utilities/DLog.swift</string>
 		<string>../.swiftlint.yml</string>
@@ -236,6 +237,16 @@
 		<dict>
 			<key>Path</key>
 			<string>BaseLabel.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseCollectionViewCell.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseCollectionViewCell.swift</string>
 			<key>Group</key>
 			<array>
 				<string>Views</string>
