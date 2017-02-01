@@ -100,12 +100,23 @@
 	<key>Nodes</key>
 	<array>
 		<string>Extensions</string>
-		<string>Extensions/.gitkeep</string>
+		<string>Extensions/ReuseIdentifiable.swift</string>
 		<string>main.swift</string>
 		<string>../R.generated.swift</string>
 		<string>AppDelegate.swift</string>
 		<string>TestingAppDelegate.swift</string>
 		<string>View Controllers/ViewController.swift</string>
+		<string>Protocols/CommonInitializedView.swift</string>
+		<string>Controls/Base/BaseControl.swift</string>
+		<string>Controls/Base/BaseButton.swift</string>
+		<string>Controls/Base/BaseTextField.swift</string>
+		<string>Views/Base/BaseView.swift</string>
+		<string>Views/Base/BaseImageView.swift</string>
+		<string>Views/Base/BaseTextView.swift</string>
+		<string>Views/Base/BaseTableViewCell.swift</string>
+		<string>Views/Base/BaseTableViewHeaderFooterView.swift</string>
+		<string>Views/Base/BaseLabel.swift</string>
+		<string>Views/Base/BaseCollectionViewCell.swift</string>
 		<string>../Podfile:swiftbasics</string>
 		<string>Utilities/DLog.swift</string>
 		<string>../.swiftlint.yml</string>
@@ -121,24 +132,125 @@
 
     pod &apos;R.swift&apos;, &apos;~> 3.1&apos;
 		</string>
-		<key>Extensions/.gitkeep</key>
+		<key>Extensions/ReuseIdentifiable.swift</key>
 		<dict>
 			<key>Group</key>
-			<array>
-				<string>Extensions</string>
-			</array>
+			<string>Extensions</string>
 			<key>Path</key>
-			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
+			<string>ReuseIdentifiable.swift</string>
 		</dict>
 		<key>View Controllers/ViewController.swift</key>
 		<dict>
 			<key>Path</key>
 			<string>ViewController.swift</string>
 			<key>Group</key>
+			<string>View Controllers</string>
+		</dict>
+		<key>Protocols/CommonInitializedView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>CommonInitializedView.swift</string>
+			<key>Group</key>
+			<string>Protocols</string>
+		</dict>
+		<key>Controls/Base/BaseControl.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseControl.swift</string>
+			<key>Group</key>
 			<array>
-				<string>View Controllers</string>
+				<string>Controls</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Controls/Base/BaseButton.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseButton.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Controls/Base/BaseTextField.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTextField.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseImageView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseImageView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseTextView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTextView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseTableViewCell.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTableViewCell.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseTableViewHeaderFooterView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTableViewHeaderFooterView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseLabel.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseLabel.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseCollectionViewCell.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseCollectionViewCell.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
 			</array>
 		</dict>
 		<key>AppDelegate.swift</key>
@@ -149,18 +261,14 @@
 		<key>main.swift</key>
 		<dict>
 			<key>Group</key>
-			<array>
-				<string>Supporting Files</string>
-			</array>
+			<string>Supporting Files</string>
 			<key>Path</key>
 			<string>main.swift</string>
 		</dict>
 		<key>../R.generated.swift</key>
 		<dict>
 			<key>Group</key>
-			<array>
-				<string>Supporting Files</string>
-			</array>
+			<string>Supporting Files</string>
 			<key>Path</key>
 			<string>../R.generated.swift</string>
 		</dict>
@@ -174,54 +282,42 @@
 			<key>Path</key>
 			<string>DLog.swift</string>
 			<key>Group</key>
-			<array>
-				<string>Utilities</string>
-			</array>
+			<string>Utilities</string>
 		</dict>
 		<key>../.swiftlint.yml</key>
 		<dict>
 			<key>Path</key>
 			<string>.swiftlint.yml</string>
 			<key>Group</key>
-			<array>
-				<string>Non-iOS Resources</string>
-			</array>
+			<string>Non-iOS Resources</string>
 		</dict>
 		<key>Scripts/SwiftLint_Run_Script.sh</key>
 		<dict>
 			<key>Path</key>
 			<string>Scripts/SwiftLint_Run_Script.sh</string>
 			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
+			<string>Scripts</string>
 		</dict>
 		<key>../swiftlint/portable_swiftlint.zip</key>
 		<dict>
 			<key>Path</key>
 			<string>swiftlint/portable_swiftlint.zip</string>
 			<key>Group</key>
-			<array>
-				<string>Non-iOS Resources</string>
-			</array>
+			<string>Non-iOS Resources</string>
 		</dict>
 		<key>Scripts/R.swift.sh</key>
 		<dict>
 			<key>Path</key>
 			<string>Scripts/R.swift.sh</string>
 			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
+			<string>Scripts</string>
 		</dict>
 		<key>Scripts/Swift_Warning_Run_Script.sh</key>
 		<dict>
 			<key>Path</key>
 			<string>Scripts/Swift_Warning_Run_Script.sh</string>
 			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
+			<string>Scripts</string>
 		</dict>
 	</dict>
 	<key>Project</key>
@@ -338,108 +434,84 @@
 							<key>Path</key>
 							<string>MainAPIUtility.swift</string>
 							<key>Group</key>
-							<array>
-								<string>Network</string>
-							</array>
+							<string>Network</string>
 						</dict>
 						<key>Network/ServerEnvironment.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>ServerEnvironment.swift</string>
 							<key>Group</key>
-							<array>
-								<string>Network</string>
-							</array>
+							<string>Network</string>
 						</dict>
 						<key>Network/ResetPasswordAPI.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>ResetPasswordAPI.swift</string>
 							<key>Group</key>
-							<array>
-								<string>Network</string>
-							</array>
+							<string>Network</string>
 						</dict>
 						<key>Network/UserAPI.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>UserAPI.swift</string>
 							<key>Group</key>
-							<array>
-								<string>Network</string>
-							</array>
+							<string>Network</string>
 						</dict>
 						<key>Network/HTTPSessionManager.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>HTTPSessionManager.swift</string>
 							<key>Group</key>
-							<array>
-								<string>Network</string>
-							</array>
+							<string>Network</string>
 						</dict>
 						<key>Network/NetworkError.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>NetworkError.swift</string>
 							<key>Group</key>
-							<array>
-								<string>Network</string>
-							</array>
+							<string>Network</string>
 						</dict>
 						<key>Network/TokenStorageHelper.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>TokenStorageHelper.swift</string>
 							<key>Group</key>
-							<array>
-								<string>Network</string>
-							</array>
+							<string>Network</string>
 						</dict>
 						<key>MoveToNonUITestTarget/VOKMockData</key>
 						<dict>
 							<key>Path</key>
 							<string>VOKMockData</string>
 							<key>Group</key>
-							<array>
-								<string>MoveToNonUITestTarget</string>
-							</array>
+							<string>MoveToNonUITestTarget</string>
 						</dict>
 						<key>MoveToNonUITestTarget/HTTPSessionManager+MockData.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>HTTPSessionManager+MockData.swift</string>
 							<key>Group</key>
-							<array>
-								<string>MoveToNonUITestTarget</string>
-							</array>
+							<string>MoveToNonUITestTarget</string>
 						</dict>
 						<key>MoveToNonUITestTarget/APICompletionTests.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>APICompletionTests.swift</string>
 							<key>Group</key>
-							<array>
-								<string>MoveToNonUITestTarget</string>
-							</array>
+							<string>MoveToNonUITestTarget</string>
 						</dict>
 						<key>MoveToNonUITestTarget/UserAPITests.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>UserAPITests.swift</string>
 							<key>Group</key>
-							<array>
-								<string>MoveToNonUITestTarget</string>
-							</array>
+							<string>MoveToNonUITestTarget</string>
 						</dict>
 						<key>MoveToNonUITestTarget/TokenStorageHelperTests.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>TokenStorageHelperTests.swift</string>
 							<key>Group</key>
-							<array>
-								<string>MoveToNonUITestTarget</string>
-							</array>
+							<string>MoveToNonUITestTarget</string>
 						</dict>
 					</dict>
 					<key>Nodes</key>
@@ -495,18 +567,14 @@
 							<key>Path</key>
 							<string>___PACKAGENAMEASIDENTIFIER___.xcdatamodeld</string>
 							<key>Group</key>
-							<array>
-								<string>CoreDataAndModels</string>
-							</array>
+							<string>CoreDataAndModels</string>
 						</dict>
 						<key>CoreDataAndModels/CoreDataUtility.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>CoreDataUtility.swift</string>
 							<key>Group</key>
-							<array>
-								<string>CoreDataAndModels</string>
-							</array>
+							<string>CoreDataAndModels</string>
 						</dict>
 						<key>../Podfile:vokoderpod</key>
 						<string>    pod &apos;Vokoder/Swift&apos;, &apos;~> 4.0.1&apos;</string>
@@ -517,9 +585,7 @@
 							<key>Path</key>
 							<string>Scripts/MOGenerator.sh</string>
 							<key>Group</key>
-							<array>
-								<string>Scripts</string>
-							</array>
+							<string>Scripts</string>
 						</dict>
 					</dict>
 					<key>Nodes</key>
