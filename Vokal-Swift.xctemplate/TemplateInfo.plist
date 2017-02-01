@@ -106,6 +106,16 @@
 		<string>AppDelegate.swift</string>
 		<string>TestingAppDelegate.swift</string>
 		<string>View Controllers/ViewController.swift</string>
+		<string>Protocols/CommonInitializedView.swift</string>
+		<string>Controls/Base/BaseControl.swift</string>
+		<string>Controls/Base/BaseButton.swift</string>
+		<string>Controls/Base/BaseTextField.swift</string>
+		<string>Views/Base/BaseView.swift</string>
+		<string>Views/Base/BaseImageView.swift</string>
+		<string>Views/Base/BaseTextView.swift</string>
+		<string>Views/Base/BaseTableViewCell.swift</string>
+		<string>Views/Base/BaseTableViewHeaderFooterView.swift</string>
+		<string>Views/Base/BaseLabel.swift</string>
 		<string>../Podfile:swiftbasics</string>
 		<string>Utilities/DLog.swift</string>
 		<string>../.swiftlint.yml</string>
@@ -139,6 +149,103 @@
 			<key>Group</key>
 			<array>
 				<string>View Controllers</string>
+			</array>
+		</dict>
+		<key>Protocols/CommonInitializedView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>CommonInitializedView.swift</string>
+			<key>Group</key>
+			<string>Protocols</string>
+		</dict>
+		<key>Controls/Base/BaseControl.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseControl.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Controls/Base/BaseButton.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseButton.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Controls/Base/BaseTextField.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTextField.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseImageView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseImageView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseTextView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTextView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseTableViewCell.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTableViewCell.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseTableViewHeaderFooterView.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseTableViewHeaderFooterView.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
+			</array>
+		</dict>
+		<key>Views/Base/BaseLabel.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>BaseLabel.swift</string>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Base</string>
 			</array>
 		</dict>
 		<key>AppDelegate.swift</key>
