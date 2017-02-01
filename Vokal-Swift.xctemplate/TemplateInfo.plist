@@ -100,7 +100,7 @@
 	<key>Nodes</key>
 	<array>
 		<string>Extensions</string>
-		<string>Extensions/.gitkeep</string>
+		<string>Extensions/ReuseIdentifierHaver.swift</string>
 		<string>main.swift</string>
 		<string>../R.generated.swift</string>
 		<string>AppDelegate.swift</string>
@@ -131,14 +131,12 @@
 
     pod &apos;R.swift&apos;, &apos;~> 3.1&apos;
 		</string>
-		<key>Extensions/.gitkeep</key>
+		<key>Extensions/ReuseIdentifierHaver.swift</key>
 		<dict>
 			<key>Group</key>
 			<string>Extensions</string>
 			<key>Path</key>
-			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
+			<string>ReuseIdentifierHaver.swift</string>
 		</dict>
 		<key>View Controllers/ViewController.swift</key>
 		<dict>
