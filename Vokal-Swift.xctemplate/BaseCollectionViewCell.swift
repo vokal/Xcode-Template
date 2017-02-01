@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for collection view cells. Extend this for any custom cell classes, and
+ * override commonInit() to perform cell setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseCollectionViewCell: UICollectionViewCell, CommonInitializedView {
     
     var oneTimeThingsAreSetUp = false

@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for buttons. Extend this for any custom button classes, and override commonInit()
+ * to perform button setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseButton: UIButton, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false

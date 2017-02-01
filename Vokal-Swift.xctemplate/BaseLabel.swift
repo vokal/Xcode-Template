@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for labels. Extend this for any custom label classes, and
+ * override commonInit() to perform label setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseLabel: UILabel, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false

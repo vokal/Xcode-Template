@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for table view header/footers. Extend this for any custom classes, and
+ * override commonInit() to perform view setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseTableViewHeaderFooterView: UITableViewHeaderFooterView, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false

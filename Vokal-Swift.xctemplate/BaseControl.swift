@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for custom controls. Extend this for any custom control classes, and
+ * override commonInit() to perform setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseControl: UIControl, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false

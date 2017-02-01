@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for text fields. Extend this for any custom text fields, and
+ * override commonInit() to perform field setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseTextField: UITextField, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false

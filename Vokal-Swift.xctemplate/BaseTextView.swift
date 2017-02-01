@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for text views. Extend this for any custom text view classes, and
+ * override commonInit() to perform setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseTextView: UITextView, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false

@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * Base class for image views. Extend this for any custom image view classes, and
+ * override commonInit() to perform setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseImageView: UIImageView, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false

@@ -8,7 +8,10 @@
 
 import UIKit
 
-/// Facilitates setting up basic common initialization.
+/**
+ * Facilitates setting up basic common initialization.
+ * See BaseView for an example of implementing this protocol.
+ */
 protocol CommonInitializedView {
 
     /// Variable to track whether the one-time things are already set up.

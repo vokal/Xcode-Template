@@ -8,7 +8,11 @@
 
 import UIKit
 
-//// A simple UIView subclass to facilitate centralization
+/**
+ * Base class for generic views. Extend this for any custom view classes, and
+ * override commonInit() to perform view setup there.
+ * Make sure to call super.commonInit() in your implementation!
+ */
 class BaseView: UIView, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false
