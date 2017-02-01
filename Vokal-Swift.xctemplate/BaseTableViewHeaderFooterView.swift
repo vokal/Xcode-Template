@@ -12,6 +12,10 @@ class BaseTableViewHeaderFooterView: UITableViewHeaderFooterView, CommonInitiali
 
     var oneTimeThingsAreSetUp = false
 
+    class func defaultReuseIdentifier() -> String {
+        return String(describing: self)
+    }
+
     //MARK: - Setup functions which should be overridden
 
     func commonInit() {

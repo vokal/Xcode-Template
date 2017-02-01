@@ -12,13 +12,17 @@ class BaseTableViewCell: UITableViewCell, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false
 
+    class func defaultReuseIdentifier() -> String {
+        return String(describing: self)
+    }
+
     //MARK: - Setup functions which should be overridden
 
     func commonInit() {
         self.setupOneTimeThingsIfNeeded()
         // We almost never want the gray selection style. When other styles should be used, set the
         // style from code in the cell subclass.
-        self.selectionStyle = .None
+        self.selectionStyle = .none
     }
 
     func setupOneTimeThings() {
