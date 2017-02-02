@@ -1,4 +1,4 @@
-require 'fileutils'
+fastlane_require 'fileutils'
 
 default_platform :ios
 
@@ -17,6 +17,9 @@ platform :ios do
   # The name of the main scheme for building and testing the app. Must be a
   # shared scheme!
   main_scheme = '___PACKAGENAME___'
+
+  # Name to use for the keychain that's setup for match
+  keychain_name = '___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___VARIABLE_productName:RFC1034Identifier___.keychain'
 
   #########################
   # Pre-defined variables #
@@ -74,6 +77,9 @@ platform :ios do
     'Pods/*',
   ]
 
+  # Password to use for the temporary keychain that's setup for match
+  keychain_password = 'tempkeychainpassword'
+
   # TRAVIS NOTE: Any lane using an encrypted environment variable should only
   # be used on Travis after the pull request has been merged - otherwise those
   # variables will have empty data.
@@ -82,11 +88,9 @@ platform :ios do
   ## SETUP ##
   ###########
 
-  before_all do
-    # Set up the shared environment keychain name. This is used by fastlane internals as
-    # the keychain for signing certificates.
-    ENV['KEYCHAIN_NAME'] = 'fastlane_keychain'
-  end
+  # before_all do
+  #   # Put setup logic here
+  # end
 
   #############################
   ## TESTING & CODE COVERAGE ##
@@ -214,10 +218,7 @@ platform :ios do
   desc "Expects values for the following keys:"
   desc "prod_options_key: (optional) set to true to make the build point at production. Omit or set to false to make the build point at staging."
   private_lane :build_ad_hoc do |options|
-    # Handle signing/provisioning setup stuff. match is called twice here because weird problems
-    # arise when the development signing cert isn't installed.
-    match(type: "development")
-    match
+    run_match(type: "adhoc")
 
     # Figure out if the build should be pointed at prod or staging
     xcargs = ""
@@ -239,10 +240,7 @@ platform :ios do
   desc "Note: This will always create a build pointed at Production."
   desc "Note: Setup/teardown of the keychain should be handled outside this method."
   private_lane :build_itc do
-    # Handle signing/provisioning setup stuff. match is called twice here because weird problems
-    # arise when the development signing cert isn't installed.
-    match(type: "development")
-    match(type: "appstore")
+    run_match(type: "appstore")
 
     puts "------ BUILDING TESTFLIGHT/ITC FOR PRODUCTION SERVER -------"
 
@@ -251,6 +249,53 @@ platform :ios do
       xcargs_options_key: prod_server_arg,
       method_options_key: 'app-store',
     )
+  end
+
+
+  desc "Run match to fetch signing certificate and provisioning profile."
+  desc "Expects values for the following keys:"
+  desc "type: Provisioning profile type to pass to match (appstore, development, or adhoc) as a string"
+  private_lane :run_match do |options|
+    if !options.key?(:type)
+      raise "Need a provisioning profile type to match!"
+      return
+    end
+
+    # match is called twice here—once for development, and again for the actual distribution type—
+    # because weird problems arise when the development signing cert isn't installed.
+    distribution_methods = ["development", options[:type]]
+
+    if is_ci
+      # Due to changes in macOS Sierra, we need to create a keychain on Travis per:
+      #   https://docs.travis-ci.com/user/common-build-problems/#FastlaneOnly.
+      # Only create this keychain on Travis so it does not make any unwanted changes to your local keychain if
+      # running Fastlane locally.
+      create_keychain(
+        name: keychain_name,
+        password: keychain_password,
+        default_keychain: false,
+        unlock: true,
+        timeout: 3600,
+        add_to_search_list: true,
+      )
+
+      distribution_methods.each do |distribution_method|
+        match(
+          type: distribution_method,
+          keychain_name: keychain_name,
+          keychain_password: keychain_password,
+          readonly: true,
+        )
+      end
+    else
+      # NOT running on Travis: don't specify a keychain
+      distribution_methods.each do |distribution_method|
+        match(
+          type: distribution_method,
+          readonly: true,
+        )
+      end
+    end
   end
 
   ##################
