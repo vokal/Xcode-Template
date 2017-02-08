@@ -18,6 +18,11 @@
 
 @implementation ___VARIABLE_classPrefix___BaseTableViewCell
 
++ (NSString *)defaultReuseIdentifier
+{
+    return NSStringFromClass(self);
+}
+
 - (void)commonInit
 {
     [self setupOneTimeThingsIfNeeded];

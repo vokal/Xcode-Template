@@ -11,4 +11,9 @@
 
 @interface ___VARIABLE_classPrefix___BaseTableViewHeaderFooterView : UITableViewHeaderFooterView <___VARIABLE_classPrefix___CommonInitializedView>
 
+/**
+ * Default reuse identitifer to use for this view type. Returns the class name.
+ */
++ (NSString *)defaultReuseIdentifier;
+
 @end

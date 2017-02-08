@@ -11,4 +11,9 @@
 
 @interface ___VARIABLE_classPrefix___BaseCollectionViewCell : UICollectionViewCell <___VARIABLE_classPrefix___CommonInitializedView>
 
+/**
+ * Default reuse identitifer to use for this cell type. Returns the class name.
+ */
++ (NSString *)defaultReuseIdentifier;
+
 @end
