@@ -79,7 +79,6 @@
 		<string>View Controllers/___VARIABLE_classPrefix___ViewController.m</string>
 		<string>Scripts/Objective_Clean_Run_Script.sh</string>
 		<string>Protocols/___VARIABLE_classPrefix___CommonInitializedView.h</string>
-		<string>Protocols/___VARIABLE_classPrefix___CommonInitializedView.m</string>
 		<string>Controls/Base/___VARIABLE_classPrefix___BaseControl.h</string>
 		<string>Controls/Base/___VARIABLE_classPrefix___BaseControl.m</string>
 		<string>Controls/Base/___VARIABLE_classPrefix___BaseButton.h</string>
@@ -196,13 +195,6 @@
 		<dict>
 			<key>Path</key>
 			<string>___VARIABLE_classPrefix___CommonInitializedView.h</string>
-			<key>Group</key>
-			<string>Protocols</string>
-		</dict>
-		<key>Protocols/___VARIABLE_classPrefix___CommonInitializedView.m</key>
-		<dict>
-			<key>Path</key>
-			<string>___VARIABLE_classPrefix___CommonInitializedView.m</string>
 			<key>Group</key>
 			<string>Protocols</string>
 		</dict>
