@@ -12,7 +12,7 @@
 
 @interface ___VARIABLE_classPrefix___BaseTextField ()
 
-@property BOOL oneTimeThingsAreSetUp;
+@property (nonatomic, readwrite) BOOL oneTimeThingsAreSetUp;
 
 @end
 

@@ -12,7 +12,7 @@
 
 @interface ___VARIABLE_classPrefix___BaseLabel ()
 
-@property BOOL oneTimeThingsAreSetUp;
+@property (nonatomic, readwrite) BOOL oneTimeThingsAreSetUp;
 
 @end
 

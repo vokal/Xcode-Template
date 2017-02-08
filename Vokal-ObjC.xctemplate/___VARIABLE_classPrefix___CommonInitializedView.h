@@ -10,7 +10,7 @@
 
 @protocol ___VARIABLE_classPrefix___CommonInitializedView <NSObject>
 
-@property (readonly) BOOL oneTimeThingsAreSetUp;
+@property (nonatomic, readonly) BOOL oneTimeThingsAreSetUp;
 
 /**
  * The common initialization function which gets called from any initializer
