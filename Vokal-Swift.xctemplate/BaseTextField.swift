@@ -17,7 +17,7 @@ class BaseTextField: UITextField, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false
 
-    //MARK: - Setup functions which should be overridden
+    // MARK: - Setup functions which should be overridden
 
     func commonInit() {
         self.setupOneTimeThingsIfNeeded()
@@ -27,7 +27,7 @@ class BaseTextField: UITextField, CommonInitializedView {
         self.oneTimeThingsAreSetUp = true
     }
 
-    //MARK: - Initialization
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +38,7 @@ class BaseTextField: UITextField, CommonInitializedView {
         super.init(coder: aDecoder)
     }
 
-    //MARK: - Interface Builder
+    // MARK: - Interface Builder
 
     override func awakeFromNib() {
         super.awakeFromNib()

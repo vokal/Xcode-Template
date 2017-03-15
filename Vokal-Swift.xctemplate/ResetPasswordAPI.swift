@@ -13,7 +13,7 @@ import Foundation
  */
 struct ResetPasswordAPI {
     
-    //MARK: - Reset Password Enums
+    // MARK: - Reset Password Enums
     
     private enum JSONKey: String {
         case
@@ -34,7 +34,7 @@ struct ResetPasswordAPI {
             .requestHeaders(withAuthToken: false)
     }
 
-    //MARK: - Reset Password Methods
+    // MARK: - Reset Password Methods
     
     /**
      Requests a password reset for a given email address. If the email exists, this will trigger

@@ -19,7 +19,7 @@ import Vokoder
  */
 struct CoreDataUtility {
     
-    //MARK: - Setup consolidation methods
+    // MARK: - Setup consolidation methods
     
     /**
      Performs initial setup of the core data stack to use an in-memory store
@@ -53,7 +53,7 @@ struct CoreDataUtility {
         self.setupCoreDataForTesting()
     }
     
-    //MARK: - Private helper methods
+    // MARK: - Private helper methods
     
     private static func nukeCoreData() {
         VOKCoreDataManager.sharedInstance().resetCoreData()

@@ -19,7 +19,7 @@ class UserAPITests: XCTestCase {
     let InvalidLoginPassword = "nooooope"
     let MockLoginToken = "AFakeTokenForTesting"
     
-    //MARK: - Test Lifecycle
+    // MARK: - Test Lifecycle
     
     override static func setUp() {
         super.setUp()
@@ -35,7 +35,7 @@ class UserAPITests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Login tests
+    // MARK: - Login tests
     
     func testSuccessfulEmailLogin() {
         //GIVEN: Using mock data and an async method

@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Completion Closures and type aliases
+// MARK: - Completion Closures and type aliases
 
 typealias APIDictionary = [String: Any]
 typealias APIArray = [Any]
@@ -29,7 +29,7 @@ typealias APIArrayCompletion = (APIArray) -> Void
 // Completion closure for API requests that return 204 No Content
 typealias APIEmptyResponseCompletion = (NSNull) -> Void
 
-//MARK: - Header enums
+// MARK: - Header enums
 
 enum HTTPHeaderKey: String {
     case
@@ -41,7 +41,7 @@ enum HTTPHeaderValue {
     token(token: String)
 }
 
-//MARK: Version Handling
+// MARK: Version Handling
 
 enum APIVersion: String {
     case
@@ -90,7 +90,7 @@ extension APIVersionable {
     }
 }
 
-//MARK: - Actual API Utility
+// MARK: - Actual API Utility
 
 /*
  The main API utility is a chokepoint for all outgoing API calls.
@@ -103,14 +103,14 @@ extension APIVersionable {
  */
 class MainAPIUtility {
     
-    //MARK: - Variables
+    // MARK: - Variables
     
     /// Singleton instance
     static let sharedUtility = MainAPIUtility()
     
     let shouldDebugPrintInfo = true
     
-    //MARK: - Header helper functions
+    // MARK: - Header helper functions
     
     /**
      - parameter requireToken: true if a token is required for this request, false if not.
@@ -150,7 +150,7 @@ class MainAPIUtility {
         return headerStrings
     }
     
-    //MARK: - Methods expecting a dictionary on success
+    // MARK: - Methods expecting a dictionary on success
     
     func postUserJSON(to path: String,
                       headers: [HTTPHeaderKey: HTTPHeaderValue],
@@ -240,7 +240,7 @@ class MainAPIUtility {
         }
     }
     
-    //MARK: Common handler for API responses
+    // MARK: Common handler for API responses
 
     private func handle<T>(response: DataResponse<Any>,
                         success: @escaping APISuccessCompletion<T>,

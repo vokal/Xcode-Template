@@ -13,7 +13,7 @@ class APICompletionTests: XCTestCase {
     
     let StandardTestTimeout = 3.0
     
-    //MARK: - Test Lifecycle
+    // MARK: - Test Lifecycle
     
     override static func setUp() {
         super.setUp()
@@ -29,7 +29,7 @@ class APICompletionTests: XCTestCase {
         super.tearDown()
     }
 
-    //MARK: - Test generic closures in API completion
+    // MARK: - Test generic closures in API completion
 
     func testDictionaryFetch() {
         //GIVEN: Using mock data and an async method

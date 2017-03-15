@@ -13,9 +13,9 @@ import Foundation
  */
 struct UserAPI {
     
-    //MARK: - User Key Enums
+    // MARK: - User Key Enums
     
-    //MARK: - User Key Enums
+    // MARK: - User Key Enums
     
     private enum POSTPath: String, APIVersionable {
         case
@@ -47,7 +47,7 @@ struct UserAPI {
         static let PushNotificationToken = JSONKey.Token
     }
     
-    //MARK: - Login/Register
+    // MARK: - Login/Register
     
     /**
      Registers a new user with the given information.
@@ -140,7 +140,7 @@ struct UserAPI {
                           failure: failure)
     }
     
-    //MARK: - Current User
+    // MARK: - Current User
     
     /**
      Fetches information about the current, logged in user.
@@ -190,7 +190,7 @@ struct UserAPI {
                       failure: failure)
     }
     
-    //MARK: - Other Users
+    // MARK: - Other Users
     
     /**
      Fetches information about a specific user.
@@ -213,7 +213,7 @@ struct UserAPI {
                      failure: failure)
     }
     
-    //MARK: - Private Helper Methods
+    // MARK: - Private Helper Methods
     
     private static func requestHeaders(withAuthToken requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         return MainAPIUtility

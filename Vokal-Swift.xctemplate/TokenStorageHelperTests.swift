@@ -16,7 +16,7 @@ class TokenStorageHelperTests: XCTestCase {
     let testEmail = "iamatest@example.com"
     let testToken = "SomeSuperLongGibberishFromTheServer"
     
-    //MARK: - Test Lifecycle
+    // MARK: - Test Lifecycle
     
     override func tearDown() {
         TokenStorageHelper.nukeAuthorizationToken()
