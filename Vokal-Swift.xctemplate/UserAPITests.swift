@@ -68,15 +68,13 @@ class UserAPITests: XCTestCase {
                         
                         expectation.fulfill()
         })
-        
-        
+
         self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
     func testWrongPasswordEmailLogin() {
         //GIVEN: Using mock data and an async method
         let expectation = self.expectation(description: "Wrong password login")
-        
         
         //WHEN: User logs in with the wrong password
         UserAPI.login(withEmail: ValidLoginEmail,
