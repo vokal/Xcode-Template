@@ -63,7 +63,7 @@ struct UserAPI {
                          failure: @escaping APIFailureCompletion) {
         let parameters = [
             JSONKey.Email.rawValue: email,
-            JSONKey.Password.rawValue: password
+            JSONKey.Password.rawValue: password,
         ]
         
         let registerPath = POSTPath.Register.path(forVersion: .v1)
@@ -93,7 +93,7 @@ struct UserAPI {
                       failure: @escaping APIFailureCompletion) {
         let parameters = [
             JSONKey.Email.rawValue: email,
-            JSONKey.Password.rawValue: password
+            JSONKey.Password.rawValue: password,
         ]
         
         let loginPath = POSTPath.Login.path(forVersion: .v1)
@@ -124,7 +124,7 @@ struct UserAPI {
         
         let parameters = [
             JSONKey.FacebookID.rawValue: facebookID,
-            JSONKey.FacebookToken.rawValue: facebookToken
+            JSONKey.FacebookToken.rawValue: facebookToken,
         ]
         
         let fbLoginRegisterPath = POSTPath.FacebookLoginRegister.path(forVersion: .v1)
@@ -175,7 +175,7 @@ struct UserAPI {
                                                     failure: @escaping APIFailureCompletion) {
 
         let parameters = [
-            JSONKey.PushNotificationToken.rawValue: deviceToken
+            JSONKey.PushNotificationToken.rawValue: deviceToken,
         ]
         
         let registerDeviceTokenPath = POSTPath.NotificationRegister.path(forVersion: .v1)

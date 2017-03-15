@@ -50,7 +50,7 @@ struct ResetPasswordAPI {
                                      success: @escaping APIDictionaryCompletion,
                                      failure: @escaping APIFailureCompletion) {
         let parameters = [
-            JSONKey.RequestEmail.rawValue: email
+            JSONKey.RequestEmail.rawValue: email,
         ]
         
         let resetPasswordRequestPath = PasswordResetPath.Request.path(forVersion: .v1)
@@ -79,7 +79,7 @@ struct ResetPasswordAPI {
         
         let parameters = [
             JSONKey.ResetCode.rawValue: code,
-            JSONKey.UpdatedPassword.rawValue: updatedPassword
+            JSONKey.UpdatedPassword.rawValue: updatedPassword,
         ]
         let resetPasswordPath = PasswordResetPath.Confirm.path(forVersion: .v1)
         
