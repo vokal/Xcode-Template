@@ -38,7 +38,7 @@ class APICompletionTests: XCTestCase {
         //WHEN: Requesting a URL that should return a dictionary
         MainAPIUtility.sharedUtility.getJSON(from: "fetchDictionary",
                                              headers: [:],
-                                             success: { (result: APIDictionary) in
+                                             success: { (_ result: APIDictionary) in
                                                 //THEN: the result data type is dictionary as expected
                                                 expectation.fulfill()
         }, failure: { error in
@@ -56,7 +56,7 @@ class APICompletionTests: XCTestCase {
         //WHEN: Requesting a URL that should return an array
         MainAPIUtility.sharedUtility.getJSON(from: "fetchArray",
                                              headers: [:],
-                                             success: { (result: APIArray) in
+                                             success: { (_ result: APIArray) in
                                                 //THEN: the result data type is array as expected
                                                 expectation.fulfill()
         }, failure: { error in
@@ -74,7 +74,7 @@ class APICompletionTests: XCTestCase {
         //WHEN: Requesting a URL that should return an array
         MainAPIUtility.sharedUtility.getJSON(from: "failArray",
                                              headers: [:],
-                                             success: { (result: APIArray) in
+                                             success: { (_ result: APIArray) in
                                                 XCTFail("This should fail: mock data does not contain an array")
                                                 expectation.fulfill()
         }, failure: { error in
@@ -100,7 +100,7 @@ class APICompletionTests: XCTestCase {
         //WHEN: Requesting a URL that should return a dictionary
         MainAPIUtility.sharedUtility.getJSON(from: "failDictionary",
                                              headers: [:],
-                                             success: { (result: APIDictionary) in
+                                             success: { (_ result: APIDictionary) in
                                                 XCTFail("This should fail: mock data does not contain a dictionary")
                                                 expectation.fulfill()
         }, failure: { error in
@@ -127,7 +127,7 @@ class APICompletionTests: XCTestCase {
         MainAPIUtility.sharedUtility.postJSON(to: "emptyResponse",
                                               headers: [:],
                                               params: fakeParams,
-                                              success: { (result: NSNull) in
+                                              success: { (_ result: NSNull) in
                                                 //THEN: the result data type is null as expected
                                                 expectation.fulfill()
         }, failure: { error in
