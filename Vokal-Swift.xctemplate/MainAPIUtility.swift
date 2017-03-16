@@ -170,10 +170,7 @@ class MainAPIUtility {
                      encoding: JSONEncoding.default,
                      headers: headerStrings)
             .validate()
-            .responseJSON {
-                [weak self]
-                response in
-                
+            .responseJSON { [weak self] response in
                 if response.result.isSuccess {
                     if let dict = response.result.value as? APIDictionary,
                         let token = dict["token"] as? String {
@@ -204,10 +201,7 @@ class MainAPIUtility {
                      encoding: URLEncoding.default,
                      headers: headerStrings)
             .validate()
-            .responseJSON {
-                [weak self]
-                response in
-                
+            .responseJSON { [weak self] response in
                 self?.handle(response: response,
                              success: success,
                              failure: failure)
@@ -231,9 +225,7 @@ class MainAPIUtility {
                      encoding: JSONEncoding.default,
                      headers: headerStrings)
             .validate()
-            .responseJSON {
-                [weak self]
-                response in
+            .responseJSON { [weak self] response in
                 self?.handle(response: response,
                              success: success,
                              failure: failure)
