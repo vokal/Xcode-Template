@@ -24,7 +24,7 @@ enum ServerEnvironment {
         return staging
     }
     
-    //MARK: Main Application API
+    // MARK: - Main Application API
     
     static func fullURLString(for path: String) -> String {
         return CurrentEnvironment.apiBaseURLString + "/" + path
@@ -39,7 +39,7 @@ enum ServerEnvironment {
         }
     }
     
-    //MARK: Application Website
+    // MARK: - Application Website
     
     var websiteBaseURLString: String {
         switch self {

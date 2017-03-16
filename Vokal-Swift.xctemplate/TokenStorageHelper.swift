@@ -14,14 +14,14 @@ import SwiftKeychainWrapper
  */
 struct TokenStorageHelper {
     
-    //MARK: - Keychain enums
+    // MARK: - Keychain enums
     
     private enum KeychainKey: String {
         case
         Username = "___PACKAGENAME___.keychain.username"
     }
     
-    //MARK: - Authorization methods
+    // MARK: - Authorization methods
     
     /**
      Stores the authorization token for a given user's email in the keychain.

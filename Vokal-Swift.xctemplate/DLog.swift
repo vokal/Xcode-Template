@@ -23,14 +23,14 @@ Note: The message is the only required variable for any of these.
 - parameter message:  The message you wish to log out.
 */
 func DLog(_ message: @autoclosure () -> String,
-    filename: String = #file,
-    function: String = #function,
-    line: Int = #line) {
-        #if DEBUG
-            detailedLog(message(), filename, function, line)
-        #else
-            //Do nothing out of debug mode
-        #endif
+          filename: String = #file,
+          function: String = #function,
+          line: Int = #line) {
+    #if DEBUG
+        detailedLog(message(), filename, function, line)
+    #else
+        //Do nothing out of debug mode
+    #endif
 }
 
 /**
@@ -39,9 +39,9 @@ A detailed log statement which will always print.
 - parameter message:  The message you wish to log out.
 */
 func ALog(_ message: @autoclosure () -> String,
-    filename: String = #file,
-    function: String = #function,
-    line: Int = #line) {
+          filename: String = #file,
+          function: String = #function,
+          line: Int = #line) {
     detailedLog(message(), filename, function, line)
 }
 
@@ -53,7 +53,10 @@ Centralizes the detailed message formatting into a single method.
 - parameter function: The function of the original caller
 - parameter line:     the line number of the original caller.
 */
-private func detailedLog(_ message: String, _ filename: String, _ function: String, _ line: Int) {
+private func detailedLog(_ message: String,
+                         _ filename: String,
+                         _ function: String,
+                         _ line: Int) {
     print("[\(filename.dlog_lastPathComponent()):\(line)] \(function) - \(message)")
 }
 

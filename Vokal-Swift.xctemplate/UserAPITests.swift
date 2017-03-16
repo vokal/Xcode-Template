@@ -19,7 +19,7 @@ class UserAPITests: XCTestCase {
     let InvalidLoginPassword = "nooooope"
     let MockLoginToken = "AFakeTokenForTesting"
     
-    //MARK: - Test Lifecycle
+    // MARK: - Test Lifecycle
     
     override static func setUp() {
         super.setUp()
@@ -35,7 +35,7 @@ class UserAPITests: XCTestCase {
         super.tearDown()
     }
     
-    //MARK: - Login tests
+    // MARK: - Login tests
     
     func testSuccessfulEmailLogin() {
         //GIVEN: Using mock data and an async method
@@ -44,8 +44,7 @@ class UserAPITests: XCTestCase {
         //WHEN: User logs in with valid credentials
         UserAPI.login(withEmail: ValidLoginEmail,
                       password: ValidLoginPassword,
-                      success: {
-                        resultDict in
+                      success: { resultDict in
                         //THEN: The call should succeed and the token should match the mock token.
                         if let token = resultDict["token"] as? String {
                             XCTAssertEqual(token, self.MockLoginToken)
@@ -62,14 +61,12 @@ class UserAPITests: XCTestCase {
                         
                         expectation.fulfill()
         },
-                      failure: {
-                        error in
+                      failure: { error in
                         XCTFail("Failure block hit with error \(error)")
                         
                         expectation.fulfill()
         })
-        
-        
+
         self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
@@ -77,17 +74,14 @@ class UserAPITests: XCTestCase {
         //GIVEN: Using mock data and an async method
         let expectation = self.expectation(description: "Wrong password login")
         
-        
         //WHEN: User logs in with the wrong password
         UserAPI.login(withEmail: ValidLoginEmail,
                       password: InvalidLoginPassword,
-                      success: {
-                        _ in
+                      success: { _ in
                         XCTFail("This shouldn't have worked!")
                         expectation.fulfill()
         },
-                      failure: {
-                        error in
+                      failure: { error in
                         //THEN: The call should fail with a 401 Unauthorized error
                         switch error {
                         case NetworkError.unauthorized:
@@ -110,13 +104,11 @@ class UserAPITests: XCTestCase {
         //WHEN: User logs in with nonexistent account
         UserAPI.login(withEmail: NoAccountLoginEmail,
                       password: ValidLoginPassword,
-                      success: {
-                        _ in
+                      success: { _ in
                         XCTFail("This shouldn't have worked!")
                         expectation.fulfill()
         },
-                      failure: {
-                        error in
+                      failure: { error in
                         //THEN: The call should fail with a 400 bad request error
                         switch error {
                         case NetworkError.badRequest:

@@ -18,6 +18,9 @@ opt_in_rules:
 force_unwrapping:
   severity: error
 
+trailing_comma:
+  mandatory_comma: true
+
 excluded:
   - Pods
   - ___PACKAGENAME___/CoreDataAndModels/private

@@ -13,9 +13,9 @@ import Foundation
  */
 struct UserAPI {
     
-    //MARK: - User Key Enums
+    // MARK: - User Key Enums
     
-    //MARK: - User Key Enums
+    // MARK: - User Key Enums
     
     private enum POSTPath: String, APIVersionable {
         case
@@ -47,7 +47,7 @@ struct UserAPI {
         static let PushNotificationToken = JSONKey.Token
     }
     
-    //MARK: - Login/Register
+    // MARK: - Login/Register
     
     /**
      Registers a new user with the given information.
@@ -63,7 +63,7 @@ struct UserAPI {
                          failure: @escaping APIFailureCompletion) {
         let parameters = [
             JSONKey.Email.rawValue: email,
-            JSONKey.Password.rawValue: password
+            JSONKey.Password.rawValue: password,
         ]
         
         let registerPath = POSTPath.Register.path(forVersion: .v1)
@@ -93,7 +93,7 @@ struct UserAPI {
                       failure: @escaping APIFailureCompletion) {
         let parameters = [
             JSONKey.Email.rawValue: email,
-            JSONKey.Password.rawValue: password
+            JSONKey.Password.rawValue: password,
         ]
         
         let loginPath = POSTPath.Login.path(forVersion: .v1)
@@ -124,7 +124,7 @@ struct UserAPI {
         
         let parameters = [
             JSONKey.FacebookID.rawValue: facebookID,
-            JSONKey.FacebookToken.rawValue: facebookToken
+            JSONKey.FacebookToken.rawValue: facebookToken,
         ]
         
         let fbLoginRegisterPath = POSTPath.FacebookLoginRegister.path(forVersion: .v1)
@@ -140,7 +140,7 @@ struct UserAPI {
                           failure: failure)
     }
     
-    //MARK: - Current User
+    // MARK: - Current User
     
     /**
      Fetches information about the current, logged in user.
@@ -175,7 +175,7 @@ struct UserAPI {
                                                     failure: @escaping APIFailureCompletion) {
 
         let parameters = [
-            JSONKey.PushNotificationToken.rawValue: deviceToken
+            JSONKey.PushNotificationToken.rawValue: deviceToken,
         ]
         
         let registerDeviceTokenPath = POSTPath.NotificationRegister.path(forVersion: .v1)
@@ -190,7 +190,7 @@ struct UserAPI {
                       failure: failure)
     }
     
-    //MARK: - Other Users
+    // MARK: - Other Users
     
     /**
      Fetches information about a specific user.
@@ -213,7 +213,7 @@ struct UserAPI {
                      failure: failure)
     }
     
-    //MARK: - Private Helper Methods
+    // MARK: - Private Helper Methods
     
     private static func requestHeaders(withAuthToken requiresToken: Bool) -> [HTTPHeaderKey: HTTPHeaderValue] {
         return MainAPIUtility

@@ -17,7 +17,7 @@ class BaseTableViewHeaderFooterView: UITableViewHeaderFooterView, CommonInitiali
 
     var oneTimeThingsAreSetUp = false
 
-    //MARK: - Setup functions which should be overridden
+    // MARK: - Setup functions which should be overridden
 
     func commonInit() {
         self.setupOneTimeThingsIfNeeded()
@@ -27,7 +27,7 @@ class BaseTableViewHeaderFooterView: UITableViewHeaderFooterView, CommonInitiali
         self.oneTimeThingsAreSetUp = true
     }
 
-    //MARK: - Initialization
+    // MARK: - Initialization
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,7 +38,7 @@ class BaseTableViewHeaderFooterView: UITableViewHeaderFooterView, CommonInitiali
         self.commonInit()
     }
 
-    //MARK: - Interface Builder
+    // MARK: - Interface Builder
 
     override func awakeFromNib() {
         super.awakeFromNib()

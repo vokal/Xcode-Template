@@ -17,7 +17,7 @@ class BaseCollectionViewCell: UICollectionViewCell, CommonInitializedView {
     
     var oneTimeThingsAreSetUp = false
     
-    //MARK: - Setup functions which should be overridden
+    // MARK: - Setup functions which should be overridden
     
     func commonInit() {
         self.setupOneTimeThingsIfNeeded()
@@ -27,13 +27,13 @@ class BaseCollectionViewCell: UICollectionViewCell, CommonInitializedView {
         self.oneTimeThingsAreSetUp = true
     }
     
-    //MARK: - Initialization
+    // MARK: - Initialization
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    //MARK: - Interface Builder
+    // MARK: - Interface Builder
     
     override func awakeFromNib() {
         super.awakeFromNib()

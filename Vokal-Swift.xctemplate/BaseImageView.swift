@@ -17,7 +17,7 @@ class BaseImageView: UIImageView, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false
 
-    //MARK: - Setup functions which should be overridden
+    // MARK: - Setup functions which should be overridden
 
     func commonInit() {
         self.setupOneTimeThingsIfNeeded()
@@ -27,7 +27,7 @@ class BaseImageView: UIImageView, CommonInitializedView {
         self.oneTimeThingsAreSetUp = true
     }
 
-    //MARK: - Initialization
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,7 +43,7 @@ class BaseImageView: UIImageView, CommonInitializedView {
         super.init(coder: aDecoder)
     }
 
-    //MARK: - Interface Builder
+    // MARK: - Interface Builder
 
     override func awakeFromNib() {
         super.awakeFromNib()

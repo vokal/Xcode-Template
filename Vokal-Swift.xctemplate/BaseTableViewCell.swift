@@ -17,7 +17,7 @@ class BaseTableViewCell: UITableViewCell, CommonInitializedView {
 
     var oneTimeThingsAreSetUp = false
 
-    //MARK: - Setup functions which should be overridden
+    // MARK: - Setup functions which should be overridden
 
     func commonInit() {
         self.setupOneTimeThingsIfNeeded()
@@ -30,7 +30,7 @@ class BaseTableViewCell: UITableViewCell, CommonInitializedView {
         self.oneTimeThingsAreSetUp = true
     }
 
-    //MARK: - Initialization
+    // MARK: - Initialization
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,7 +41,7 @@ class BaseTableViewCell: UITableViewCell, CommonInitializedView {
         self.commonInit()
     }
 
-    //MARK: - Interface Builder
+    // MARK: - Interface Builder
 
     override func awakeFromNib() {
         super.awakeFromNib()

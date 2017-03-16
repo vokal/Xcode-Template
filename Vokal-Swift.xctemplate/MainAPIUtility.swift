@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-//MARK: - Completion Closures and type aliases
+// MARK: - Completion Closures and type aliases
 
 typealias APIDictionary = [String: Any]
 typealias APIArray = [Any]
@@ -29,7 +29,7 @@ typealias APIArrayCompletion = (APIArray) -> Void
 // Completion closure for API requests that return 204 No Content
 typealias APIEmptyResponseCompletion = (NSNull) -> Void
 
-//MARK: - Header enums
+// MARK: - Header enums
 
 enum HTTPHeaderKey: String {
     case
@@ -41,7 +41,7 @@ enum HTTPHeaderValue {
     token(token: String)
 }
 
-//MARK: Version Handling
+// MARK: Version Handling
 
 enum APIVersion: String {
     case
@@ -90,7 +90,7 @@ extension APIVersionable {
     }
 }
 
-//MARK: - Actual API Utility
+// MARK: - Actual API Utility
 
 /*
  The main API utility is a chokepoint for all outgoing API calls.
@@ -103,14 +103,14 @@ extension APIVersionable {
  */
 class MainAPIUtility {
     
-    //MARK: - Variables
+    // MARK: - Variables
     
     /// Singleton instance
     static let sharedUtility = MainAPIUtility()
     
     let shouldDebugPrintInfo = true
     
-    //MARK: - Header helper functions
+    // MARK: - Header helper functions
     
     /**
      - parameter requireToken: true if a token is required for this request, false if not.
@@ -150,7 +150,7 @@ class MainAPIUtility {
         return headerStrings
     }
     
-    //MARK: - Methods expecting a dictionary on success
+    // MARK: - Methods expecting a dictionary on success
     
     func postUserJSON(to path: String,
                       headers: [HTTPHeaderKey: HTTPHeaderValue],
@@ -170,10 +170,7 @@ class MainAPIUtility {
                      encoding: JSONEncoding.default,
                      headers: headerStrings)
             .validate()
-            .responseJSON {
-                [weak self]
-                response in
-                
+            .responseJSON { [weak self] response in
                 if response.result.isSuccess {
                     if let dict = response.result.value as? APIDictionary,
                         let token = dict["token"] as? String {
@@ -188,10 +185,10 @@ class MainAPIUtility {
     }
     
     func getJSON<T>(from path: String,
-                 headers: [HTTPHeaderKey: HTTPHeaderValue],
-                 params: APIDictionary? = nil,
-                 success: @escaping APISuccessCompletion<T>,
-                 failure: @escaping APIFailureCompletion) {
+                    headers: [HTTPHeaderKey: HTTPHeaderValue],
+                    params: APIDictionary? = nil,
+                    success: @escaping APISuccessCompletion<T>,
+                    failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
         let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
@@ -204,10 +201,7 @@ class MainAPIUtility {
                      encoding: URLEncoding.default,
                      headers: headerStrings)
             .validate()
-            .responseJSON {
-                [weak self]
-                response in
-                
+            .responseJSON { [weak self] response in
                 self?.handle(response: response,
                              success: success,
                              failure: failure)
@@ -215,10 +209,10 @@ class MainAPIUtility {
     }
     
     func postJSON<T>(to path: String,
-                  headers: [HTTPHeaderKey: HTTPHeaderValue],
-                  params: APIDictionary,
-                  success: @escaping APISuccessCompletion<T>,
-                  failure: @escaping APIFailureCompletion) {
+                     headers: [HTTPHeaderKey: HTTPHeaderValue],
+                     params: APIDictionary,
+                     success: @escaping APISuccessCompletion<T>,
+                     failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
         let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
@@ -231,20 +225,18 @@ class MainAPIUtility {
                      encoding: JSONEncoding.default,
                      headers: headerStrings)
             .validate()
-            .responseJSON {
-                [weak self]
-                response in
+            .responseJSON { [weak self] response in
                 self?.handle(response: response,
                              success: success,
                              failure: failure)
         }
     }
     
-    //MARK: Common handler for API responses
+    // MARK: Common handler for API responses
 
     private func handle<T>(response: DataResponse<Any>,
-                        success: @escaping APISuccessCompletion<T>,
-                        failure: @escaping APIFailureCompletion) {
+                           success: @escaping APISuccessCompletion<T>,
+                           failure: @escaping APIFailureCompletion) {
         
         if shouldDebugPrintInfo {
             debugPrint(response)
