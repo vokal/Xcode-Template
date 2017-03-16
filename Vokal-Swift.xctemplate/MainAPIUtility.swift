@@ -185,10 +185,10 @@ class MainAPIUtility {
     }
     
     func getJSON<T>(from path: String,
-                 headers: [HTTPHeaderKey: HTTPHeaderValue],
-                 params: APIDictionary? = nil,
-                 success: @escaping APISuccessCompletion<T>,
-                 failure: @escaping APIFailureCompletion) {
+                    headers: [HTTPHeaderKey: HTTPHeaderValue],
+                    params: APIDictionary? = nil,
+                    success: @escaping APISuccessCompletion<T>,
+                    failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
         let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
@@ -209,10 +209,10 @@ class MainAPIUtility {
     }
     
     func postJSON<T>(to path: String,
-                  headers: [HTTPHeaderKey: HTTPHeaderValue],
-                  params: APIDictionary,
-                  success: @escaping APISuccessCompletion<T>,
-                  failure: @escaping APIFailureCompletion) {
+                     headers: [HTTPHeaderKey: HTTPHeaderValue],
+                     params: APIDictionary,
+                     success: @escaping APISuccessCompletion<T>,
+                     failure: @escaping APIFailureCompletion) {
         
         let fullURLString = ServerEnvironment.fullURLString(for: path)
         let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
@@ -235,8 +235,8 @@ class MainAPIUtility {
     // MARK: Common handler for API responses
 
     private func handle<T>(response: DataResponse<Any>,
-                        success: @escaping APISuccessCompletion<T>,
-                        failure: @escaping APIFailureCompletion) {
+                           success: @escaping APISuccessCompletion<T>,
+                           failure: @escaping APIFailureCompletion) {
         
         if shouldDebugPrintInfo {
             debugPrint(response)
