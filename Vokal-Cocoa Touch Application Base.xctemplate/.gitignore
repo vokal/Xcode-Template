@@ -38,7 +38,3 @@ fastlane/local_config.sh
 fastlane/test_output
 fastlane/Provisioning
 fastlane/Build
-
-# SwiftLint - To save space, this will ignore the uncompressed swiftlint files but not the portable_swiftlint.zip file.
-swiftlint/SwiftLintFramework.framework
-swiftlint/swiftlint
