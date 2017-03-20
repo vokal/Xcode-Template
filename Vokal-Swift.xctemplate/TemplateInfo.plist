@@ -130,8 +130,8 @@
 		<key>../Podfile:swiftbasics</key>
 		<string>    use_frameworks!
 
-    pod &apos;R.swift&apos;, &apos;~> 3.1&apos;
-		</string>
+    pod &apos;R.swift&apos;, &apos;~&gt; 3.1&apos;
+    pod &apos;SwiftLint&apos;</string>
 		<key>Extensions/ReuseIdentifiable.swift</key>
 		<dict>
 			<key>Group</key>
