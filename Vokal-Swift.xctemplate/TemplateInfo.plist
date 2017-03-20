@@ -92,7 +92,7 @@
 					<key>ShellPath</key>
 					<string>/bin/bash</string>
 					<key>ShellScript</key>
-					<string>&quot;${SRCROOT}/___PACKAGENAME___/Scripts/SwiftLint_Run_Script.sh&quot;</string>
+					<string>&quot;${PODS_ROOT}/SwiftLint/swiftlint&quot;</string>
 				</dict>
 			</array>
 		</dict>
@@ -120,8 +120,6 @@
 		<string>../Podfile:swiftbasics</string>
 		<string>Utilities/DLog.swift</string>
 		<string>../.swiftlint.yml</string>
-		<string>Scripts/SwiftLint_Run_Script.sh</string>
-		<string>../swiftlint/portable_swiftlint.zip</string>
 		<string>Scripts/Swift_Warning_Run_Script.sh</string>
 		<string>Scripts/R.swift.sh</string>
 	</array>
@@ -288,20 +286,6 @@
 		<dict>
 			<key>Path</key>
 			<string>.swiftlint.yml</string>
-			<key>Group</key>
-			<string>Non-iOS Resources</string>
-		</dict>
-		<key>Scripts/SwiftLint_Run_Script.sh</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts/SwiftLint_Run_Script.sh</string>
-			<key>Group</key>
-			<string>Scripts</string>
-		</dict>
-		<key>../swiftlint/portable_swiftlint.zip</key>
-		<dict>
-			<key>Path</key>
-			<string>swiftlint/portable_swiftlint.zip</string>
 			<key>Group</key>
 			<string>Non-iOS Resources</string>
 		</dict>
