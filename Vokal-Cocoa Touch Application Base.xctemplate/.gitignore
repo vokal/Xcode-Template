@@ -38,3 +38,4 @@ fastlane/local_config.sh
 fastlane/test_output
 fastlane/Provisioning
 fastlane/Build
+fastlane/report.xml
