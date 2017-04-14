@@ -378,6 +378,7 @@ platform :ios do
       username: itc_username,
       changelog: "This PRODUCTION build was automatically uploaded by Fastlane - DO NOT SUBMIT FOR TEST FLIGHT OR THE APP STORE UNTIL RELEASE NOTES ARE UPDATED!!!!",
       distribute_external: false,
+      skip_waiting_for_build_processing: true,
       skip_submission: true,
     )
   end
