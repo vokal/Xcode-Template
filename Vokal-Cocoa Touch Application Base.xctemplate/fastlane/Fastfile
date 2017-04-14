@@ -30,16 +30,6 @@ platform :ios do
     main_scheme,
   ]
 
-  # The SDK to use build and run tests. Left as is, will use the highest
-  # available SDK.  If more specificity is required, should be of the format
-  # 'iphonesimulatorX.X'
-  test_sdk = 'iphonesimulator'
-
-  # The SDK to use to archive builds. Left as is, will use the highest
-  # available SDK.  If more specificity is required, should be of the format
-  # 'iphoneosX.X'
-  archive_sdk = 'iphoneos'
-
   # The build configuration to use when creating an archive build
   archive_build_configuration = 'Release'
 
@@ -113,7 +103,6 @@ platform :ios do
     scan(
       workspace: workspace_file,
       scheme: scheme,
-      sdk: test_sdk,
       derived_data_path: build_folder,
       output_directory: File.join(fastlane_folder, output_folder),
       skip_build: true, #the test action will already kick off a build, don't build twice
@@ -207,7 +196,6 @@ platform :ios do
       output_directory: build_folder,
       include_bitcode: false,
       include_symbols: true,
-      sdk: archive_sdk,
       xcargs: xcargs,
       clean: true,
     )
