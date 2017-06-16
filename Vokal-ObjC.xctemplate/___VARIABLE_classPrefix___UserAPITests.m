@@ -6,7 +6,6 @@
 //___COPYRIGHT___
 //
 
-
 @import XCTest;
 
 #import "___VARIABLE_classPrefix___NetworkAPIUtility.h"
