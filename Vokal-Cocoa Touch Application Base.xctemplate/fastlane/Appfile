@@ -6,3 +6,7 @@ app_identifier "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___VARIAB
 
 # Email address for an account with access to Apple Developer portal
 apple_dev_portal_id "FIXME"
+
+# To automatically select a team for iTunes Connect use (needed when multiple iTunes Connect teams are found)
+# Be sure to specify the client's ITC team ID here.
+itc_team_id "FIXME"
