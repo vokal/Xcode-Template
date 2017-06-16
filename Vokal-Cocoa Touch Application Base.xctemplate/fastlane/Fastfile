@@ -288,7 +288,7 @@ platform :ios do
           type: distribution_method,
           keychain_name: keychain_name,
           keychain_password: keychain_password,
-          readonly: true,
+          readonly: false,
         )
       end
     else
@@ -296,7 +296,7 @@ platform :ios do
       distribution_methods.each do |distribution_method|
         match(
           type: distribution_method,
-          readonly: true,
+          readonly: false,
         )
       end
     end
