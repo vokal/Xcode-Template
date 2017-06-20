@@ -10,21 +10,17 @@ import UIKit
 
 /**
  * Mix-in protocol for cells and views that make use of a reuse identifier. The default implementation
- * of defaultReuseIdentifier() returns the class name. Add this protocol to a class to use that
+ * of defaultReuseIdentifier returns the class name. Add this protocol to a class to use that
  * default functionality.
  */
 protocol ReuseIdentifiable: class {
-
-    static func defaultReuseIdentifier() -> String
-
+    static var defaultReuseIdentifier: String { get }
 }
 
 extension ReuseIdentifiable where Self: UIView {
-
-    static func defaultReuseIdentifier() -> String {
+    static var defaultReuseIdentifier: String {
         return String(describing: self)
     }
-
 }
 
 /// Provide a default reuse identifier for table view cells

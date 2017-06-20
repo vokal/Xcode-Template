@@ -11,4 +11,3 @@
 @implementation ___VARIABLE_classPrefix___ViewController
 
 @end
-
