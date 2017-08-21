@@ -67,7 +67,6 @@
 	<key>Nodes</key>
 	<array>
 		<string>../VokalObjCleanStyleSettings.plist</string>
-		<string>Categories</string>
 		<string>Categories/.gitkeep</string>
 		<string>main.m</string>
 		<string>Prefix.pch</string>
@@ -398,7 +397,6 @@
 				<string>Base</string>
 			</array>
 		</dict>
-
 	</dict>
 	<key>Project</key>
 	<dict>
@@ -447,7 +445,7 @@
 					<key>Definitions</key>
 					<dict>
 						<key>../Podfile:afpod</key>
-						<string>    pod &apos;AFNetworking&apos;, &apos;~> 3.1&apos;</string>
+						<string>    pod &apos;AFNetworking&apos;, &apos;~&gt; 3.1&apos;</string>
 					</dict>
 					<key>Nodes</key>
 					<array>

@@ -99,7 +99,6 @@
 	</array>
 	<key>Nodes</key>
 	<array>
-		<string>Extensions</string>
 		<string>Extensions/ReuseIdentifiable.swift</string>
 		<string>main.swift</string>
 		<string>../R.generated.swift</string>
@@ -343,9 +342,9 @@
 					<key>Definitions</key>
 					<dict>
 						<key>../Podfile:afpod</key>
-						<string>    pod &apos;Alamofire&apos;, &apos;~> 4.0&apos;</string>
+						<string>    pod &apos;Alamofire&apos;, &apos;~&gt; 4.0&apos;</string>
 						<key>../Podfile:ilghttp</key>
-						<string>    pod &apos;ILGHttpConstants&apos;, &apos;~> 2.0&apos;</string>
+						<string>    pod &apos;ILGHttpConstants&apos;, &apos;~&gt; 2.0&apos;</string>
 					</dict>
 					<key>Nodes</key>
 					<array>
@@ -375,7 +374,7 @@
 					<key>Definitions</key>
 					<dict>
 						<key>../Podfile:swiftkeychainwrapper</key>
-						<string>    pod &apos;SwiftKeychainWrapper&apos;, &apos;~> 3.0&apos;</string>
+						<string>    pod &apos;SwiftKeychainWrapper&apos;, &apos;~&gt; 3.0&apos;</string>
 					</dict>
 					<key>Nodes</key>
 					<array>
@@ -561,7 +560,7 @@
 							<string>CoreDataAndModels</string>
 						</dict>
 						<key>../Podfile:vokoderpod</key>
-						<string>    pod &apos;Vokoder/Swift&apos;, &apos;~> 4.0.1&apos;</string>
+						<string>    pod &apos;Vokoder/Swift&apos;, &apos;~&gt; 4.0.1&apos;</string>
 						<key>Scripts/MOGenerator.sh</key>
 						<dict>
 							<key>TargetIndices</key>
