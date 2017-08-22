@@ -14,34 +14,6 @@
 	</array>
 	<key>Definitions</key>
 	<dict>
-		<key>Categories</key>
-		<dict>
-			<key>Path</key>
-			<string>Categories</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Extensions</key>
-		<dict>
-			<key>Path</key>
-			<string>Extensions</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>View Controllers</key>
-		<dict>
-			<key>Path</key>
-			<string>View Controllers</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Views</key>
-		<dict>
-			<key>Path</key>
-			<string>Views</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Views/.gitkeep</key>
 		<dict>
 			<key>Group</key>
@@ -50,13 +22,6 @@
 			</array>
 			<key>Path</key>
 			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Controls</key>
-		<dict>
-			<key>Path</key>
-			<string>Controls</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
@@ -71,13 +36,6 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Data Sources</key>
-		<dict>
-			<key>Path</key>
-			<string>Data Sources</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Data Sources/.gitkeep</key>
 		<dict>
 			<key>Group</key>
@@ -86,13 +44,6 @@
 			</array>
 			<key>Path</key>
 			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Resources</key>
-		<dict>
-			<key>Path</key>
-			<string>Resources</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
@@ -107,20 +58,11 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Resources/Fonts</key>
-		<dict>
-			<key>Group</key>
-			<string>Resources</string>
-			<key>Path</key>
-			<string>Fonts</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Resources/Fonts/.gitkeep</key>
 		<dict>
 			<key>Group</key>
 			<array>
-			    <string>Resources</string>
+				<string>Resources</string>
 				<string>Fonts</string>
 			</array>
 			<key>Path</key>
@@ -128,31 +70,15 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Resources/TrueColors</key>
-		<dict>
-			<key>Group</key>
-			<string>Resources</string>
-			<key>Path</key>
-			<string>TrueColors</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Resources/TrueColors/.gitkeep</key>
 		<dict>
 			<key>Group</key>
 			<array>
-			    <string>Resources</string>
+				<string>Resources</string>
 				<string>TrueColors</string>
 			</array>
 			<key>Path</key>
 			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Scripts</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
@@ -233,7 +159,7 @@ end
 post_install do | installer |
     # Update acknowledgements in the Settings.bundle from pods automagically
     require &apos;fileutils&apos;
-    FileUtils.cp_r(&apos;Pods/Target Support Files/Pods-___PACKAGENAME___/Pods-___PACKAGENAME___-acknowledgements.plist&apos;, &apos;___PACKAGENAME___/Settings.bundle/Acknowledgements.plist&apos;, :remove_destination => true)
+    FileUtils.cp_r(&apos;Pods/Target Support Files/Pods-___PACKAGENAME___/Pods-___PACKAGENAME___-acknowledgements.plist&apos;, &apos;___PACKAGENAME___/Settings.bundle/Acknowledgements.plist&apos;, :remove_destination =&gt; true)
 end
 </string>
 			<key>Group</key>
@@ -367,22 +293,14 @@ end
 			<string>Settings.bundle</string>
 		</dict>
 	</dict>
-    
 	<key>Nodes</key>
 	<array>
-		<string>Controls</string>
 		<string>Controls/.gitkeep</string>
-		<string>Data Sources</string>
 		<string>Data Sources/.gitkeep</string>
-		<string>Resources</string>
 		<string>Resources/___PACKAGENAME___.truecolors</string>
-		<string>Resources/Fonts</string>
 		<string>Resources/Fonts/.gitkeep</string>
-		<string>Resources/TrueColors</string>
 		<string>Resources/TrueColors/.gitkeep</string>
-		<string>Views</string>
 		<string>Views/.gitkeep</string>
-		<string>View Controllers</string>
 		<string>../Gemfile</string>
 		<string>../Podfile</string>
 		<string>../travis</string>
@@ -400,7 +318,6 @@ end
 		<string>Info.plist:UIRequiredDeviceCapabilities:base</string>
 		<string>Base.lproj/LaunchScreen.xib</string>
 		<string>Base.lproj/Main-___PACKAGENAME___.storyboard</string>
-		<string>Scripts</string>
 		<string>Scripts/Version_Incrementing_Run_Script.sh</string>
 		<string>Scripts/xUnique_Run_Script.sh</string>
 		<string>Scripts/DevsJustWantToHaveFun.sh</string>
@@ -529,7 +446,7 @@ end
 					<key>ShellPath</key>
 					<string>/bin/bash</string>
 					<key>ShellScript</key>
-					<string>"${SRCROOT}/___PACKAGENAME___/Scripts/Version_Incrementing_Run_Script.sh"</string>
+					<string>&quot;${SRCROOT}/___PACKAGENAME___/Scripts/Version_Incrementing_Run_Script.sh&quot;</string>
 				</dict>
 			</array>
 			<key>ProductType</key>
