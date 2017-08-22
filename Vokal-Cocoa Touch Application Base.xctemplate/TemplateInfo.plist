@@ -14,34 +14,6 @@
 	</array>
 	<key>Definitions</key>
 	<dict>
-		<key>Categories</key>
-		<dict>
-			<key>Path</key>
-			<string>Categories</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Extensions</key>
-		<dict>
-			<key>Path</key>
-			<string>Extensions</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>View Controllers</key>
-		<dict>
-			<key>Path</key>
-			<string>View Controllers</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Views</key>
-		<dict>
-			<key>Path</key>
-			<string>Views</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Views/.gitkeep</key>
 		<dict>
 			<key>Group</key>
@@ -50,13 +22,6 @@
 			</array>
 			<key>Path</key>
 			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Controls</key>
-		<dict>
-			<key>Path</key>
-			<string>Controls</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
@@ -71,13 +36,6 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Data Sources</key>
-		<dict>
-			<key>Path</key>
-			<string>Data Sources</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Data Sources/.gitkeep</key>
 		<dict>
 			<key>Group</key>
@@ -89,13 +47,6 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Resources</key>
-		<dict>
-			<key>Path</key>
-			<string>Resources</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Resources/___PACKAGENAME___.truecolors</key>
 		<dict>
 			<key>Group</key>
@@ -104,15 +55,6 @@
 			</array>
 			<key>Path</key>
 			<string>___PACKAGENAME___.truecolors</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Resources/Fonts</key>
-		<dict>
-			<key>Group</key>
-			<string>Resources</string>
-			<key>Path</key>
-			<string>Fonts</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
@@ -128,15 +70,6 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Resources/TrueColors</key>
-		<dict>
-			<key>Group</key>
-			<string>Resources</string>
-			<key>Path</key>
-			<string>TrueColors</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
 		<key>Resources/TrueColors/.gitkeep</key>
 		<dict>
 			<key>Group</key>
@@ -146,13 +79,6 @@
 			</array>
 			<key>Path</key>
 			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Scripts</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
