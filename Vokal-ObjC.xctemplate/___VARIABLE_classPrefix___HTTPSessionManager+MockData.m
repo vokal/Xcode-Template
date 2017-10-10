@@ -3,7 +3,7 @@
 //  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
+//  ___COPYRIGHT___
 //
 
 #import "___VARIABLE_classPrefix___HTTPSessionManager+MockData.h"
@@ -16,7 +16,7 @@
 {
     NSURLSessionConfiguration *sessionConfiguration = [___VARIABLE_classPrefix___HTTPSessionManager sharedManager].session.configuration;
 
-    Class mockURLProtocol = [VOKMockUrlProtocol class];
+    Class mockURLProtocol = VOKMockUrlProtocol.class;
     NSMutableArray *currentProtocolClasses = [sessionConfiguration.protocolClasses mutableCopy] ?: [NSMutableArray array];
     [currentProtocolClasses insertObject:mockURLProtocol atIndex:0];
     sessionConfiguration.protocolClasses = currentProtocolClasses;
@@ -28,7 +28,7 @@
 {
     NSURLSessionConfiguration *sessionConfiguration = [___VARIABLE_classPrefix___HTTPSessionManager sharedManager].session.configuration;
 
-    Class mockURLProtocol = [VOKMockUrlProtocol class];
+    Class mockURLProtocol = VOKMockUrlProtocol.class;
     NSMutableArray *currentProtocolClasses = [sessionConfiguration.protocolClasses mutableCopy];
     [currentProtocolClasses removeObject:mockURLProtocol];
     sessionConfiguration.protocolClasses = currentProtocolClasses;

@@ -318,6 +318,11 @@
 				<key>OTHER_SWIFT_FLAGS</key>
 				<string>-D DEBUG</string>
 			</dict>
+			<key>Release</key>
+			<dict>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Owholemodule</string>
+			</dict>
 		</dict>
 	</dict>
 	<key>Options</key>

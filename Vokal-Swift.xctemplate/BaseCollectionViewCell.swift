@@ -3,7 +3,7 @@
 //  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
+//  ___COPYRIGHT___
 //
 
 import UIKit
@@ -44,5 +44,4 @@ class BaseCollectionViewCell: UICollectionViewCell, CommonInitializedView {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
-    
 }

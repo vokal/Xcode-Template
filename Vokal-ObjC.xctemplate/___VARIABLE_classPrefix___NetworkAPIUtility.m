@@ -3,7 +3,7 @@
 //  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
+//  ___COPYRIGHT___
 //
 
 #import "___VARIABLE_classPrefix___NetworkAPIUtility.h"
@@ -114,7 +114,7 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
 - (void)fetchCurrentUserWithCompletion:(___VARIABLE_classPrefix___UserInfoCompletionBlock)completion
 {
     typeof(self) __weak weakSelf = self;
-    [[___VARIABLE_classPrefix___HTTPSessionManager sharedManager]
+    [___VARIABLE_classPrefix___HTTPSessionManager.sharedManager
      GET:APIPathCurrentUserFetch
      parameters:nil
      progress:nil
@@ -141,7 +141,7 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
     NSDictionary *parameters = @{ APIKeyEmail: email ?: @"" };
     
     typeof(self) __weak weakSelf = self;
-    [[___VARIABLE_classPrefix___HTTPSessionManager sharedManager]
+    [___VARIABLE_classPrefix___HTTPSessionManager.sharedManager
      POST:APIPathRequestPasswordReset
      parameters:parameters
      progress:nil
@@ -168,7 +168,7 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
                                  };
     
     typeof(self) __weak weakSelf = self;
-    [[___VARIABLE_classPrefix___HTTPSessionManager sharedManager]
+    [___VARIABLE_classPrefix___HTTPSessionManager.sharedManager
      POST:APIPathResetPassword
      parameters:parameters
      progress:nil
@@ -188,13 +188,13 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
     NSParameterAssert(deviceToken);
 
     // Convert NSData device token to NSString token
-    NSString *stringToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSString *stringToken = [deviceToken.description stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     stringToken = [stringToken stringByReplacingOccurrencesOfString:@" " withString:@""];
 
-    NSDictionary *parameters = @{ APIKeyPushNotificationToken: stringToken ?: @"" };
+    NSDictionary *parameters = @{ APIKeyPushNotificationToken: stringToken ?: @"", };
 
     typeof(self) __weak weakSelf = self;
-    [[___VARIABLE_classPrefix___HTTPSessionManager sharedManager]
+    [___VARIABLE_classPrefix___HTTPSessionManager.sharedManager
      POST:APIPathNotificationRegister
      parameters:parameters
      progress:nil
@@ -215,12 +215,12 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
     NSString *userFetchPath = [NSString stringWithFormat:APIPathFormatSpecificUserFetch, @(userID)];
 
     typeof(self) __weak weakSelf = self;
-    [[___VARIABLE_classPrefix___HTTPSessionManager sharedManager]
+    [___VARIABLE_classPrefix___HTTPSessionManager.sharedManager
      GET:userFetchPath
      parameters:nil
      progress:nil
      success:^(NSURLSessionDataTask *task, id responseObject) {
-         if ([responseObject isKindOfClass:[NSDictionary class]]) {
+         if ([responseObject isKindOfClass:NSDictionary.class]) {
              [weakSelf handleUserInfoSuccessWithResponse:(NSHTTPURLResponse *)task.response
                                                   object:(NSDictionary *)responseObject
                                               completion:completion];
@@ -250,7 +250,7 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
     NSParameterAssert(loginDetails);
 
     typeof(self) __weak weakSelf = self;
-    [[___VARIABLE_classPrefix___HTTPSessionManager sharedManager]
+    [___VARIABLE_classPrefix___HTTPSessionManager.sharedManager
      POST:path
      parameters:loginDetails
      progress:nil
@@ -333,14 +333,14 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
 {
     return [NSError errorWithDomain:___VARIABLE_classPrefix___NetworkAPIUtilityErrorDomain
                                code:___VARIABLE_classPrefix___NetworkAPIUtilityErrorCodes.UnexpectedResponseType
-                           userInfo:@{___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys.ReceivedResponseType: NSStringFromClass(class) ?: @""}];
+                           userInfo:@{ ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys.ReceivedResponseType: NSStringFromClass(class) ?: @"", }];
 }
 
 - (NSError *)expectedErrorWithCode:(NSInteger)code message:(NSString *)message
 {
     return [NSError errorWithDomain:___VARIABLE_classPrefix___NetworkAPIUtilityErrorDomain
                                code:code
-                           userInfo:@{ NSLocalizedDescriptionKey: message ?: @"" }];
+                           userInfo:@{ NSLocalizedDescriptionKey: message ?: @"", }];
 }
 
 - (NSError *)errorFromResponse:(NSHTTPURLResponse *)response withDictionary:(NSDictionary *)responseDictionary

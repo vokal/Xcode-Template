@@ -8,5 +8,7 @@ app_identifier "___VARIABLE_bundleIdentifierPrefix:bundleIdentifier___.___VARIAB
 apple_dev_portal_id "FIXME"
 
 # To automatically select a team for iTunes Connect use (needed when multiple iTunes Connect teams are found)
-# Be sure to specify the client's ITC team ID here.
+# Be sure to specify the client's ITC team ID here. Note: a quick way to get the itc_team_id value is to comment out
+# the itc_team_id line below, then run "bundle exec fastlane ios itc". When you hit the Pilot stage, if there are multiple
+# ITC teams found, you will be presented with a list of available ITC team choices and their itc_team_id values.
 itc_team_id "FIXME"

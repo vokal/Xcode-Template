@@ -3,7 +3,7 @@
 //  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
+//  ___COPYRIGHT___
 //
 
 @import Foundation;
@@ -19,7 +19,6 @@
  * This should be the primary override point for subclasses.
  */
 - (void)commonInit;
-
 
 /**
  * Sets up things which only need to be set up once no matter how many times

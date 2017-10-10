@@ -3,7 +3,7 @@
 //  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
+//  ___COPYRIGHT___
 //
 
 #import "___VARIABLE_classPrefix___TestingAppDelegate.h"
@@ -14,7 +14,7 @@
 {
     //Create a dummy view controller
     UIViewController *testViewController = [[UIViewController alloc] init];
-    testViewController.view.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+    testViewController.view.backgroundColor = [UIColor.redColor colorWithAlphaComponent:0.5];
     
     //Add a label to it so it's obvious what you're doing.
     UILabel *testLabel = [[UILabel alloc] init];
@@ -22,7 +22,7 @@
     
     //Note: This string doesn't need to be localized since users never see it.
     testLabel.text = @"TESTING ___PACKAGENAME___ WITHOUT UI!";
-    testLabel.textColor = [UIColor whiteColor];
+    testLabel.textColor = UIColor.whiteColor;
     [testViewController.view addSubview:testLabel];
     
     //Pin it to the middle of the view.

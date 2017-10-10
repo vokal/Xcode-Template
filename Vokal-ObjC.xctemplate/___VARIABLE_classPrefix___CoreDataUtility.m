@@ -3,7 +3,7 @@
 //  ___PACKAGENAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
+//  ___COPYRIGHT___
 //
 
 #import "___VARIABLE_classPrefix___CoreDataUtility.h"
@@ -24,13 +24,13 @@
 
 + (void)nukeAndResetCoreData
 {
-    [[VOKCoreDataManager sharedInstance] resetCoreData];
+    [VOKCoreDataManager.sharedInstance resetCoreData];
     [self setupCoreData];
 }
 
 + (void)nukeAndResetCoreDataForTesting
 {
-    [[VOKCoreDataManager sharedInstance] resetCoreData];
+    [VOKCoreDataManager.sharedInstance resetCoreData];
     [self setupCoreDataForTesting];
 }
 
