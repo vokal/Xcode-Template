@@ -231,10 +231,10 @@ end
 			<key>Path</key>
 			<string>___PACKAGENAME___.xcscheme</string>
 		</dict>
-		<key>Base.lproj/LaunchScreen.xib</key>
+		<key>Base.lproj/LaunchScreen.storyboard</key>
 		<dict>
 			<key>Path</key>
-			<string>LaunchScreen.xib</string>
+			<string>LaunchScreen.storyboard</string>
 			<key>SortOrder</key>
 			<integer>101</integer>
 		</dict>
@@ -316,7 +316,7 @@ end
 		<string>Info.plist:PackageType</string>
 		<string>Info.plist:UIMainStoryboardFile</string>
 		<string>Info.plist:UIRequiredDeviceCapabilities:base</string>
-		<string>Base.lproj/LaunchScreen.xib</string>
+		<string>Base.lproj/LaunchScreen.storyboard</string>
 		<string>Base.lproj/Main-___PACKAGENAME___.storyboard</string>
 		<string>Scripts/Version_Incrementing_Run_Script.sh</string>
 		<string>Scripts/xUnique_Run_Script.sh</string>
