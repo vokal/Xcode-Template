@@ -124,7 +124,7 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
                                                   object:(NSDictionary *)responseObject
                                               completion:completion];
          } else {
-             NSError *unexpectedResponse = [weakSelf unexpectedResponseTypeErrorForClass:responseObject.class];
+             NSError *unexpectedResponse = [weakSelf unexpectedResponseTypeErrorForClass:[responseObject class]];
              [weakSelf handleUserInfoError:unexpectedResponse withCompletion:completion];
          }
      }
@@ -225,7 +225,7 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
                                                   object:(NSDictionary *)responseObject
                                               completion:completion];
          } else {
-             NSError *unexpectedResponse = [weakSelf unexpectedResponseTypeErrorForClass:responseObject.class];
+             NSError *unexpectedResponse = [weakSelf unexpectedResponseTypeErrorForClass:[responseObject class]];
              [weakSelf handleUserInfoError:unexpectedResponse withCompletion:completion];
          }
      }
@@ -260,7 +260,7 @@ const struct ___VARIABLE_classPrefix___NetworkAPIUtilityErrorInfoKeys ___VARIABL
                                                   object:(NSDictionary *)responseObject
                                               completion:completion];
          } else {
-             NSError *unexpectedResponse = [weakSelf unexpectedResponseTypeErrorForClass:responseObject.class];
+             NSError *unexpectedResponse = [weakSelf unexpectedResponseTypeErrorForClass:[responseObject class]];
              [weakSelf handleUserInfoError:unexpectedResponse withCompletion:completion];
          }
      }
