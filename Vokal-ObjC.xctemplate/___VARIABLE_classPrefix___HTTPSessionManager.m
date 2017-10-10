@@ -30,7 +30,7 @@ static ___VARIABLE_classPrefix___HTTPSessionManager *_sharedManager;
 {
     //Update this value in your User-Defined Build Settings for this target,
     //which will in turn update the info.plist value after a clean:
-    if ([[[NSBundle mainBundle] objectForInfoDictionaryKey:@"USE_PRODUCTION_SERVER"] isEqualToString:@"YES"]) {
+    if ([[NSBundle.mainBundle objectForInfoDictionaryKey:@"USE_PRODUCTION_SERVER"] isEqualToString:@"YES"]) {
         return YES;
     } else {
         return NO;
@@ -45,7 +45,7 @@ static ___VARIABLE_classPrefix___HTTPSessionManager *_sharedManager;
      * example, this would be a valid value:
      *   https://api-staging.example.com/api
      */
-    if ([self useProductionEnvironment]) {
+    if (self.useProductionEnvironment) {
         // Production API
         return @"https://api.example.com";
     } else {
@@ -56,7 +56,7 @@ static ___VARIABLE_classPrefix___HTTPSessionManager *_sharedManager;
 
 + (void)setAuthorizationToken:(NSString *)authToken
 {
-    ___VARIABLE_classPrefix___HTTPSessionManager *sessionManager = [self sharedManager];
+    ___VARIABLE_classPrefix___HTTPSessionManager *sessionManager = self.sharedManager;
     AFHTTPRequestSerializer *requestSerializer = (AFHTTPRequestSerializer *)sessionManager.requestSerializer;
     authToken = [@"Bearer " stringByAppendingString:authToken];
     [requestSerializer setValue:authToken forHTTPHeaderField:@"Authorization"];
@@ -64,12 +64,12 @@ static ___VARIABLE_classPrefix___HTTPSessionManager *_sharedManager;
 
 + (void)resetSharedManagerWithSessionConfiguration:(NSURLSessionConfiguration *)sessionConfiguration
 {
-    _sharedManager = [[___VARIABLE_classPrefix___HTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[self APIBaseURL]]
+    _sharedManager = [[___VARIABLE_classPrefix___HTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:self.APIBaseURL]
                                                sessionConfiguration:sessionConfiguration];
-    _sharedManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    _sharedManager.requestSerializer = AFJSONRequestSerializer.serializer;
     
-    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
-    responseSerializer.acceptableStatusCodes = [self acceptableStatusCodes];
+    AFJSONResponseSerializer *responseSerializer = AFJSONResponseSerializer.serializer;
+    responseSerializer.acceptableStatusCodes = self.acceptableStatusCodes;
     _sharedManager.responseSerializer = responseSerializer;
 }
 

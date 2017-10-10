@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
         BOOL isRunningUITests = NSClassFromString(@"KIFTestCase") != nil;
         
         if (isRunningTests && !isRunningUITests) {
-            return UIApplicationMain(argc, argv, nil, NSStringFromClass([___VARIABLE_classPrefix___TestingAppDelegate class]));
+            return UIApplicationMain(argc, argv, nil, NSStringFromClass(___VARIABLE_classPrefix___TestingAppDelegate.class));
         } else {
-            return UIApplicationMain(argc, argv, nil, NSStringFromClass([___VARIABLE_classPrefix___AppDelegate class]));
+            return UIApplicationMain(argc, argv, nil, NSStringFromClass(___VARIABLE_classPrefix___AppDelegate.class));
         }        
     }
 }

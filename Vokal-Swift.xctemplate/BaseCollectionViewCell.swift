@@ -44,5 +44,4 @@ class BaseCollectionViewCell: UICollectionViewCell, CommonInitializedView {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
-    
 }

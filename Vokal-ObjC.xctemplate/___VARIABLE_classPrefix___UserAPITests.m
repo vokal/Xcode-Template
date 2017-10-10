@@ -50,7 +50,7 @@ static NSString *const MockLoginToken = @"AFakeTokenForTesting";
     XCTestExpectation *expectation = [self expectationWithDescription:@"Successful login"];
     
     //WHEN: User logs in with valid credentials
-    [[___VARIABLE_classPrefix___NetworkAPIUtility sharedUtility]
+    [___VARIABLE_classPrefix___NetworkAPIUtility.sharedUtility
      loginWithEmailAddress:ValidLoginEmail
      password:ValidLoginPassword
      completion:^(NSDictionary *userInfo, NSError *error) {
@@ -75,7 +75,7 @@ static NSString *const MockLoginToken = @"AFakeTokenForTesting";
     XCTestExpectation *expectation = [self expectationWithDescription:@"Wrong password login"];
     
     //WHEN: User logs in with the wrong password
-    [[___VARIABLE_classPrefix___NetworkAPIUtility sharedUtility]
+    [___VARIABLE_classPrefix___NetworkAPIUtility.sharedUtility
      loginWithEmailAddress:ValidLoginEmail
      password:InvalidLoginPassword
      completion:^(NSDictionary *userInfo, NSError *error) {
@@ -98,7 +98,7 @@ static NSString *const MockLoginToken = @"AFakeTokenForTesting";
     XCTestExpectation *expectation = [self expectationWithDescription:@"Nonexistent email login"];
     
     //WHEN: User logs in with nonexistent account
-    [[___VARIABLE_classPrefix___NetworkAPIUtility sharedUtility]
+    [___VARIABLE_classPrefix___NetworkAPIUtility.sharedUtility
      loginWithEmailAddress:NoAccountLoginEmail
      password:ValidLoginPassword
      completion:^(NSDictionary *userInfo, NSError *error) {

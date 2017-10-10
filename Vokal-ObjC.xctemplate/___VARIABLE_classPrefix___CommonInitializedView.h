@@ -20,7 +20,6 @@
  */
 - (void)commonInit;
 
-
 /**
  * Sets up things which only need to be set up once no matter how many times
  * `commonInit` is called.

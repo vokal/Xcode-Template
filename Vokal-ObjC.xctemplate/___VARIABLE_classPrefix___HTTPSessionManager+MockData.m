@@ -16,7 +16,7 @@
 {
     NSURLSessionConfiguration *sessionConfiguration = [___VARIABLE_classPrefix___HTTPSessionManager sharedManager].session.configuration;
 
-    Class mockURLProtocol = [VOKMockUrlProtocol class];
+    Class mockURLProtocol = VOKMockUrlProtocol.class;
     NSMutableArray *currentProtocolClasses = [sessionConfiguration.protocolClasses mutableCopy] ?: [NSMutableArray array];
     [currentProtocolClasses insertObject:mockURLProtocol atIndex:0];
     sessionConfiguration.protocolClasses = currentProtocolClasses;
@@ -28,7 +28,7 @@
 {
     NSURLSessionConfiguration *sessionConfiguration = [___VARIABLE_classPrefix___HTTPSessionManager sharedManager].session.configuration;
 
-    Class mockURLProtocol = [VOKMockUrlProtocol class];
+    Class mockURLProtocol = VOKMockUrlProtocol.class;
     NSMutableArray *currentProtocolClasses = [sessionConfiguration.protocolClasses mutableCopy];
     [currentProtocolClasses removeObject:mockURLProtocol];
     sessionConfiguration.protocolClasses = currentProtocolClasses;

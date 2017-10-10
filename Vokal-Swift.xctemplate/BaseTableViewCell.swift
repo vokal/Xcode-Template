@@ -52,5 +52,4 @@ class BaseTableViewCell: UITableViewCell, CommonInitializedView {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
-
 }

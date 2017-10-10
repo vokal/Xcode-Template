@@ -49,5 +49,4 @@ class BaseTableViewHeaderFooterView: UITableViewHeaderFooterView, CommonInitiali
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
-
 }

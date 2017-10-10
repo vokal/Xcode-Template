@@ -24,13 +24,13 @@
 
 + (void)nukeAndResetCoreData
 {
-    [[VOKCoreDataManager sharedInstance] resetCoreData];
+    [VOKCoreDataManager.sharedInstance resetCoreData];
     [self setupCoreData];
 }
 
 + (void)nukeAndResetCoreDataForTesting
 {
-    [[VOKCoreDataManager sharedInstance] resetCoreData];
+    [VOKCoreDataManager.sharedInstance resetCoreData];
     [self setupCoreDataForTesting];
 }
 

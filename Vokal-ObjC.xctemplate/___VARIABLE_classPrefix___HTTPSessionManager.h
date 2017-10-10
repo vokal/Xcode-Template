@@ -17,8 +17,8 @@
  */
 + (instancetype)sharedManager;
 
-///Whether to use the production environment
-+ (BOOL)useProductionEnvironment;
+/// Whether to use the production environment
+@property (nonatomic, class, readonly) BOOL useProductionEnvironment;
 
 /**
  * Update the authorization token that's included with all network calls. Pass
