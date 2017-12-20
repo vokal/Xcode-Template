@@ -103,7 +103,7 @@ platform :ios do
   desc "Expects values for the following keys:"
   desc "scheme_options_key: The name of the scheme to use to run the tests"
   desc "output_options_key: The path to output information from the tests"
-  private_lane :run_tests do |options|
+  private_lane :do_tests do |options|
     if !options.key?(:scheme_options_key) || !options.key?(:output_options_key)
       raise "Not all required options for this lane are present!"
       return
@@ -163,7 +163,7 @@ platform :ios do
       end
 
       # Run the tests
-      run_tests(
+      do_tests(
         scheme_options_key: scheme,
         output_options_key: scheme_output_folder,
       )

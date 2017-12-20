@@ -5,6 +5,9 @@ git_url "https://github.com/vokal/certificates-iOS.git"
 # team (or client company), which might differ from the name of the app.
 git_branch "___PACKAGENAME___"
 
+# Clone just the branch rather than the whole repo to save time
+clone_branch_directly true
+
 # The default type, can be: appstore, adhoc or development
 type "adhoc" 
 
