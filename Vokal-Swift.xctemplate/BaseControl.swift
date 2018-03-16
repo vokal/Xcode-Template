@@ -49,5 +49,4 @@ class BaseControl: UIControl, CommonInitializedView {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
-
 }

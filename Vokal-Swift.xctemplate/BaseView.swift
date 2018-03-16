@@ -49,5 +49,4 @@ class BaseView: UIView, CommonInitializedView {
         super.prepareForInterfaceBuilder()
         self.commonInit()
     }
-
 }

@@ -89,7 +89,6 @@ struct ResetPasswordAPI {
                       headers: self.headerDict,
                       params: parameters,
                       success: success,
-                      failure:failure)
+                      failure: failure)
     }
-
 }
