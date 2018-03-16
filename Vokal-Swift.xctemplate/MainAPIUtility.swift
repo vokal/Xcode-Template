@@ -257,6 +257,5 @@ class MainAPIUtility {
                 failure(NetworkError.otherError(error: error))
             }
         }
-        
     }
 }

@@ -15,8 +15,6 @@ struct UserAPI {
     
     // MARK: - User Key Enums
     
-    // MARK: - User Key Enums
-    
     private enum POSTPath: String, APIVersionable {
         case
         Login = "authenticate",
