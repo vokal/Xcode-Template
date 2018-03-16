@@ -1,16 +1,17 @@
 disabled_rules:
-  - trailing_whitespace
-  - variable_name
-  - todo
-  - type_name
-  - function_parameter_count
-  - type_body_length
-  - function_body_length
+  - control_statement
+  - cyclomatic_complexity
   - file_length
+  - function_body_length
+  - function_parameter_count
   - line_length
   - nesting
-  - cyclomatic_complexity
-  - control_statement
+  - todo
+  - trailing_whitespace
+  - type_body_length
+  - type_name
+  - unused_optional_binding
+  - variable_name
 
 opt_in_rules:
   - force_unwrapping
