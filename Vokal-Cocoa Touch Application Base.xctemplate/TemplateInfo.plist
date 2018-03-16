@@ -135,7 +135,7 @@
 			<string>source &apos;https://github.com/vokal/PrivatePodspecRepo-iOS.git&apos;
 source &apos;https://github.com/CocoaPods/Specs.git&apos;
 
-platform :ios, &apos;9.0&apos;
+platform :ios, &apos;11.0&apos;
 
 target &apos;___PACKAGENAME___&apos; do
     pod &apos;xUnique&apos;
