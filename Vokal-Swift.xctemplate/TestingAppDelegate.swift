@@ -18,10 +18,10 @@ And the swift aspect: http://qualitycoding.org/app-delegate-for-tests/#comment-6
 */
 
 class TestingAppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         let testViewController = UIViewController()
         testViewController.view.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         
@@ -38,7 +38,7 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
         NSLayoutConstraint.activate([
             testLabel.centerXAnchor.constraint(equalTo: testViewController.view.centerXAnchor),
             testLabel.centerYAnchor.constraint(equalTo: testViewController.view.centerYAnchor),
-            ])
+        ])
         
         //Fire up the window.
         self.window = UIWindow()
