@@ -28,3 +28,4 @@ excluded:
   - ___PACKAGENAME___/Scripts
   - ___PACKAGENAME___/Resources
   - R.generated.swift
+  - vendor # If running on Travis CI, a "vendor" directory will be added that may have Swift files that should not be linted.
