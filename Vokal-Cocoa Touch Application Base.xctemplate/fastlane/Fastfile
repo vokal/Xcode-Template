@@ -332,7 +332,7 @@ platform :ios do
       api_token: ENV["HOCKEY_API_TOKEN"],
       notes: release_notes,
       notify: '0', # Means do not notify
-      status: '1', # Means do not make available for download
+      status: '2', # Means make available for download
     )
   end
 
