@@ -75,8 +75,6 @@ You can then delete the `MoveToNonUITestTarget` from the filesystem as the test 
 
 - The build phase that runs the [R.swift](https://github.com/mac-cain13/R.swift) script needs to be moved, since it cannot be positioned properly in the template. In the Build Phases for the main target, drag *R.swift Generation Script* up in the list so that it's right above *Compile Sources*
 
-- Note that there's a build-time script to throw compiler warnings whenever you've added a `//WARN:` comment, similar to how `#warning` is used in Obj-C. Find and delete any warnings from this method. 
-
 - There are a couple scripts which are included at the base project level which default to generating Objective-C code. In order to generate Swift files for DevsJustWantToHaveFun, you will need to update the scripts to use `swift` instead of `objc` for the `LANGUAGE` option. These scripts can be found in the `[project]/Scripts` folder. 
 
 ### 5. For All Projects
