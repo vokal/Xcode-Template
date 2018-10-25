@@ -10,7 +10,6 @@ import XCTest
 @testable import ___PACKAGENAME___
 
 class UserAPITests: XCTestCase {
-    
     let StandardTestTimeout = 3.0
     
     let ValidLoginEmail = "something@example.org"

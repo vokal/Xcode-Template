@@ -21,4 +21,7 @@ if (isRunningTests && !isRunningUITests) {
     appDelegateClass = AppDelegate.self
 }
 
-UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(appDelegateClass))
+UIApplicationMain(CommandLine.argc,
+                  CommandLine.unsafeArgv,
+                  nil,
+                  NSStringFromClass(appDelegateClass))

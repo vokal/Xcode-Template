@@ -18,7 +18,6 @@ import Vokoder
  run `setupCoreDataForTesting` in that file as well.
  */
 struct CoreDataUtility {
-    
     // MARK: - Setup consolidation methods
     
     /**

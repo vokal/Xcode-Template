@@ -12,7 +12,6 @@ import Foundation
  API for requesting password resets then actually resetting the password.
  */
 struct ResetPasswordAPI {
-    
     // MARK: - Reset Password Enums
     
     private enum JSONKey: String {
@@ -76,7 +75,6 @@ struct ResetPasswordAPI {
                               updatedPassword: String,
                               success: @escaping APIDictionaryCompletion,
                               failure: @escaping APIFailureCompletion) {
-        
         let parameters = [
             JSONKey.ResetCode.rawValue: code,
             JSONKey.UpdatedPassword.rawValue: updatedPassword,

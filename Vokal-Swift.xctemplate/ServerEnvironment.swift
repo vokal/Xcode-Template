@@ -9,9 +9,8 @@
 import Foundation
 
 enum ServerEnvironment {
-    case
-    staging,
-    production
+    case staging
+    case production
     
     //Default environment: Staging.
     static var CurrentEnvironment: ServerEnvironment {

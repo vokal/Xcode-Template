@@ -19,7 +19,6 @@ private class INeedABundle {
 }
 
 extension HTTPSessionManager {
-    
     /**
      Sets up the networking stack to use VOKMockURLProtocol.
      */
