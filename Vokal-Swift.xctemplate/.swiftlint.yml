@@ -15,8 +15,13 @@ disabled_rules:
 
 opt_in_rules:
   - force_unwrapping
+  - implicitly_unwrapped_optional
+  - unneeded_parentheses_in_closure_argument
 
 force_unwrapping:
+  severity: error
+  
+implicitly_unwrapped_optional:
   severity: error
 
 trailing_comma:
