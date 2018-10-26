@@ -14,7 +14,6 @@ import UIKit
  * Make sure to call super.commonInit() in your implementation!
  */
 class BaseTableViewCell: UITableViewCell, CommonInitializedView {
-
     var oneTimeThingsAreSetUp = false
 
     // MARK: - Setup functions which should be overridden
@@ -36,7 +35,7 @@ class BaseTableViewCell: UITableViewCell, CommonInitializedView {
         super.init(coder: aDecoder)
     }
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.commonInit()
     }

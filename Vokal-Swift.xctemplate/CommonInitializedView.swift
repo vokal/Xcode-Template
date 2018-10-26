@@ -13,7 +13,6 @@ import UIKit
  * See BaseView for an example of implementing this protocol.
  */
 protocol CommonInitializedView {
-
     /// Variable to track whether the one-time things are already set up.
     var oneTimeThingsAreSetUp: Bool { get }
 
@@ -41,8 +40,8 @@ protocol CommonInitializedView {
 }
 
 // MARK: - Default implementation of protocol for view subclasses.
-extension CommonInitializedView where Self: UIView {
 
+extension CommonInitializedView where Self: UIView {
     func setupOneTimeThingsIfNeeded() {
         if !self.oneTimeThingsAreSetUp {
             self.setupOneTimeThings()

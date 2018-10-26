@@ -15,8 +15,13 @@ disabled_rules:
 
 opt_in_rules:
   - force_unwrapping
+  - implicitly_unwrapped_optional
+  - unneeded_parentheses_in_closure_argument
 
 force_unwrapping:
+  severity: error
+  
+implicitly_unwrapped_optional:
   severity: error
 
 trailing_comma:
@@ -28,3 +33,4 @@ excluded:
   - ___PACKAGENAME___/Scripts
   - ___PACKAGENAME___/Resources
   - R.generated.swift
+  - vendor # If running on Travis CI, a "vendor" directory will be added that may have Swift files that should not be linted.

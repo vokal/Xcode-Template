@@ -10,7 +10,6 @@ import XCTest
 @testable import ___PACKAGENAME___
 
 class APICompletionTests: XCTestCase {
-    
     let StandardTestTimeout = 3.0
     
     // MARK: - Test Lifecycle

@@ -21,6 +21,9 @@ Note: The message is the only required variable for any of these.
 /* A detailed log statement which will only print when in debug mode.
 
 - parameter message:  The message you wish to log out.
+- parameter filename: The filename of the original caller.
+- parameter function: The function of the original caller
+- parameter line:     the line number of the original caller.
 */
 func DLog(_ message: @autoclosure () -> String,
           filename: String = #file,
@@ -37,6 +40,9 @@ func DLog(_ message: @autoclosure () -> String,
 A detailed log statement which will always print.
 
 - parameter message:  The message you wish to log out.
+- parameter filename: The filename of the original caller.
+- parameter function: The function of the original caller
+- parameter line:     the line number of the original caller.
 */
 func ALog(_ message: @autoclosure () -> String,
           filename: String = #file,

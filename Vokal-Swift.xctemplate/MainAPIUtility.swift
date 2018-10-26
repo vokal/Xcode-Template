@@ -32,20 +32,17 @@ typealias APIEmptyResponseCompletion = (NSNull) -> Void
 // MARK: - Header enums
 
 enum HTTPHeaderKey: String {
-    case
-    Authorization //Automatically "Authorization"
+    case Authorization //Automatically "Authorization"
 }
 
 enum HTTPHeaderValue {
-    case
-    token(token: String)
+    case token(token: String)
 }
 
 // MARK: Version Handling
 
 enum APIVersion: String {
-    case
-    v1 //Automatically uses "v1"
+    case v1 //Automatically uses "v1"
     
     /**
      Takes the passed in path and prepends a version to it. For example:
@@ -102,7 +99,6 @@ extension APIVersionable {
  structs can then call the more generic methods in this class.
  */
 class MainAPIUtility {
-    
     // MARK: - Variables
     
     /// Singleton instance
@@ -138,7 +134,6 @@ class MainAPIUtility {
      string keys and string values.
      */
     private func headerStringDictionary(fromHeaderDictionary headers: [HTTPHeaderKey: HTTPHeaderValue]) -> [String: String] {
-        
         var headerStrings = [String: String]()
         for (key, value) in headers {
             switch value {
@@ -158,7 +153,6 @@ class MainAPIUtility {
                       userEmail: String,
                       success: @escaping APIDictionaryCompletion,
                       failure: @escaping APIFailureCompletion) {
-        
         let fullURLString = ServerEnvironment.fullURLString(for: path)
         let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
         
@@ -189,7 +183,6 @@ class MainAPIUtility {
                     params: APIDictionary? = nil,
                     success: @escaping APISuccessCompletion<T>,
                     failure: @escaping APIFailureCompletion) {
-        
         let fullURLString = ServerEnvironment.fullURLString(for: path)
         let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
         
@@ -213,7 +206,6 @@ class MainAPIUtility {
                      params: APIDictionary,
                      success: @escaping APISuccessCompletion<T>,
                      failure: @escaping APIFailureCompletion) {
-        
         let fullURLString = ServerEnvironment.fullURLString(for: path)
         let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
         
@@ -237,7 +229,6 @@ class MainAPIUtility {
     private func handle<T>(response: DataResponse<Any>,
                            success: @escaping APISuccessCompletion<T>,
                            failure: @escaping APIFailureCompletion) {
-        
         if shouldDebugPrintInfo {
             debugPrint(response)
         }

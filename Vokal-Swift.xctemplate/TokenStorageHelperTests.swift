@@ -12,7 +12,6 @@ import SwiftKeychainWrapper
 @testable import ___PACKAGENAME___
 
 class TokenStorageHelperTests: XCTestCase {
-    
     let testEmail = "iamatest@example.com"
     let testToken = "SomeSuperLongGibberishFromTheServer"
     

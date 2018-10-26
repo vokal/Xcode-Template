@@ -13,12 +13,10 @@ import SwiftKeychainWrapper
  Facilitates the storage of a single user's credentials in the keychain.
  */
 struct TokenStorageHelper {
-    
     // MARK: - Keychain enums
     
     private enum KeychainKey: String {
-        case
-        Username = "___PACKAGENAME___.keychain.username"
+        case username = "___PACKAGENAME___.keychain.username"
     }
     
     // MARK: - Authorization methods
@@ -37,7 +35,7 @@ struct TokenStorageHelper {
             nukeAuthorizationToken()
         }
         
-        if !KeychainWrapper.standard.set(email, forKey: KeychainKey.Username.rawValue) {
+        if !KeychainWrapper.standard.set(email, forKey: KeychainKey.username.rawValue) {
             DLog("Username could not be stored. Bailing out!")
             //Bail out since you'll never be able to get the token back.
             return
@@ -63,7 +61,7 @@ struct TokenStorageHelper {
         }
         
         //Remove the username.
-        if !KeychainWrapper.standard.removeObject(forKey: KeychainKey.Username.rawValue) {
+        if !KeychainWrapper.standard.removeObject(forKey: KeychainKey.username.rawValue) {
             DLog("Username not removed!")
         }
     }
@@ -83,7 +81,7 @@ struct TokenStorageHelper {
     }
     
     static func getUserName() -> String? {
-        guard let username = KeychainWrapper.standard.string(forKey: KeychainKey.Username.rawValue) else {
+        guard let username = KeychainWrapper.standard.string(forKey: KeychainKey.username.rawValue) else {
             return nil
         }
         

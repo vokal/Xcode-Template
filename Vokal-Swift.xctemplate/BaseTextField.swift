@@ -14,7 +14,6 @@ import UIKit
  * Make sure to call super.commonInit() in your implementation!
  */
 class BaseTextField: UITextField, CommonInitializedView {
-
     var oneTimeThingsAreSetUp = false
 
     // MARK: - Setup functions which should be overridden

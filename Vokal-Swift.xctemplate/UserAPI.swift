@@ -12,20 +12,17 @@ import Foundation
  API for getting information about users.
  */
 struct UserAPI {
-    
     // MARK: - User Key Enums
     
     private enum POSTPath: String, APIVersionable {
-        case
-        Login = "authenticate",
-        Register = "user",
-        FacebookLoginRegister = "user/facebook",
-        NotificationRegister = "push/apn"
+        case login = "authenticate"
+        case register = "user"
+        case facebookLoginRegister = "user/facebook"
+        case notificationRegister = "push/apn"
     }
     
     private enum GETPath: String, APIVersionable {
-        case
-        CurrentUser = "user"
+        case currentUser = "user"
         
         static func specificUser(userID: String) -> String {
             return  "user/" + userID
@@ -33,16 +30,15 @@ struct UserAPI {
     }
     
     private enum JSONKey: String {
-        case
-        Email = "email",
-        Password = "password",
-        UserID = "id",
-        FacebookID = "facebook_id",
-        Token = "token"
+        case email = "email"
+        case password = "password"
+        case userID = "id"
+        case facebookID = "facebook_id"
+        case token = "token"
         
         ///Aliases for things that use the same JSON key
-        static let FacebookToken = JSONKey.Token
-        static let PushNotificationToken = JSONKey.Token
+        static let facebookToken = JSONKey.token
+        static let pushNotificationToken = JSONKey.token
     }
     
     // MARK: - Login/Register
@@ -60,11 +56,11 @@ struct UserAPI {
                          success: @escaping APIDictionaryCompletion,
                          failure: @escaping APIFailureCompletion) {
         let parameters = [
-            JSONKey.Email.rawValue: email,
-            JSONKey.Password.rawValue: password,
-        ]
+            JSONKey.email.rawValue: email,
+            JSONKey.password.rawValue: password,
+            ]
         
-        let registerPath = POSTPath.Register.path(forVersion: .v1)
+        let registerPath = POSTPath.register.path(forVersion: .v1)
         let headers = self.requestHeaders(withAuthToken: false)
         
         MainAPIUtility
@@ -90,11 +86,11 @@ struct UserAPI {
                       success: @escaping APIDictionaryCompletion,
                       failure: @escaping APIFailureCompletion) {
         let parameters = [
-            JSONKey.Email.rawValue: email,
-            JSONKey.Password.rawValue: password,
-        ]
+            JSONKey.email.rawValue: email,
+            JSONKey.password.rawValue: password,
+            ]
         
-        let loginPath = POSTPath.Login.path(forVersion: .v1)
+        let loginPath = POSTPath.login.path(forVersion: .v1)
         let headers = self.requestHeaders(withAuthToken: false)
         
         MainAPIUtility
@@ -119,13 +115,12 @@ struct UserAPI {
                                         facebookToken: String,
                                         success: @escaping APIDictionaryCompletion,
                                         failure: @escaping APIFailureCompletion) {
-        
         let parameters = [
-            JSONKey.FacebookID.rawValue: facebookID,
-            JSONKey.FacebookToken.rawValue: facebookToken,
+            JSONKey.facebookID.rawValue: facebookID,
+            JSONKey.facebookToken.rawValue: facebookToken,
         ]
         
-        let fbLoginRegisterPath = POSTPath.FacebookLoginRegister.path(forVersion: .v1)
+        let fbLoginRegisterPath = POSTPath.facebookLoginRegister.path(forVersion: .v1)
         let headers = self.requestHeaders(withAuthToken: false)
         
         MainAPIUtility
@@ -148,7 +143,7 @@ struct UserAPI {
      */
     static func fetchCurrentUserInfo(success: @escaping APIDictionaryCompletion,
                                      failure: @escaping APIFailureCompletion) {
-        let currentUserFetchPath = GETPath.CurrentUser.path(forVersion: .v1)
+        let currentUserFetchPath = GETPath.currentUser.path(forVersion: .v1)
         let headers = self.requestHeaders(withAuthToken: true)
         
         MainAPIUtility
@@ -171,12 +166,11 @@ struct UserAPI {
     static func registerCurrentUserForNotifications(withToken deviceToken: String,
                                                     success: @escaping APIDictionaryCompletion,
                                                     failure: @escaping APIFailureCompletion) {
-
         let parameters = [
-            JSONKey.PushNotificationToken.rawValue: deviceToken,
+            JSONKey.pushNotificationToken.rawValue: deviceToken,
         ]
         
-        let registerDeviceTokenPath = POSTPath.NotificationRegister.path(forVersion: .v1)
+        let registerDeviceTokenPath = POSTPath.notificationRegister.path(forVersion: .v1)
         let headers = self.requestHeaders(withAuthToken: true)
         
         MainAPIUtility

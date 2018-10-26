@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 
 class HTTPSessionManager {
-    
     static var AlamofireManager = Alamofire.SessionManager.default
     
     static func switchManagerConfiguration(to configuration: URLSessionConfiguration) {

@@ -14,7 +14,7 @@
 
 + (void)switchToMockData
 {
-    NSURLSessionConfiguration *sessionConfiguration = [___VARIABLE_classPrefix___HTTPSessionManager sharedManager].session.configuration;
+    NSURLSessionConfiguration *sessionConfiguration = ___VARIABLE_classPrefix___HTTPSessionManager.sharedManager.session.configuration;
 
     Class mockURLProtocol = VOKMockUrlProtocol.class;
     NSMutableArray *currentProtocolClasses = [sessionConfiguration.protocolClasses mutableCopy] ?: [NSMutableArray array];
@@ -26,7 +26,7 @@
 
 + (void)switchToLiveNetwork
 {
-    NSURLSessionConfiguration *sessionConfiguration = [___VARIABLE_classPrefix___HTTPSessionManager sharedManager].session.configuration;
+    NSURLSessionConfiguration *sessionConfiguration = ___VARIABLE_classPrefix___HTTPSessionManager.sharedManager.session.configuration;
 
     Class mockURLProtocol = VOKMockUrlProtocol.class;
     NSMutableArray *currentProtocolClasses = [sessionConfiguration.protocolClasses mutableCopy];

@@ -5,11 +5,11 @@ This repo contains Objective-C and Swift templates to start up a new Vokal proje
 For people outside of Vokal: you'll need to make some adjustments after creating your project from these templates. In particular, you'll need to remove our private podspec repo from the `Podfile`, and update the certificate repo in `fastlane/Matchfile`. If you have issues beyond that, feel free to [drop us a note](mailto:ios@vokal.io).
 
 ## Maintaining these templates
-Apple doesn't have documentation on managing templates like this, but [there is a third-party guide for Xcode 4](http://www.learn-cocos2d.com/store/xcode4-template-documentation/) that's still mostly correct for Xcode 9.
+Apple doesn't have documentation on managing templates like this, but [there is a third-party guide for Xcode 4](http://www.learn-cocos2d.com/store/xcode4-template-documentation/) that's still mostly correct for Xcode 10.
 
-If you're updating the templates, you'll note that there are Vokal-fied versions of several templates in this project - this is to facilitate making sure that certain stock files which would otherwise be created are not created. These were forked from the Xcode 7 templates, but as of Xcode 9, the base template had not changed significantly from the one included in 7.
+If you're updating the templates, you'll note that there are Vokal-fied versions of several templates in this project - this is to facilitate making sure that certain stock files which would otherwise be created are not created. These were forked from the Xcode 7 templates, but as of Xcode 10, the base template had not changed significantly from the one included in 7.
 
-Note that you may need to grab updated versions of these templates from the belly of Xcode when a new version of Xcode is released. As of Xcode 9, these templates can be found at the following paths:
+Note that you may need to grab updated versions of these templates from the belly of Xcode when a new version of Xcode is released. As of Xcode 10, these templates can be found at the following paths:
 
 * Projects: `/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS`
 * Aggregate target: `/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Base/Other/Aggregate.xctemplate`
@@ -75,8 +75,6 @@ You can then delete the `MoveToNonUITestTarget` from the filesystem as the test 
 
 - The build phase that runs the [R.swift](https://github.com/mac-cain13/R.swift) script needs to be moved, since it cannot be positioned properly in the template. In the Build Phases for the main target, drag *R.swift Generation Script* up in the list so that it's right above *Compile Sources*
 
-- Note that there's a build-time script to throw compiler warnings whenever you've added a `//WARN:` comment, similar to how `#warning` is used in Obj-C. Find and delete any warnings from this method. 
-
 - There are a couple scripts which are included at the base project level which default to generating Objective-C code. In order to generate Swift files for DevsJustWantToHaveFun, you will need to update the scripts to use `swift` instead of `objc` for the `LANGUAGE` option. These scripts can be found in the `[project]/Scripts` folder. 
 
 ### 5. For All Projects
@@ -106,3 +104,4 @@ Adjust the run scripts in this target as necessary. For example, if your project
 * 1.x: works with Swift 2.2 and 2.3 in Xcode 7 or 8
 * 2.x: works with Swift 3 in Xcode 8
 * 3.x: works with Swift 4 in Xcode 9
+* 4.x: works with Swift 4.2 in Xcode 10
