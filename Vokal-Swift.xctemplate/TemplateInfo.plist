@@ -116,7 +116,7 @@
 		<key>../Podfile:swiftbasics</key>
 		<string>    use_frameworks!
 
-    pod &apos;R.swift&apos;, &apos;~&gt; 4.0.0&apos;
+    pod &apos;R.swift&apos;, &apos;~&gt; 5.0.0.alpha.2&apos;
     pod &apos;SwiftLint&apos;</string>
 		<key>Extensions/ReuseIdentifiable.swift</key>
 		<dict>
