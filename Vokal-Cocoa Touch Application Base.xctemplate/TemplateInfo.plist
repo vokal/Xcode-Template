@@ -140,6 +140,7 @@ platform :ios, &apos;12.0&apos;
 target &apos;___PACKAGENAME___&apos; do
     pod &apos;xUnique&apos;
     pod &apos;DevsJustWantToHaveFun&apos;
+    pod &apos;VOKUtilities&apos;
 </string>
 			<key>End</key>
 			<string>

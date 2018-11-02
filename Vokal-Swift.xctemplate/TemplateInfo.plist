@@ -90,7 +90,6 @@
 	<key>Nodes</key>
 	<array>
 		<string>Extensions/ReuseIdentifiable.swift</string>
-		<string>Extensions/ArrayExtensions.swift</string>
 		<string>main.swift</string>
 		<string>../R.generated.swift</string>
 		<string>AppDelegate.swift</string>
@@ -117,7 +116,7 @@
 		<key>../Podfile:swiftbasics</key>
 		<string>    use_frameworks!
 
-    pod &apos;R.swift&apos;, &apos;~&gt; 4.0.0&apos;
+    pod &apos;R.swift&apos;, &apos;~&gt; 5.0.0.alpha.2&apos;
     pod &apos;SwiftLint&apos;</string>
 		<key>Extensions/ReuseIdentifiable.swift</key>
 		<dict>
@@ -125,13 +124,6 @@
 			<string>Extensions</string>
 			<key>Path</key>
 			<string>ReuseIdentifiable.swift</string>
-		</dict>
-		<key>Extensions/ArrayExtensions.swift</key>
-		<dict>
-			<key>Group</key>
-			<string>Extensions</string>
-			<key>Path</key>
-			<string>ArrayExtensions.swift</string>
 		</dict>
 		<key>View Controllers/ViewController.swift</key>
 		<dict>
@@ -477,13 +469,6 @@
 							<key>Group</key>
 							<string>MoveToNonUITestTarget</string>
 						</dict>
-						<key>MoveToNonUITestTarget/ArrayExtensionsTests.swift</key>
-						<dict>
-							<key>Path</key>
-							<string>ArrayExtensionsTests.swift</string>
-							<key>Group</key>
-							<string>MoveToNonUITestTarget</string>
-						</dict>
 						<key>MoveToNonUITestTarget/UserAPITests.swift</key>
 						<dict>
 							<key>Path</key>
@@ -513,7 +498,6 @@
 						<string>MoveToNonUITestTarget/TokenStorageHelperTests.swift</string>
 						<string>MoveToNonUITestTarget/UserAPITests.swift</string>
 						<string>MoveToNonUITestTarget/APICompletionTests.swift</string>
-						<string>MoveToNonUITestTarget/ArrayExtensionsTests.swift</string>
 						<string>MoveToNonUITestTarget/VOKMockData</string>
 					</array>
 					<key>Targets</key>
