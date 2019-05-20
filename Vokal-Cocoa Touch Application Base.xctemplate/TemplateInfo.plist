@@ -426,7 +426,7 @@ end
 			<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
 			<string>iPhone Developer</string>
 			<key>SWIFT_VERSION</key>
-			<string>4.2</string>
+			<string>5.0</string>
 		</dict>
 	</dict>
 	<key>Targets</key>
