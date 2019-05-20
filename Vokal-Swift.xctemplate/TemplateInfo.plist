@@ -89,13 +89,13 @@
 	</array>
 	<key>Nodes</key>
 	<array>
-		<string>Extensions/ReuseIdentifiable.swift</string>
 		<string>main.swift</string>
 		<string>../R.generated.swift</string>
 		<string>AppDelegate.swift</string>
 		<string>TestingAppDelegate.swift</string>
 		<string>View Controllers/ViewController.swift</string>
 		<string>Protocols/CommonInitializedView.swift</string>
+		<string>Extensions/.gitkeep</string>
 		<string>Controls/Base/BaseControl.swift</string>
 		<string>Controls/Base/BaseButton.swift</string>
 		<string>Controls/Base/BaseTextField.swift</string>
@@ -118,12 +118,12 @@
 
     pod &apos;R.swift&apos;, &apos;~&gt; 5.0.3&apos;
     pod &apos;SwiftLint&apos;</string>
-		<key>Extensions/ReuseIdentifiable.swift</key>
+		<key>Extensions/.gitkeep</key>
 		<dict>
 			<key>Group</key>
 			<string>Extensions</string>
 			<key>Path</key>
-			<string>ReuseIdentifiable.swift</string>
+			<string>.gitkeep</string>
 		</dict>
 		<key>View Controllers/ViewController.swift</key>
 		<dict>
