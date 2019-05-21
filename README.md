@@ -5,7 +5,7 @@ This repo contains Objective-C and Swift templates to start up a new Vokal proje
 For people outside of Vokal: you'll need to make some adjustments after creating your project from these templates. In particular, you'll need to remove our private podspec repo from the `Podfile`, and update the certificate repo in `fastlane/Matchfile`. If you have issues beyond that, feel free to [drop us a note](mailto:ios@vokal.io).
 
 ## Maintaining these templates
-Apple doesn't have documentation on managing templates like this, but [there is a third-party guide for Xcode 4](http://www.learn-cocos2d.com/store/xcode4-template-documentation/) that's still mostly correct for Xcode 10.
+Apple doesn't have documentation on managing templates like this, but [there is a third-party guide for Xcode 4](https://web.archive.org/web/20180423060655/http://www.learn-cocos2d.com/store/xcode4-template-documentation) that's still mostly correct for Xcode 10.
 
 If you're updating the templates, you'll note that there are Vokal-fied versions of several templates in this project - this is to facilitate making sure that certain stock files which would otherwise be created are not created. These were forked from the Xcode 7 templates, but as of Xcode 10, the base template had not changed significantly from the one included in 7.
 
@@ -105,3 +105,4 @@ Adjust the run scripts in this target as necessary. For example, if your project
 * 2.x: works with Swift 3 in Xcode 8
 * 3.x: works with Swift 4 in Xcode 9
 * 4.x: works with Swift 4.2 in Xcode 10
+* 5.x: works with Swift 5.0 in Xcode 10.2
