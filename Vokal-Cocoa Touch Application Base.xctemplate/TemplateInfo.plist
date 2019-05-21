@@ -144,7 +144,6 @@ target &apos;___PACKAGENAME___&apos; do
 </string>
 			<key>End</key>
 			<string>
-
     target &apos;___PACKAGENAME___Tests&apos; do
         # Put pods used for both test targets here
         pod &apos;VOKMockUrlProtocol&apos;
@@ -154,7 +153,6 @@ target &apos;___PACKAGENAME___&apos; do
             pod &apos;KIF&apos;
         end
     end
-
 end
 
 post_install do | installer |
@@ -168,8 +166,7 @@ post_install do | installer |
             config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf'
         end
     end
-end
-</string>
+end</string>
 			<key>Group</key>
 			<array>
 				<string>Non-iOS Resources</string>

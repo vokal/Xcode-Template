@@ -116,7 +116,7 @@
 		<key>../Podfile:swiftbasics</key>
 		<string>    use_frameworks!
 
-    pod &apos;R.swift&apos;, &apos;~&gt; 5.0.3&apos;
+    pod &apos;R.swift&apos;
     pod &apos;SwiftLint&apos;</string>
 		<key>Extensions/.gitkeep</key>
 		<dict>
