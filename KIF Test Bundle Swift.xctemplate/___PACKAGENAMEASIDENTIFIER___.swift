@@ -10,7 +10,6 @@ import UIKit
 import KIF
 
 class ___FILEBASENAMEASIDENTIFIER___: KIFTestCase {
-    
     func testAreAnyTestsWritten() {
         XCTFail("You should write some KIF tests.")
     }
