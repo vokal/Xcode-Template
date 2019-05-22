@@ -5,4 +5,4 @@ if [[ "${CI}" == 'true' && "${TRAVIS}" == 'true' ]]; then
     exit 0
 fi
 
-"$PODS_ROOT/R.swift/rswift" generate "$SRCROOT"
+"$PODS_ROOT/R.swift/rswift" generate "$SRCROOT/R.generated.swift"

@@ -28,8 +28,8 @@ FONT_DIR="${RESOURCES_DIR}/Fonts"
 # Prefix to use for extensions/categories, ex: VOK. 
 PREFIX="FIXME"
 
-# Change this to "swift" if you want your files to output in swift.
-LANGUAGE="objc"
+# Change this to "objc" if you want your files to output in Objective-C.
+LANGUAGE="swift"
 
 # Make sure everything is set up before trying to run
 if [ "${PREFIX}" = "FIXME" ];  then
@@ -42,4 +42,5 @@ fi
     --output-dir "${OUTPUT_DIR}" \
     --font-dir "${FONT_DIR}" \
     --prefix "${PREFIX}" \
-    --"${LANGUAGE}"
+    --"${LANGUAGE}" \
+    --noibdesignables

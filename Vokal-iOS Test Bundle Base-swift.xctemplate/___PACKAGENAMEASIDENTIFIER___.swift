@@ -9,7 +9,6 @@
 import XCTest
 
 class ___FILEBASENAMEASIDENTIFIER___: XCTestCase {
-    
     func testAreAnyTestsWritten() {
         XCTFail("You should write some unit tests.")
     }    

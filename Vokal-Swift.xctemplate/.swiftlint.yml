@@ -12,11 +12,14 @@ disabled_rules:
   - type_name
   - unused_optional_binding
   - variable_name
+  - weak_delegate
 
 opt_in_rules:
   - force_unwrapping
   - implicitly_unwrapped_optional
   - unneeded_parentheses_in_closure_argument
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
 
 force_unwrapping:
   severity: error
