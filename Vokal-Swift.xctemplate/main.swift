@@ -11,11 +11,10 @@ import UIKit
 
 //Figure out which app delegate to spin up.
 let isRunningTests: Bool = NSClassFromString("XCTestCase") != nil
-let isRunningUITests: Bool = NSClassFromString("KIFTestCase") != nil
 
 let appDelegateClass: AnyClass
 
-if (isRunningTests && !isRunningUITests) {
+if isRunningTests {
     appDelegateClass = TestingAppDelegate.self
 } else {
     appDelegateClass = AppDelegate.self

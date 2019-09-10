@@ -53,12 +53,6 @@
 		</dict>
 		<dict>
 			<key>Identifier</key>
-			<string>io.vokal.dt.unit.kifUITestBundleBase</string>
-			<key>Name</key>
-			<string>___PACKAGENAME___UITests</string>
-		</dict>
-		<dict>
-			<key>Identifier</key>
 			<string>io.vokal.dt.unit.aggregateScriptsTarget-objc</string>
 			<key>Name</key>
 			<string>Code Generation Scripts</string>
@@ -521,7 +515,7 @@
 								<string>Networking</string>
 							</array>
 						</dict>
-						<key>MoveToNonUITestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.h</key>
+						<key>MoveToTestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.h</key>
 						<dict>
 							<key>TargetIndices</key>
 							<array/>
@@ -529,32 +523,32 @@
 							<string>___VARIABLE_classPrefix___HTTPSessionManager+MockData.h</string>
 							<key>Group</key>
 							<array>
-								<string>MoveToNonUITestTarget</string>
+								<string>MoveToTestTarget</string>
 							</array>
 						</dict>
-						<key>MoveToNonUITestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.m</key>
+						<key>MoveToTestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.m</key>
 						<dict>
 							<key>Path</key>
 							<string>___VARIABLE_classPrefix___HTTPSessionManager+MockData.m</string>
 							<key>Group</key>
 							<array>
-								<string>MoveToNonUITestTarget</string>
+								<string>MoveToTestTarget</string>
 							</array>
 						</dict>
-						<key>MoveToNonUITestTarget/___VARIABLE_classPrefix___UserAPITests.m</key>
+						<key>MoveToTestTarget/___VARIABLE_classPrefix___UserAPITests.m</key>
 						<dict>
 							<key>Path</key>
 							<string>___VARIABLE_classPrefix___UserAPITests.m</string>
 							<key>Group</key>
-							<string>MoveToNonUITestTarget</string>
+							<string>MoveToTestTarget</string>
 						</dict>
-						<key>MoveToNonUITestTarget/VOKMockData</key>
+						<key>MoveToTestTarget/VOKMockData</key>
 						<dict>
 							<key>Path</key>
 							<string>VOKMockData</string>
 							<key>Group</key>
 							<array>
-								<string>MoveToNonUITestTarget</string>
+								<string>MoveToTestTarget</string>
 							</array>
 						</dict>
 					</dict>
@@ -565,10 +559,10 @@
 						<string>Networking/___VARIABLE_classPrefix___NetworkAPIUtility.m</string>
 						<string>Networking/___VARIABLE_classPrefix___HTTPSessionManager.h</string>
 						<string>Networking/___VARIABLE_classPrefix___HTTPSessionManager.m</string>
-						<string>MoveToNonUITestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.h</string>
-						<string>MoveToNonUITestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.m</string>
-						<string>MoveToNonUITestTarget/___VARIABLE_classPrefix___UserAPITests.m</string>
-						<string>MoveToNonUITestTarget/VOKMockData</string>
+						<string>MoveToTestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.h</string>
+						<string>MoveToTestTarget/___VARIABLE_classPrefix___HTTPSessionManager+MockData.m</string>
+						<string>MoveToTestTarget/___VARIABLE_classPrefix___UserAPITests.m</string>
+						<string>MoveToTestTarget/VOKMockData</string>
 					</array>
 					<key>Targets</key>
 					<array>
