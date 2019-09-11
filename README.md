@@ -51,9 +51,9 @@ To install or update the templates in Xcode:
 
 If you chose to include the Starter Network Utility when creating the project, you get a bunch of tests for free! The bad news is that templates are dumb, so you have to move them around. 
 
-- Remove the references in "MoveToNonUITestTarget" in the same way you did the Non-iOS resources.
+- Remove the references in "MoveToTestTarget" in the same way you did the Non-iOS resources.
 
-- Go into the folder hierarchy and find the `MoveToNonUITestTarget` folder. Start by selecting just the test files. Then drag the test files into the non-UI test target, and only add them to the non-UI test target. 
+- Go into the folder hierarchy and find the `MoveToTestTarget` folder. Start by selecting just the test files. Then drag the test files into the non-UI test target, and only add them to the non-UI test target. 
 
 - Grab the `VOKMockData` folder and either the `HTTPSessionManager+MockData`category `.h` & `.m` files for Objective-C or the `HTTPSessionManager+MockData.swift` file for Swift. Drag them into the non-UI test target, but add them to both the non-UI and UI test targets:
 
@@ -61,7 +61,7 @@ If you chose to include the Starter Network Utility when creating the project, y
 
 **NOTE: Make sure you've selected "Create folder references" so the mock data is added properly**.
 
-You can then delete the `MoveToNonUITestTarget` from the filesystem as the test stuff has been moved over.
+You can then delete the `MoveToTestTarget` from the filesystem as the test stuff has been moved over.
 
 ### 3. Cocoapod setup
 
