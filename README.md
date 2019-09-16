@@ -53,15 +53,13 @@ If you chose to include the Starter Network Utility when creating the project, y
 
 - Remove the references in "MoveToTestTarget" in the same way you did the Non-iOS resources.
 
-- Go into the folder hierarchy and find the `MoveToTestTarget` folder. Start by selecting just the test files. Then drag the test files into the non-UI test target, and only add them to the non-UI test target. 
+- Go into the folder hierarchy and find the `MoveToTestTarget` folder. Select all these files and move them to the top-level of the test target directory. Then add these files to the test target by dragging them into Xcode:
 
-- Grab the `VOKMockData` folder and either the `HTTPSessionManager+MockData`category `.h` & `.m` files for Objective-C or the `HTTPSessionManager+MockData.swift` file for Swift. Drag them into the non-UI test target, but add them to both the non-UI and UI test targets:
+**NOTE: For the `VOKMockData` folder make sure you've selected "Create folder references" so the mock data is added properly**.
 
 ![](screenshots/test_add_to_both_targets.png)
 
-**NOTE: Make sure you've selected "Create folder references" so the mock data is added properly**.
-
-You can then delete the `MoveToTestTarget` from the filesystem as the test stuff has been moved over.
+You can then delete the `MoveToTestTarget` folder from the filesystem as the test stuff has been moved over.
 
 ### 3. Cocoapod setup
 
@@ -79,7 +77,7 @@ You can then delete the `MoveToTestTarget` from the filesystem as the test stuff
 
 - For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjCleanAndSwiftLint/README.md.html).
 
-- Hit ⌘-U to run both the UI and Non-UI tests. Each set of tests should fail since you haven't set anything up yet. 
+- Hit ⌘-U to run the tests. The tests should fail since you haven't set anything up yet.
 
 - Double-check the Travis configuration and add secure keys as needed. See our [Travis documentation](https://engineering.vokal.io/iOS/Fastlane-Travis-CI.md.html) for the full details on that. This step can be handled later, since most of the information needed for this probably isn't available yet.
 
