@@ -100,15 +100,6 @@
 				<string>Scripts</string>
 			</array>
 		</dict>
-		<key>Scripts/xUnique_Run_Script.sh</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts/xUnique_Run_Script.sh</string>
-			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
-		</dict>
 		<key>../travis</key>
 		<dict>
 			<key>Path</key>
@@ -138,7 +129,6 @@ source &apos;https://github.com/CocoaPods/Specs.git&apos;
 platform :ios, &apos;13.0&apos;
 
 target &apos;___PACKAGENAME___&apos; do
-    pod &apos;xUnique&apos;
     pod &apos;DevsJustWantToHaveFun&apos;
     pod &apos;VOKUtilities&apos;
 </string>
@@ -319,7 +309,6 @@ end</string>
 		<string>Base.lproj/LaunchScreen.storyboard</string>
 		<string>Base.lproj/Main-___PACKAGENAME___.storyboard</string>
 		<string>Scripts/Version_Incrementing_Run_Script.sh</string>
-		<string>Scripts/xUnique_Run_Script.sh</string>
 		<string>Scripts/DevsJustWantToHaveFun.sh</string>
 		<string>Settings.bundle</string>
 	</array>
