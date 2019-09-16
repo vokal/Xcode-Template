@@ -47,35 +47,11 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Resources/___PACKAGENAME___.truecolors</key>
+		<key>Resources/.gitkeep</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Resources</string>
-			</array>
-			<key>Path</key>
-			<string>___PACKAGENAME___.truecolors</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Resources/Fonts/.gitkeep</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Resources</string>
-				<string>Fonts</string>
-			</array>
-			<key>Path</key>
-			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Resources/TrueColors/.gitkeep</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Resources</string>
-				<string>TrueColors</string>
 			</array>
 			<key>Path</key>
 			<string>.gitkeep</string>
@@ -86,15 +62,6 @@
 		<dict>
 			<key>Path</key>
 			<string>Scripts/Version_Incrementing_Run_Script.sh</string>
-			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
-		</dict>
-		<key>Scripts/DevsJustWantToHaveFun.sh</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts/DevsJustWantToHaveFun.sh</string>
 			<key>Group</key>
 			<array>
 				<string>Scripts</string>
@@ -129,7 +96,6 @@ source &apos;https://github.com/CocoaPods/Specs.git&apos;
 platform :ios, &apos;13.0&apos;
 
 target &apos;___PACKAGENAME___&apos; do
-    pod &apos;DevsJustWantToHaveFun&apos;
     pod &apos;VOKUtilities&apos;
 </string>
 			<key>End</key>
@@ -267,9 +233,7 @@ end</string>
 	<array>
 		<string>Controls/.gitkeep</string>
 		<string>Data Sources/.gitkeep</string>
-		<string>Resources/___PACKAGENAME___.truecolors</string>
-		<string>Resources/Fonts/.gitkeep</string>
-		<string>Resources/TrueColors/.gitkeep</string>
+		<string>Resources/.gitkeep</string>
 		<string>Views/.gitkeep</string>
 		<string>../Gemfile</string>
 		<string>../Podfile</string>
@@ -287,7 +251,6 @@ end</string>
 		<string>Base.lproj/LaunchScreen.storyboard</string>
 		<string>Base.lproj/Main-___PACKAGENAME___.storyboard</string>
 		<string>Scripts/Version_Incrementing_Run_Script.sh</string>
-		<string>Scripts/DevsJustWantToHaveFun.sh</string>
 		<string>Settings.bundle</string>
 	</array>
 	<key>Options</key>

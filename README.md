@@ -70,11 +70,7 @@ You can then delete the `MoveToTestTarget` folder from the filesystem as the tes
 
 - On the command line, run `bundle exec pod install`. Be sure to launch the project from the newly-created `.xcworkspace` file.
 
-### 4. For Swift Only
-
-- There are a couple scripts which are included at the base project level which default to generating Objective-C code. In order to generate Swift files for DevsJustWantToHaveFun, you will need to update the scripts to use `swift` instead of `objc` for the `LANGUAGE` option. These scripts can be found in the `[project]/Scripts` folder. 
-
-### 5. For All Projects
+### 4. For All Projects
 
 - For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjCleanAndSwiftLint/README.md.html).
 

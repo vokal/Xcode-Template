@@ -62,7 +62,6 @@ platform :ios do
     'R.generated.swift',
     '___PACKAGENAME___/CoreDataAndModels/private/*',
     '___PACKAGENAME___/*TestingAppDelegate.*',
-    '___PACKAGENAME___/Resources/TrueColors/*',
     '___PACKAGENAME___/Utilities/DLog.swift',
     '___PACKAGENAME___/Views/Base/*',
     '___PACKAGENAME___/Controls/Base/*',
