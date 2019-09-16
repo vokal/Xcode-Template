@@ -1,5 +1,5 @@
 # Vokal Xcode Project Templates
-> Maintained by @bryanluby
+> Maintained by [@bryanluby](https://github.com/bryanluby)
 
 This repo contains Objective-C and Swift templates to start up a new Vokal project. These templates are a good start, but don't produce a ready-to-go project. Be sure to follow the steps in *After creating a project* each time you use one of these templates. Also note that creating the Xcode project is just one step in the process of [setting up a new project](https://engineering.vokal.io/iOS/Creating-Projects.md.html); consult that documentation before following instructions here.
 
