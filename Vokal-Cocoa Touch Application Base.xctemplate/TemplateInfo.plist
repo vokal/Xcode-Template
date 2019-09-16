@@ -212,15 +212,6 @@ end</string>
 				<string>Non-iOS Resources</string>
 			</array>
 		</dict>
-		<key>../___PACKAGENAME___.xcodeproj/xcshareddata/xcschemes/___PACKAGENAME___.xcscheme</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Supporting Files</string>
-			</array>
-			<key>Path</key>
-			<string>___PACKAGENAME___.xcscheme</string>
-		</dict>
 		<key>Base.lproj/LaunchScreen.storyboard</key>
 		<dict>
 			<key>Path</key>
@@ -299,7 +290,6 @@ end</string>
 		<string>../.gitignore</string>
 		<string>../.travis.yml</string>
 		<string>../.drone.yml</string>
-		<string>../___PACKAGENAME___.xcodeproj/xcshareddata/xcschemes/___PACKAGENAME___.xcscheme</string>
 		<string>Images.xcassets</string>
 		<string>Info.plist:iPhone</string>
 		<string>Info.plist:LaunchScreen</string>
