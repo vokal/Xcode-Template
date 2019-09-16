@@ -135,7 +135,7 @@
 			<string>source &apos;https://github.com/vokal/PrivatePodspecRepo-iOS.git&apos;
 source &apos;https://github.com/CocoaPods/Specs.git&apos;
 
-platform :ios, &apos;12.0&apos;
+platform :ios, &apos;13.0&apos;
 
 target &apos;___PACKAGENAME___&apos; do
     pod &apos;xUnique&apos;
@@ -145,13 +145,8 @@ target &apos;___PACKAGENAME___&apos; do
 			<key>End</key>
 			<string>
     target &apos;___PACKAGENAME___Tests&apos; do
-        # Put pods used for both test targets here
+        # Put pods used for test target here
         pod &apos;VOKMockUrlProtocol&apos;
-        
-        target &apos;___PACKAGENAME___UITests&apos; do
-            # Put UI-testing-only pods here
-            pod &apos;KIF&apos;
-        end
     end
 end
 

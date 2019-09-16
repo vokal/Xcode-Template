@@ -41,12 +41,6 @@
 		</dict>
 		<dict>
 			<key>Identifier</key>
-			<string>io.vokal.dt.unit.kifUITestBundleBase-swift</string>
-			<key>Name</key>
-			<string>___PACKAGENAME___UITests</string>
-		</dict>
-		<dict>
-			<key>Identifier</key>
 			<string>io.vokal.dt.unit.aggregateScriptsTarget-swift</string>
 			<key>Name</key>
 			<string>Code Generation Scripts</string>
@@ -438,40 +432,40 @@
 							<key>Group</key>
 							<string>Network</string>
 						</dict>
-						<key>MoveToNonUITestTarget/VOKMockData</key>
+						<key>MoveToTestTarget/VOKMockData</key>
 						<dict>
 							<key>Path</key>
 							<string>VOKMockData</string>
 							<key>Group</key>
-							<string>MoveToNonUITestTarget</string>
+							<string>MoveToTestTarget</string>
 						</dict>
-						<key>MoveToNonUITestTarget/HTTPSessionManager+MockData.swift</key>
+						<key>MoveToTestTarget/HTTPSessionManager+MockData.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>HTTPSessionManager+MockData.swift</string>
 							<key>Group</key>
-							<string>MoveToNonUITestTarget</string>
+							<string>MoveToTestTarget</string>
 						</dict>
-						<key>MoveToNonUITestTarget/APICompletionTests.swift</key>
+						<key>MoveToTestTarget/APICompletionTests.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>APICompletionTests.swift</string>
 							<key>Group</key>
-							<string>MoveToNonUITestTarget</string>
+							<string>MoveToTestTarget</string>
 						</dict>
-						<key>MoveToNonUITestTarget/UserAPITests.swift</key>
+						<key>MoveToTestTarget/UserAPITests.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>UserAPITests.swift</string>
 							<key>Group</key>
-							<string>MoveToNonUITestTarget</string>
+							<string>MoveToTestTarget</string>
 						</dict>
-						<key>MoveToNonUITestTarget/TokenStorageHelperTests.swift</key>
+						<key>MoveToTestTarget/TokenStorageHelperTests.swift</key>
 						<dict>
 							<key>Path</key>
 							<string>TokenStorageHelperTests.swift</string>
 							<key>Group</key>
-							<string>MoveToNonUITestTarget</string>
+							<string>MoveToTestTarget</string>
 						</dict>
 					</dict>
 					<key>Nodes</key>
@@ -484,11 +478,11 @@
 						<string>Network/ServerEnvironment.swift</string>
 						<string>Network/TokenStorageHelper.swift</string>
 						<string>Network/UserAPI.swift</string>
-						<string>MoveToNonUITestTarget/HTTPSessionManager+MockData.swift</string>
-						<string>MoveToNonUITestTarget/TokenStorageHelperTests.swift</string>
-						<string>MoveToNonUITestTarget/UserAPITests.swift</string>
-						<string>MoveToNonUITestTarget/APICompletionTests.swift</string>
-						<string>MoveToNonUITestTarget/VOKMockData</string>
+						<string>MoveToTestTarget/HTTPSessionManager+MockData.swift</string>
+						<string>MoveToTestTarget/TokenStorageHelperTests.swift</string>
+						<string>MoveToTestTarget/UserAPITests.swift</string>
+						<string>MoveToTestTarget/APICompletionTests.swift</string>
+						<string>MoveToTestTarget/VOKMockData</string>
 					</array>
 					<key>Targets</key>
 					<array>
