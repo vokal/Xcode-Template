@@ -52,7 +52,7 @@ enum APIVersion: String {
      - returns: The versioned path
      */
     func versioned(path: String) -> String {
-        return self.rawValue + "/" + path
+        return rawValue + "/" + path
     }
 }
 
@@ -78,7 +78,7 @@ extension APIVersionable {
     }
     
     func path(forVersion version: APIVersion) -> String {
-        guard let rawString = self.rawValue as? String else {
+        guard let rawString = rawValue as? String else {
             assertionFailure("This method should only be used with string enums!")
             return ""
         }
@@ -154,7 +154,7 @@ class MainAPIUtility {
                       success: @escaping APIDictionaryCompletion,
                       failure: @escaping APIFailureCompletion) {
         let fullURLString = ServerEnvironment.fullURLString(for: path)
-        let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
+        let headerStrings = headerStringDictionary(fromHeaderDictionary: headers)
         
         HTTPSessionManager
             .AlamofireManager
@@ -184,7 +184,7 @@ class MainAPIUtility {
                     success: @escaping APISuccessCompletion<T>,
                     failure: @escaping APIFailureCompletion) {
         let fullURLString = ServerEnvironment.fullURLString(for: path)
-        let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
+        let headerStrings = headerStringDictionary(fromHeaderDictionary: headers)
         
         HTTPSessionManager
             .AlamofireManager
@@ -207,7 +207,7 @@ class MainAPIUtility {
                      success: @escaping APISuccessCompletion<T>,
                      failure: @escaping APIFailureCompletion) {
         let fullURLString = ServerEnvironment.fullURLString(for: path)
-        let headerStrings = self.headerStringDictionary(fromHeaderDictionary: headers)
+        let headerStrings = headerStringDictionary(fromHeaderDictionary: headers)
         
         HTTPSessionManager
             .AlamofireManager

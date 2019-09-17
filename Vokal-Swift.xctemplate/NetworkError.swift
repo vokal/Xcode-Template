@@ -51,6 +51,6 @@ enum NetworkError: Error {
 private extension HTTPStatusCode {
     /// The status code as an integer instead of a UInt32.
     var asInt: Int {
-        return Int(self.rawValue)
+        return Int(rawValue)
     }
 }

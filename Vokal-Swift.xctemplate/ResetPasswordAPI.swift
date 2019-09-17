@@ -57,7 +57,7 @@ struct ResetPasswordAPI {
         MainAPIUtility
             .sharedUtility
             .postJSON(to: resetPasswordRequestPath,
-                      headers: self.headerDict,
+                      headers: headerDict,
                       params: parameters,
                       success: success,
                       failure: failure)
@@ -84,7 +84,7 @@ struct ResetPasswordAPI {
         MainAPIUtility
             .sharedUtility
             .postJSON(to: resetPasswordPath,
-                      headers: self.headerDict,
+                      headers: headerDict,
                       params: parameters,
                       success: success,
                       failure: failure)

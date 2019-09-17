@@ -19,18 +19,18 @@ class BaseLabel: UILabel, CommonInitializedView {
     // MARK: - Setup functions which should be overridden
 
     func commonInit() {
-        self.setupOneTimeThingsIfNeeded()
+        setupOneTimeThingsIfNeeded()
     }
 
     func setupOneTimeThings() {
-        self.oneTimeThingsAreSetUp = true
+        oneTimeThingsAreSetUp = true
     }
 
     // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.commonInit()
+        commonInit()
     }
 
     required init?(coder: NSCoder) {
@@ -41,11 +41,11 @@ class BaseLabel: UILabel, CommonInitializedView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.commonInit()
+        commonInit()
     }
 
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        self.commonInit()
+        commonInit()
     }
 }

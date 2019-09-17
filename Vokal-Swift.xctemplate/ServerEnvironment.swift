@@ -50,14 +50,14 @@ enum ServerEnvironment {
     }
     
     var resetPasswordURLString: String {
-        return self.websiteBaseURLString + "/reset-request.html"
+        return websiteBaseURLString + "/reset-request.html"
     }
     
     var termsURLString: String {
-        return self.websiteBaseURLString + "/tos.html"
+        return websiteBaseURLString + "/tos.html"
     }
     
     var privacyURLString: String {
-        return self.websiteBaseURLString + "/privacy.html"
+        return websiteBaseURLString + "/privacy.html"
     }
 }
