@@ -72,7 +72,7 @@ You can then delete the `MoveToTestTarget` folder from the filesystem as the tes
 
 ### 4. For All Projects
 
-- For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjCleanAndSwiftLint/README.md.html).
+- For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjClean/README.md.html).
 
 - Hit ⌘-U to run the tests. The tests should fail since you haven't set anything up yet.
 
