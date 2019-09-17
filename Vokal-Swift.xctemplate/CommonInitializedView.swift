@@ -43,8 +43,8 @@ protocol CommonInitializedView {
 
 extension CommonInitializedView where Self: UIView {
     func setupOneTimeThingsIfNeeded() {
-        if !self.oneTimeThingsAreSetUp {
-            self.setupOneTimeThings()
+        if !oneTimeThingsAreSetUp {
+            setupOneTimeThings()
         }
     }
 

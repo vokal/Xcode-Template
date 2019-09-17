@@ -25,7 +25,7 @@ struct CoreDataUtility {
      for testing.
      */
     static func setupCoreDataForTesting() {
-        self.setupInMemoryDatabase()
+        setupInMemoryDatabase()
     }
     
     /**
@@ -33,23 +33,23 @@ struct CoreDataUtility {
      the given file name.
      */
     static func setupCoreData() {
-        self.setupDatabase(named: "___PACKAGENAMEASIDENTIFIER___.sqlite")
+        setupDatabase(named: "___PACKAGENAMEASIDENTIFIER___.sqlite")
     }
     
     /**
      Wipes the current core data stack out and sets it back up for production use.
      */
     static func nukeAndResetCoreData() {
-        self.nukeCoreData()
-        self.setupCoreData()
+        nukeCoreData()
+        setupCoreData()
     }
     
     /**
      Wipes the current core data stack out and sets it back up for testing.
      */
     static func nukeAndResetCoreDataForTesting() {
-        self.nukeCoreData()
-        self.setupCoreDataForTesting()
+        nukeCoreData()
+        setupCoreDataForTesting()
     }
     
     // MARK: - Private helper methods
@@ -59,7 +59,7 @@ struct CoreDataUtility {
     }
     
     private static func setupInMemoryDatabase() {
-        self.setupDatabase(named: nil)
+        setupDatabase(named: nil)
     }
     
     private static func setupDatabase(named databaseName: String?) {
@@ -70,7 +70,7 @@ struct CoreDataUtility {
         manager.setResource("___PACKAGENAMEASIDENTIFIER___", database: databaseName)
         
         //Fire off the object mappers
-        self.setupObjectMappers()
+        setupObjectMappers()
     }
     
     private static func setupObjectMappers() {

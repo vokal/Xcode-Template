@@ -1,5 +1,5 @@
 # Vokal Xcode Project Templates
-> Maintained by @bryanluby
+> Maintained by [@bryanluby](https://github.com/bryanluby)
 
 This repo contains Objective-C and Swift templates to start up a new Vokal project. These templates are a good start, but don't produce a ready-to-go project. Be sure to follow the steps in *After creating a project* each time you use one of these templates. Also note that creating the Xcode project is just one step in the process of [setting up a new project](https://engineering.vokal.io/iOS/Creating-Projects.md.html); consult that documentation before following instructions here.
 
@@ -70,13 +70,9 @@ You can then delete the `MoveToTestTarget` folder from the filesystem as the tes
 
 - On the command line, run `bundle exec pod install`. Be sure to launch the project from the newly-created `.xcworkspace` file.
 
-### 4. For Swift Only
+### 4. For All Projects
 
-- There are a couple scripts which are included at the base project level which default to generating Objective-C code. In order to generate Swift files for DevsJustWantToHaveFun, you will need to update the scripts to use `swift` instead of `objc` for the `LANGUAGE` option. These scripts can be found in the `[project]/Scripts` folder. 
-
-### 5. For All Projects
-
-- For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjCleanAndSwiftLint/README.md.html).
+- For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjClean/README.md.html).
 
 - Hit ⌘-U to run the tests. The tests should fail since you haven't set anything up yet.
 

@@ -35,7 +35,6 @@ declare -a emptyDirectories=(
     "Fonts"
     "Resources"
     "Scripts"
-    "TrueColors"
     "Utilities"
     "Views"
     "View Controllers"

@@ -41,9 +41,9 @@ class TestingAppDelegate: UIResponder, UIApplicationDelegate {
         ])
         
         //Fire up the window.
-        self.window = UIWindow()
-        self.window?.rootViewController = testViewController
-        self.window?.makeKeyAndVisible()
+        window = UIWindow()
+        window?.rootViewController = testViewController
+        window?.makeKeyAndVisible()
         
         return true
     }

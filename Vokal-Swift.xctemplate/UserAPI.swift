@@ -61,7 +61,7 @@ struct UserAPI {
             ]
         
         let registerPath = POSTPath.register.path(forVersion: .v1)
-        let headers = self.requestHeaders(withAuthToken: false)
+        let headers = requestHeaders(withAuthToken: false)
         
         MainAPIUtility
             .sharedUtility
@@ -91,7 +91,7 @@ struct UserAPI {
             ]
         
         let loginPath = POSTPath.login.path(forVersion: .v1)
-        let headers = self.requestHeaders(withAuthToken: false)
+        let headers = requestHeaders(withAuthToken: false)
         
         MainAPIUtility
             .sharedUtility
@@ -121,7 +121,7 @@ struct UserAPI {
         ]
         
         let fbLoginRegisterPath = POSTPath.facebookLoginRegister.path(forVersion: .v1)
-        let headers = self.requestHeaders(withAuthToken: false)
+        let headers = requestHeaders(withAuthToken: false)
         
         MainAPIUtility
             .sharedUtility
@@ -144,7 +144,7 @@ struct UserAPI {
     static func fetchCurrentUserInfo(success: @escaping APIDictionaryCompletion,
                                      failure: @escaping APIFailureCompletion) {
         let currentUserFetchPath = GETPath.currentUser.path(forVersion: .v1)
-        let headers = self.requestHeaders(withAuthToken: true)
+        let headers = requestHeaders(withAuthToken: true)
         
         MainAPIUtility
             .sharedUtility
@@ -171,7 +171,7 @@ struct UserAPI {
         ]
         
         let registerDeviceTokenPath = POSTPath.notificationRegister.path(forVersion: .v1)
-        let headers = self.requestHeaders(withAuthToken: true)
+        let headers = requestHeaders(withAuthToken: true)
         
         MainAPIUtility
             .sharedUtility
@@ -195,7 +195,7 @@ struct UserAPI {
                               success: @escaping APIDictionaryCompletion,
                               failure: @escaping APIFailureCompletion) {
         let userFetchPath = APIVersion.v1.versioned(path: GETPath.specificUser(userID: userID))
-        let headers = self.requestHeaders(withAuthToken: true)
+        let headers = requestHeaders(withAuthToken: true)
         
         MainAPIUtility
             .sharedUtility

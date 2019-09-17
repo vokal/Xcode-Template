@@ -46,14 +46,14 @@ class UserAPITests: XCTestCase {
                       success: { resultDict in
                         //THEN: The call should succeed and the token should match the mock token.
                         if let token = resultDict["token"] as? String {
-                            XCTAssertEqual(token, self.MockLoginToken)
+                            XCTAssertEqual(token, MockLoginToken)
                         } else {
                             XCTFail("No token returned!")
                         }
                         
                         //THEN: The token should already be stored in the keychain.
                         if let keychainToken = TokenStorageHelper.getAuthorizationToken() {
-                            XCTAssertEqual(keychainToken, self.MockLoginToken)
+                            XCTAssertEqual(keychainToken, MockLoginToken)
                         } else {
                             XCTFail("Token was not stored in the keychain!")
                         }
@@ -66,7 +66,7 @@ class UserAPITests: XCTestCase {
                         expectation.fulfill()
         })
 
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
     func testWrongPasswordEmailLogin() {
@@ -93,7 +93,7 @@ class UserAPITests: XCTestCase {
                         expectation.fulfill()
         })
         
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
     func testNonexistentEmailLogin() {
@@ -120,6 +120,6 @@ class UserAPITests: XCTestCase {
                         expectation.fulfill()
         })
         
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
 }

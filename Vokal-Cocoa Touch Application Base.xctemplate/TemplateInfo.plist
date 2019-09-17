@@ -47,35 +47,11 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>Resources/___PACKAGENAME___.truecolors</key>
+		<key>Resources/.gitkeep</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Resources</string>
-			</array>
-			<key>Path</key>
-			<string>___PACKAGENAME___.truecolors</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Resources/Fonts/.gitkeep</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Resources</string>
-				<string>Fonts</string>
-			</array>
-			<key>Path</key>
-			<string>.gitkeep</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>Resources/TrueColors/.gitkeep</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Resources</string>
-				<string>TrueColors</string>
 			</array>
 			<key>Path</key>
 			<string>.gitkeep</string>
@@ -86,24 +62,6 @@
 		<dict>
 			<key>Path</key>
 			<string>Scripts/Version_Incrementing_Run_Script.sh</string>
-			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
-		</dict>
-		<key>Scripts/DevsJustWantToHaveFun.sh</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts/DevsJustWantToHaveFun.sh</string>
-			<key>Group</key>
-			<array>
-				<string>Scripts</string>
-			</array>
-		</dict>
-		<key>Scripts/xUnique_Run_Script.sh</key>
-		<dict>
-			<key>Path</key>
-			<string>Scripts/xUnique_Run_Script.sh</string>
 			<key>Group</key>
 			<array>
 				<string>Scripts</string>
@@ -138,8 +96,6 @@ source &apos;https://github.com/CocoaPods/Specs.git&apos;
 platform :ios, &apos;13.0&apos;
 
 target &apos;___PACKAGENAME___&apos; do
-    pod &apos;xUnique&apos;
-    pod &apos;DevsJustWantToHaveFun&apos;
     pod &apos;VOKUtilities&apos;
 </string>
 			<key>End</key>
@@ -158,7 +114,7 @@ post_install do | installer |
     # Fix App Store Connect issue with Pods: https://stackoverflow.com/questions/25755240/too-many-symbol-files-after-successfully-submitting-my-apps
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-            config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf'
+            config.build_settings[&apos;DEBUG_INFORMATION_FORMAT&apos;] = &apos;dwarf&apos;
         end
     end
 end</string>
@@ -200,17 +156,6 @@ end</string>
 				<string>Non-iOS Resources</string>
 			</array>
 		</dict>
-		<key>../.drone.yml</key>
-		<dict>
-			<key>Path</key>
-			<string>.drone.yml</string>
-			<key>TargetIndices</key>
-			<array/>
-			<key>Group</key>
-			<array>
-				<string>Non-iOS Resources</string>
-			</array>
-		</dict>
 		<key>../.gitignore</key>
 		<dict>
 			<key>Path</key>
@@ -221,15 +166,6 @@ end</string>
 			<array>
 				<string>Non-iOS Resources</string>
 			</array>
-		</dict>
-		<key>../___PACKAGENAME___.xcodeproj/xcshareddata/xcschemes/___PACKAGENAME___.xcscheme</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Supporting Files</string>
-			</array>
-			<key>Path</key>
-			<string>___PACKAGENAME___.xcscheme</string>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboard</key>
 		<dict>
@@ -297,9 +233,7 @@ end</string>
 	<array>
 		<string>Controls/.gitkeep</string>
 		<string>Data Sources/.gitkeep</string>
-		<string>Resources/___PACKAGENAME___.truecolors</string>
-		<string>Resources/Fonts/.gitkeep</string>
-		<string>Resources/TrueColors/.gitkeep</string>
+		<string>Resources/.gitkeep</string>
 		<string>Views/.gitkeep</string>
 		<string>../Gemfile</string>
 		<string>../Podfile</string>
@@ -308,8 +242,6 @@ end</string>
 		<string>../README.md</string>
 		<string>../.gitignore</string>
 		<string>../.travis.yml</string>
-		<string>../.drone.yml</string>
-		<string>../___PACKAGENAME___.xcodeproj/xcshareddata/xcschemes/___PACKAGENAME___.xcscheme</string>
 		<string>Images.xcassets</string>
 		<string>Info.plist:iPhone</string>
 		<string>Info.plist:LaunchScreen</string>
@@ -319,8 +251,6 @@ end</string>
 		<string>Base.lproj/LaunchScreen.storyboard</string>
 		<string>Base.lproj/Main-___PACKAGENAME___.storyboard</string>
 		<string>Scripts/Version_Incrementing_Run_Script.sh</string>
-		<string>Scripts/xUnique_Run_Script.sh</string>
-		<string>Scripts/DevsJustWantToHaveFun.sh</string>
 		<string>Settings.bundle</string>
 	</array>
 	<key>Options</key>

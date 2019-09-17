@@ -19,11 +19,11 @@ class BaseTextView: UITextView, CommonInitializedView {
     // MARK: - Setup functions which should be overridden
 
     func commonInit() {
-        self.setupOneTimeThingsIfNeeded()
+        setupOneTimeThingsIfNeeded()
     }
 
     func setupOneTimeThings() {
-        self.oneTimeThingsAreSetUp = true
+        oneTimeThingsAreSetUp = true
     }
 
     // MARK: - Initialization
@@ -34,18 +34,18 @@ class BaseTextView: UITextView, CommonInitializedView {
 
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        self.commonInit()
+        commonInit()
     }
 
     // MARK: - Interface Builder
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.commonInit()
+        commonInit()
     }
 
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        self.commonInit()
+        commonInit()
     }
 }

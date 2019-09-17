@@ -45,7 +45,7 @@ class APICompletionTests: XCTestCase {
             expectation.fulfill()
         })
         
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
 
     func testArrayFetch() {
@@ -63,7 +63,7 @@ class APICompletionTests: XCTestCase {
             expectation.fulfill()
         })
         
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
 
     func testArrayFail() {
@@ -89,7 +89,7 @@ class APICompletionTests: XCTestCase {
             expectation.fulfill()
         })
         
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
 
     func testDictionaryFail() {
@@ -114,7 +114,7 @@ class APICompletionTests: XCTestCase {
             expectation.fulfill()
         })
         
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
     
     func testEmptyResponse() {
@@ -134,6 +134,6 @@ class APICompletionTests: XCTestCase {
             expectation.fulfill()
         })
         
-        self.waitForExpectations(timeout: StandardTestTimeout, handler: nil)
+        waitForExpectations(timeout: StandardTestTimeout, handler: nil)
     }
 }
