@@ -290,6 +290,11 @@
 				<string>-Owholemodule</string>
 			</dict>
 		</dict>
+		<key>SharedSettings</key>
+		<dict>
+			<key>SWIFT_VERSION</key>
+			<string>5.1</string>
+		</dict>
 	</dict>
 	<key>Options</key>
 	<array>
