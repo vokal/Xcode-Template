@@ -14,6 +14,17 @@
 	</array>
 	<key>Definitions</key>
 	<dict>
+		<key>Flows/.gitkeep</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Flows</string>
+			</array>
+			<key>Path</key>
+			<string>.gitkeep</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
 		<key>Views/.gitkeep</key>
 		<dict>
 			<key>Group</key>
@@ -231,6 +242,7 @@ end</string>
 	</dict>
 	<key>Nodes</key>
 	<array>
+		<string>Flows/.gitkeep</string>
 		<string>Controls/.gitkeep</string>
 		<string>Data Sources/.gitkeep</string>
 		<string>Resources/.gitkeep</string>

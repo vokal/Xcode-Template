@@ -32,6 +32,7 @@ declare -a emptyDirectories=(
     "Controls"
     "Data Sources"
     "Extensions"
+    "Flows"
     "Fonts"
     "Resources"
     "Scripts"
