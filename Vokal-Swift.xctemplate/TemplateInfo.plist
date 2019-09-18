@@ -293,7 +293,7 @@
 		<key>SharedSettings</key>
 		<dict>
 			<key>SWIFT_VERSION</key>
-			<string>5.1</string>
+			<string>5.0</string>
 		</dict>
 	</dict>
 	<key>Options</key>
