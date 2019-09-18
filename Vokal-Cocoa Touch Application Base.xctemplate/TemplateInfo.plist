@@ -185,10 +185,10 @@ end</string>
 			<key>SortOrder</key>
 			<integer>101</integer>
 		</dict>
-		<key>Base.lproj/Main-___PACKAGENAME___.storyboard</key>
+		<key>Base.lproj/Main.storyboard</key>
 		<dict>
 			<key>Path</key>
-			<string>Main-___PACKAGENAME___.storyboard</string>
+			<string>Main.storyboard</string>
 			<key>SortOrder</key>
 			<string>100</string>
 		</dict>
@@ -217,7 +217,7 @@ end</string>
 </string>
 		<key>Info.plist:UIMainStoryboardFile</key>
 		<string>&lt;key&gt;UIMainStoryboardFile&lt;/key&gt;
-&lt;string&gt;Main-___PACKAGENAME___&lt;/string&gt;</string>
+&lt;string&gt;Main&lt;/string&gt;</string>
 		<key>Info.plist:UIRequiredDeviceCapabilities</key>
 		<dict>
 			<key>Beginning</key>
@@ -261,7 +261,7 @@ end</string>
 		<string>Info.plist:UIMainStoryboardFile</string>
 		<string>Info.plist:UIRequiredDeviceCapabilities:base</string>
 		<string>Base.lproj/LaunchScreen.storyboard</string>
-		<string>Base.lproj/Main-___PACKAGENAME___.storyboard</string>
+		<string>Base.lproj/Main.storyboard</string>
 		<string>Scripts/Version_Incrementing_Run_Script.sh</string>
 		<string>Settings.bundle</string>
 	</array>
@@ -349,6 +349,14 @@ end</string>
 					<array>
 						<string>Info.plist:UISupportedInterfaceOrientations~iPhone</string>
 					</array>
+					<key>Project</key>
+					<dict>
+						<key>SharedSettings</key>
+						<dict>
+							<key>TARGETED_DEVICE_FAMILY</key>
+							<string>1</string>
+						</dict>
+					</dict>
 				</dict>
 			</dict>
 		</dict>
