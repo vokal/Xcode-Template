@@ -6,11 +6,11 @@ This repo contains Objective-C and Swift templates to start up a new Vokal proje
 For people outside of Vokal: you'll need to make some adjustments after creating your project from these templates. In particular, you'll need to remove our private podspec repo from the `Podfile`, and update the certificate repo in `fastlane/Matchfile`. If you have issues beyond that, feel free to [drop us a note](mailto:ios@vokal.io).
 
 ## Maintaining these templates
-Apple doesn't have documentation on managing templates like this, but [there is a third-party guide for Xcode 4](https://web.archive.org/web/20180423060655/http://www.learn-cocos2d.com/store/xcode4-template-documentation) that's still mostly correct for Xcode 10.
+Apple doesn't have documentation on managing templates like this, but [there is a third-party guide for Xcode 4](https://web.archive.org/web/20180423060655/http://www.learn-cocos2d.com/store/xcode4-template-documentation) that's still mostly correct for Xcode 11.
 
-If you're updating the templates, you'll note that there are Vokal-fied versions of several templates in this project - this is to facilitate making sure that certain stock files which would otherwise be created are not created. These were forked from the Xcode 7 templates, but as of Xcode 10, the base template had not changed significantly from the one included in 7.
+If you're updating the templates, you'll note that there are Vokal-fied versions of several templates in this project - this is to facilitate making sure that certain stock files which would otherwise be created are not created. These were forked from the Xcode 7 templates, but as of Xcode 11, the base template had not changed significantly from the one included in 7.
 
-Note that you may need to grab updated versions of these templates from the belly of Xcode when a new version of Xcode is released. As of Xcode 10, these templates can be found at the following paths:
+Note that you may need to grab updated versions of these templates from the belly of Xcode when a new version of Xcode is released. As of Xcode 11, these templates can be found at the following paths:
 
 * Projects: `/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS`
 * Aggregate target: `/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Base/Other/Aggregate.xctemplate`
@@ -74,6 +74,10 @@ You can then delete the `MoveToTestTarget` folder from the filesystem as the tes
 
 - For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjClean/README.md.html).
 
+- Create a git repository if one has not already been created: `git init`
+
+- Commit the initial template files: `git add . && git commit -m "Add initial project files from template"`
+
 - Hit ⌘-U to run the tests. The tests should fail since you haven't set anything up yet.
 
 - Double-check the Travis configuration and add secure keys as needed. See our [Travis documentation](https://engineering.vokal.io/iOS/Fastlane-Travis-CI.md.html) for the full details on that. This step can be handled later, since most of the information needed for this probably isn't available yet.
@@ -99,3 +103,4 @@ Adjust the run scripts in this target as necessary. For example, if your project
 * 3.x: works with Swift 4 in Xcode 9
 * 4.x: works with Swift 4.2 in Xcode 10
 * 5.x: works with Swift 5.0 in Xcode 10.2
+* 6.x: works with Swift 5.1 in Xcode 11

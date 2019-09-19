@@ -73,7 +73,7 @@
 	</array>
 	<key>Nodes</key>
 	<array>
-		<string>main.swift</string>
+		<string>Supporting Files/main.swift</string>
 		<string>../R.generated.swift</string>
 		<string>AppDelegate.swift</string>
 		<string>TestingAppDelegate.swift</string>
@@ -228,7 +228,7 @@
 			<key>Path</key>
 			<string>AppDelegate.swift</string>
 		</dict>
-		<key>main.swift</key>
+		<key>Supporting Files/main.swift</key>
 		<dict>
 			<key>Group</key>
 			<string>Supporting Files</string>
@@ -289,6 +289,11 @@
 				<key>SWIFT_OPTIMIZATION_LEVEL</key>
 				<string>-Owholemodule</string>
 			</dict>
+		</dict>
+		<key>SharedSettings</key>
+		<dict>
+			<key>SWIFT_VERSION</key>
+			<string>5.0</string>
 		</dict>
 	</dict>
 	<key>Options</key>
