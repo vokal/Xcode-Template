@@ -74,6 +74,10 @@ You can then delete the `MoveToTestTarget` folder from the filesystem as the tes
 
 - For Objective-C projects, the Objective-Clean run script is already installed for you and the settings file is already in place. For Swift projects, SwiftLint is set up similarly. Fix any warnings that either utility generates when you build the workspace. If you get an error about Objective-Clean not being found, download and install the app following the [full instructions in our Objective-Clean docs](https://engineering.vokal.io/iOS/ObjClean/README.md.html).
 
+- Create a git repository if one has not already been created: `git init`
+
+- Commit the initial template files: `git add . && git commit -m "Add initial project files from template"`
+
 - Hit ⌘-U to run the tests. The tests should fail since you haven't set anything up yet.
 
 - Double-check the Travis configuration and add secure keys as needed. See our [Travis documentation](https://engineering.vokal.io/iOS/Fastlane-Travis-CI.md.html) for the full details on that. This step can be handled later, since most of the information needed for this probably isn't available yet.
