@@ -46,14 +46,14 @@ class UserAPITests: XCTestCase {
                       success: { resultDict in
                         //THEN: The call should succeed and the token should match the mock token.
                         if let token = resultDict["token"] as? String {
-                            XCTAssertEqual(token, MockLoginToken)
+                            XCTAssertEqual(token, self.MockLoginToken)
                         } else {
                             XCTFail("No token returned!")
                         }
                         
                         //THEN: The token should already be stored in the keychain.
                         if let keychainToken = TokenStorageHelper.getAuthorizationToken() {
-                            XCTAssertEqual(keychainToken, MockLoginToken)
+                            XCTAssertEqual(keychainToken, self.MockLoginToken)
                         } else {
                             XCTFail("Token was not stored in the keychain!")
                         }
